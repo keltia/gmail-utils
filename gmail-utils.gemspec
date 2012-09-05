@@ -16,5 +16,6 @@ Gem::Specification.new do |gem|
   gem.version       = GMail::Utils::VERSION
 
   gem.add_dependency "rake"
+  gem.add_dependency "maildir"
   gem.add_dependency "mail"
 end
