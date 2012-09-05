@@ -1,0 +1,6 @@
+syntax: glob
+.svn
+.hg
+.idea
+**.lock
+*~
