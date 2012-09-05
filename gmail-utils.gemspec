@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/mail-utils/version', __FILE__)
+require File.expand_path('../lib/gmail-utils/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Ollivier Robert"]
@@ -13,7 +13,8 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "mail-utils"
   gem.require_paths = ["lib"]
-  gem.version       = Mail::Utils::VERSION
+  gem.version       = GMail::Utils::VERSION
 
+  gem.add_dependency "rake"
   gem.add_dependency "mail"
 end

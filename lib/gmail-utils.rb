@@ -1,6 +1,6 @@
-require "mail-utils/version"
+require "gmail-utils/version"
 
-module Mail
+module GMail
   module Utils
     # Your code goes here...
   end
