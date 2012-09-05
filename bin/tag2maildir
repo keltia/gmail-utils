@@ -8,12 +8,24 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v 158f908cd6ad 2012/09/05 11:48:28 roberto $
+# @version $Id: tag2maildir,v c21c176b1284 2012/09/05 14:26:31 roberto $
+
+# VCS ID
+MYNAME = File.basename($0)
+TAG_ID = "$Id: tag2maildir,v c21c176b1284 2012/09/05 14:26:31 roberto $"
 
 require "date"
 require "time"
+require "json"
 
+# Non standard packages
+#
 require "mail"
+require "maildir"
+
+# Default config
+#
+MYBASE = ENV["HOME"] + "/Maildir"
 
 class Tag
   # Handles a tag
@@ -37,3 +49,112 @@ class Tag
   end
 end # -- Tag
 
+# Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
+#
+class GMail
+  attr_reader :name
+  attr_reader :meta
+  attr_reader :mail
+  attr_reader :tags
+
+  def initialize(filename)
+    @name = File.basename(filename)
+    @mail = Mail.new
+    @tags = []
+  end # -- initialize
+
+  # @return[String] returns the mail id
+  def load
+    meta = Hash.new
+    File.open(self.meta_path) do |fh|
+      @meta = JSON.parse(fh)
+    end
+    if @name != @meta["gm_id"] then
+      raise DataError, "Error: Internal inconsistency on #{@name} vs #{@meta['gm_id']}"
+    end
+    @tags = @meta['labels']
+    @mail = Mail.read(self.mail_path)
+    if @meta['msg_id'] != @mail.message_id then
+      raise DataError, "Error: Internal inconsistency on #{@mail.message_id} vs #{@meta['msg_id']}"
+    end
+    return(@meta["gm_id"])
+  end
+
+  # @return[String] returns the full filename to the mail itself
+  def mail_path
+    @name + ".eml"
+  end
+
+  # @return[String] returns full filename of the metadata
+  def meta_path
+    @name + ".meta"
+  end
+end # -- GMail
+
+# Starting point
+#
+def main(argv)
+  my_tag = nil
+  my_base = MYBASE
+
+  usage = <<-"EOTEXT"
+Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
+  EOTEXT
+
+  banner = <<-"EOTEXT"
+#{MYNAME}
+Revision #{ID}
+
+#{usage}
+  EOTEXT
+
+  argv.options do |opts|
+    opts.banner = banner
+    opts.on("-b", "--base=DIR", "Use this directory to create mailboxes") do
+      |opt_base|
+      my_base = opt_base
+    end
+    opts.on("-d", "--debug", "Don't post directly - DEBUG mode") do
+      $debug = true
+    end
+    opts.on("-t", "--tag=TAG", "Use the following TAG ") do
+      |opt_tag|
+      my_tag = opt_tag
+    end
+    opts.on("-h", "Help", "Display this usage") do
+      puts banner
+      return 255
+    end
+    opts.parse!
+  end
+
+  argv.options = nil
+  top_dir = argv.shift
+
+  if top_dir.nil? then
+    $stderr.puts("Error: directory where to load mail from must be specified")
+    return(1)
+  end
+
+  if my_tag.nil? then
+    $stderr.puts("Error: the -t TAG option must be specified")
+    return(1)
+  end
+
+  Dir.chdir(top_dir) do
+
+    tag = Tag.new(my_tag)
+    maildir = Maildir.new(my_base + "/#{tag.normalize}")
+    maildir.serializer = Maildir::Serializer::Mail.new
+
+    Dir["**/*.eml"].each do |m|
+      mail = GMail.new(m).load
+      maildir.add(mail)
+    end
+    puts("Total message in #{tag.normalize}: #{mail.list.length}...")
+  end
+
+  return 0
+end # -- main
+
+exit(main(ARGV) || 1)
