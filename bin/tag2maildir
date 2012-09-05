@@ -8,7 +8,7 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v 6b53c275cd34 2012/09/05 09:20:05 roberto $
+# @version $Id: tag2maildir,v 158f908cd6ad 2012/09/05 11:48:28 roberto $
 
 require "date"
 require "time"
@@ -17,6 +17,9 @@ require "mail"
 
 class Tag
   # Handles a tag
+  #
+  # Used when creating a mailbox based on the tag itself, after replacing the "/" used
+  # by IMAP by "-"
   attr_accessor :label
 
   # @param [String] label name of the tag
