@@ -1,0 +1,36 @@
+#! /usr/bin/env ruby
+#
+# @abstract Find all mail downloaded by gmvault from any given GMail account
+#   and create a maildir mailbox
+#
+# @author Ollivier Robert <roberto@keltia.net>
+#
+# Read all .eml with a given tag in .meta. Generate a maildir structure
+# with all .eml.
+#
+# @version $Id: tag2maildir,v 6b53c275cd34 2012/09/05 09:20:05 roberto $
+
+require "date"
+require "time"
+
+require "mail"
+
+class Tag
+  # Handles a tag
+  attr_accessor :label
+
+  # @param [String] label name of the tag
+  # @return [Tag] the newly created tag
+  def initialize(label)
+    raise DataError if label.nil?
+
+    @label = label
+  end
+
+  # Generate a FS-compatible label
+  # @return [String] the converted label
+  def normalize
+    return @label.gsub(%r{/}, '-')
+  end
+end # -- Tag
+
