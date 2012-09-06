@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v e2ae617dcdaa 2012/09/06 20:25:31 roberto $
+# @version $Id: tag2maildir,v e45cb7b19c3d 2012/09/06 20:25:47 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v e2ae617dcdaa 2012/09/06 20:25:31 roberto $"
+VCS_ID = "$Id: tag2maildir,v e45cb7b19c3d 2012/09/06 20:25:47 roberto $"
 
 require "date"
 require "time"
@@ -69,7 +69,6 @@ class GMail
 
   # @return[String] returns the mail id
   def load
-    meta = Hash.new
     File.open(self.meta_path) do |fh|
       @meta = JSON.parse(fh)
     end
