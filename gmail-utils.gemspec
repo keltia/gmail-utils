@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.files         = `/usr/local/bin/hg locate`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.name          = "mail-utils"
+  gem.name          = "gmail-utils"
   gem.require_paths = ["lib"]
   gem.version       = GMail::Utils::VERSION
 
