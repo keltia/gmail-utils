@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v b4ce66d0e446 2012/09/06 20:22:51 roberto $
+# @version $Id: tag2maildir,v e2ae617dcdaa 2012/09/06 20:25:31 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v b4ce66d0e446 2012/09/06 20:22:51 roberto $"
+VCS_ID = "$Id: tag2maildir,v e2ae617dcdaa 2012/09/06 20:25:31 roberto $"
 
 require "date"
 require "time"
@@ -61,7 +61,8 @@ class GMail
   attr_reader :tags
 
   def initialize(filename)
-    @name = File.basename(filename)
+    @path = filename.split(/\./)[0]
+    @name = File.basename(@path)
     @mail = Mail.new
     @tags = []
   end # -- initialize
@@ -85,12 +86,13 @@ class GMail
 
   # @return[String] returns the full filename to the mail itself
   def mail_path
-    @name + ".eml"
+    @path + ".eml"
   end
 
   # @return[String] returns full filename of the metadata
   def meta_path
-    @name + ".meta"
+    $stderr.puts(@name)
+    @path + ".meta"
   end
 end # -- GMail
 
