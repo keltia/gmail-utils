@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v 3cf975ef7f34 2012/09/06 20:26:02 roberto $
+# @version $Id: tag2maildir,v bde2f2ce755a 2012/09/06 20:26:37 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v 3cf975ef7f34 2012/09/06 20:26:02 roberto $"
+VCS_ID = "$Id: tag2maildir,v bde2f2ce755a 2012/09/06 20:26:37 roberto $"
 
 require "date"
 require "time"
@@ -72,7 +72,10 @@ class GMail
     File.open(self.meta_path) do |fh|
       @meta = JSON.load(fh)
     end
-    if @name != @meta["gm_id"] then
+
+    # check consistency
+    if @name.to_i != @meta["gm_id"] then
+      $stderr.puts(@meta)
       raise DataError, "Error: Internal inconsistency on #{@name} vs #{@meta['gm_id']}"
     end
     @tags = @meta['labels']
