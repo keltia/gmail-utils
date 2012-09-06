@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v 779f07ced313 2012/09/06 20:27:05 roberto $
+# @version $Id: tag2maildir,v ecb178e4c804 2012/09/06 20:27:36 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v 779f07ced313 2012/09/06 20:27:05 roberto $"
+VCS_ID = "$Id: tag2maildir,v ecb178e4c804 2012/09/06 20:27:36 roberto $"
 
 require "date"
 require "time"
@@ -157,9 +157,11 @@ Revision #{VCS_ID}
     maildir = Maildir.new(my_base + "/#{tag.normalize}")
     maildir.serializer = Maildir::Serializer::Mail.new
 
-    Dir["**/*.eml"].each do |m|
+    Dir["**/*.meta"].each do |m|
+      $stderr.puts(m)
       mail = GMail.new(m).load
       maildir.add(mail)
+      puts(".")
     end
     puts("Total message in #{tag.normalize}: #{mail.list.length}...")
   end
