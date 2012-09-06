@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v 427bb115266a 2012/09/06 20:22:32 roberto $
+# @version $Id: tag2maildir,v b4ce66d0e446 2012/09/06 20:22:51 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v 427bb115266a 2012/09/06 20:22:32 roberto $"
+VCS_ID = "$Id: tag2maildir,v b4ce66d0e446 2012/09/06 20:22:51 roberto $"
 
 require "date"
 require "time"
@@ -27,6 +27,8 @@ require "maildir"
 # Default config
 #
 MYBASE = ENV["HOME"] + "/Maildir"
+
+class DataError < Exception; end
 
 class Tag
   # Handles a tag
