@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v c21c176b1284 2012/09/05 14:26:31 roberto $
+# @version $Id: tag2maildir,v bdf61ecf6f4f 2012/09/06 20:19:03 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-TAG_ID = "$Id: tag2maildir,v c21c176b1284 2012/09/05 14:26:31 roberto $"
+VCS_ID = "$Id: tag2maildir,v bdf61ecf6f4f 2012/09/06 20:19:03 roberto $"
 
 require "date"
 require "time"
@@ -103,7 +103,7 @@ Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
 
   banner = <<-"EOTEXT"
 #{MYNAME}
-Revision #{ID}
+Revision #{VCS_ID}
 
 #{usage}
   EOTEXT
