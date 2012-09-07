@@ -18,4 +18,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency "rake"
   gem.add_dependency "maildir"
   gem.add_dependency "mail"
+  gem.add_dependency "rspec"
 end
