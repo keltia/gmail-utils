@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v ecb178e4c804 2012/09/06 20:27:36 roberto $
+# @version $Id: tag2maildir,v b0db47628bab 2012/09/07 12:25:04 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v ecb178e4c804 2012/09/06 20:27:36 roberto $"
+VCS_ID = "$Id: tag2maildir,v b0db47628bab 2012/09/07 12:25:04 roberto $"
 
 require "date"
 require "time"
@@ -30,76 +30,8 @@ MYBASE = ENV["HOME"] + "/Maildir"
 
 class DataError < Exception; end
 
-class Tag
-  # Handles a tag
-  #
-  # Used when creating a mailbox based on the tag itself, after replacing the "/" used
-  # by IMAP by "-"
-  attr_accessor :label
-
-  # @param [String] label name of the tag
-  # @return [Tag] the newly created tag
-  def initialize(label)
-    raise DataError if label.nil?
-
-    @label = label
-  end
-
-  # Generate a FS-compatible label
-  # @return [String] the converted label
-  def normalize
-    return @label.gsub(%r{/}, '-')
-  end
-end # -- Tag
-
-# Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
-#
-class GMail
-  attr_reader :name
-  attr_reader :meta
-  attr_reader :mail
-  attr_reader :tags
-
-  def initialize(filename)
-    @path = filename.split(/\./)[0]
-    @name = File.basename(@path)
-    @mail = Mail.new
-    @tags = []
-  end # -- initialize
-
-  # @return[String] returns the mail id
-  def load
-    File.open(self.meta_path) do |fh|
-      @meta = JSON.load(fh)
-    end
-
-    # check consistency
-    if @name.to_i != @meta["gm_id"] then
-      $stderr.puts(@meta)
-      raise DataError, "Error: Internal inconsistency on #{@name} vs #{@meta['gm_id']}"
-    end
-
-    # Remove "internal tags"
-    @tags = @meta['labels'].delete_if {|e| e =~ /^\\\\/ }
-
-    @mail = Mail.read(self.mail_path)
-    if @meta['msg_id'] != @mail.message_id then
-      raise DataError, "Error: Internal inconsistency on #{@mail.message_id} vs #{@meta['msg_id']}"
-    end
-    return(@meta["gm_id"])
-  end
-
-  # @return[String] returns the full filename to the mail itself
-  def mail_path
-    @path + ".eml"
-  end
-
-  # @return[String] returns full filename of the metadata
-  def meta_path
-    $stderr.puts(@name)
-    @path + ".meta"
-  end
-end # -- GMail
+require "gmail/tag"
+require "gmail/gmvault"
 
 # Starting point
 #
