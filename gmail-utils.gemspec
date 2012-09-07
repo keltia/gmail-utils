@@ -4,8 +4,8 @@ require File.expand_path('../lib/gmail-utils/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Ollivier Robert"]
   gem.email         = ["roberto@keltia.net"]
-  gem.description   = %q{A few utilities to deal with mail, gmvault and others}
-  gem.summary       = %q{Set of utilities to del with mail}
+  gem.description   = %q{A few utilities to deal with GMail, gmvault and others}
+  gem.summary       = %q{Set of utilities to deal with GMail}
   gem.homepage      = ""
 
   gem.files         = `/usr/local/bin/hg locate`.split($\)
