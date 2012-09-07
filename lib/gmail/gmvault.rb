@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v b0db47628bab 2012/09/07 12:25:04 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v 426495c40260 2012/09/07 14:12:10 roberto $"
 
 # Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
 #
@@ -36,7 +36,7 @@ class GMail
 
     @mail = Mail.read(self.mail_path)
     if @meta['msg_id'] != @mail.message_id then
-      raise DataError, "Error: Internal inconsistency on #{@mail.message_id} vs #{@meta['msg_id']}"
+      $stderr.puts("Warning: Internal inconsistency on #{@mail.message_id} vs #{@meta['msg_id']}")
     end
     return(@meta["gm_id"])
   end
