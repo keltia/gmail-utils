@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v f246a68714e7 2012/09/07 14:16:27 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v aa332f92562c 2012/09/07 15:34:39 roberto $"
 
 # Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
 #
@@ -32,14 +32,20 @@ class GMail
     end
 
     # Remove "internal tags"
-    @tags = @meta['labels'].delete_if {|e| e =~ /^\\\\/ }
-    return(nil) if @tags.include?(tag)
-
-    @mail = Mail.read(self.mail_path)
-    if @meta['msg_id'] != @mail.message_id then
-      $stderr.puts("Warning: Internal inconsistency on #{@mail.message_id} vs #{@meta['msg_id']}")
+    @tags = @meta['labels']
+    @tags.delete_if{|e| e =~ /^\\/ }
+    puts(@tags)
+    if @tags.include?(tag) or @tags == tag
+      @mail = Mail.read(self.mail_path)
+      if $debug
+        if @meta['msg_id'] != @mail.message_id then
+          $stderr.puts("Warning: Internal inconsistency on #{@mail.message_id} vs #{@meta['msg_id']}")
+        end
+      end
+      return(@meta["gm_id"])
+    else
+      return(nil)
     end
-    return(@meta["gm_id"])
   end
 
   # @return[String] returns the full filename to the mail itself
