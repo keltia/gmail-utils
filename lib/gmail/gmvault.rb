@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v c185f5403d85 2012/09/07 14:12:23 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v f246a68714e7 2012/09/07 14:16:27 roberto $"
 
 # Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
 #
@@ -20,7 +20,7 @@ class GMail
   end # -- initialize
 
   # @return[String] returns the mail id
-  def load
+  def load(tag = nil)
     File.open(self.meta_path) do |fh|
       @meta = JSON.load(fh)
     end
@@ -33,6 +33,7 @@ class GMail
 
     # Remove "internal tags"
     @tags = @meta['labels'].delete_if {|e| e =~ /^\\\\/ }
+    return(nil) if @tags.include?(tag)
 
     @mail = Mail.read(self.mail_path)
     if @meta['msg_id'] != @mail.message_id then
