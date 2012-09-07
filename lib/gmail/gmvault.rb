@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v 426495c40260 2012/09/07 14:12:10 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v c185f5403d85 2012/09/07 14:12:23 roberto $"
 
 # Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
 #
@@ -48,7 +48,6 @@ class GMail
 
   # @return[String] returns full filename of the metadata
   def meta_path
-    $stderr.puts(@name)
     @path + ".meta"
   end
 end # -- GMail
