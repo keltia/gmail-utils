@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_TAG_ID = "$Id: tag.rb,v b0db47628bab 2012/09/07 12:25:04 roberto $"
+VCS_TAG_ID = "$Id: tag.rb,v 2d42c3830ab0 2012/09/07 13:56:17 roberto $"
 
 # Handles GMail tags
 #
@@ -16,8 +16,6 @@ class Tag
   # @param [String] label name of the tag
   # @return [Tag] the newly created tag
   def initialize(label)
-    raise DataError if label.nil?
-
     @label = label
   end
 
