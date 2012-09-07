@@ -1,9 +1,8 @@
 #!/usr/bin/env rake
 #
-# $Id: Rakefile,v 5fcec21f0593 2012/09/07 13:57:20 roberto $
+# $Id: Rakefile,v 917a2a0e653c 2012/09/07 14:11:37 roberto $
 
 require "bundler/gem_tasks"
-Bundler::GemHelper.install_tasks
 
 require 'rake'
 require 'rake/testtask'
