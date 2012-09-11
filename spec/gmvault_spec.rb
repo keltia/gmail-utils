@@ -2,10 +2,11 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v 76956216f536 2012/09/11 23:45:51 roberto $
+# $Id: gmvault_spec.rb,v 9057fe4c620c 2012/09/11 23:49:43 roberto $
 
 require "rspec"
 require "mail"
+require "json"
 require "gmail/gmvault"
 
 describe GMail do
