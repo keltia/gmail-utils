@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v 06adf81aaec0 2012/09/11 19:46:27 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v 6a1787535c6e 2012/09/11 19:46:56 roberto $"
 
 # Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
 #
@@ -22,6 +22,7 @@ class GMail
     @tags = []
   end # -- initialize
 
+  # @param tag the tag we want to filter on
   # @return[String] returns the mail id
   def load(tag = nil)
     File.open(self.meta_path) do |fh|
