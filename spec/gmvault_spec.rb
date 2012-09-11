@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v 5f0ff9a11f77 2012/09/11 22:16:10 roberto $
+# $Id: gmvault_spec.rb,v 76956216f536 2012/09/11 23:45:51 roberto $
 
 require "rspec"
 require "mail"
@@ -74,15 +74,15 @@ describe GMail do
 
   describe "#meta_path" do
     it "should give you back a .meta filename" do
-      @badmail.meta_path.should eq("bad.meta")
-      @goodmail.meta_path.should eq("good.meta")
+      File.basename(@badmail.meta_path).should eq("bad.meta")
+      File.basename(@goodmail.meta_path).should eq("good.meta")
     end
   end
 
   describe "#mail_path" do
     it "should give you back a .eml filename" do
-      @badmail.meta_path.should eq("bad.eml")
-      @goodmail.meta_path.should eq("good.meta")
+      File.basename(@badmail.meta_path).should eq("bad.eml")
+      File.basename(@goodmail.meta_path).should eq("good.eml")
     end
   end
 end
