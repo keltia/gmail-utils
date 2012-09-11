@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v f58a56341c42 2012/09/11 23:50:06 roberto $
+# $Id: gmvault_spec.rb,v 5f26f8433b7f 2012/09/11 23:51:32 roberto $
 
 require "rspec"
 require "mail"
@@ -33,7 +33,7 @@ describe GMail do
     it "should have the necessary attributes" do
       @goodmail.name.should be_an_instance_of(String)
       @goodmail.meta.should be_an_instance_of(NilClass)
-      @goodmail.mail.should be_an_instance_of(Mail)
+      @goodmail.mail.should be_an_instance_of(Mail::Message)
       @goodmail.tags.should be_an_instance_of(Array)
       @goodmail.tags.should == []
     end
