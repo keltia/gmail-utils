@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v 6a1787535c6e 2012/09/11 19:46:56 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v 3ea10bfcb6ac 2012/09/11 19:47:14 roberto $"
 
 # Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
 #
@@ -30,6 +30,7 @@ class GMail
     end
 
     # check consistency
+    raise DataError if @meta.nil?
     if @name.to_i != @meta["gm_id"] then
       $stderr.puts(@meta)
       raise DataError, "Error: Internal inconsistency on #{@name} vs #{@meta['gm_id']}"
