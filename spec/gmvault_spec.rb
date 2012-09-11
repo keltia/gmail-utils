@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v 5f26f8433b7f 2012/09/11 23:51:32 roberto $
+# $Id: gmvault_spec.rb,v 35119246e034 2012/09/11 23:52:54 roberto $
 
 require "rspec"
 require "mail"
@@ -23,11 +23,11 @@ describe GMail do
     end
 
     it "should raise an exception if filename does not end with .eml" do
-      expect{GMail.new("foo.bar")}.to RaiseError(ArgumentError)
+      expect{GMail.new("foo.bar")}.to raise_exception(ArgumentError)
     end
 
     it "should raise an exception if file does not exist" do
-      expect{GMail.new("/nonexistent")}.to RaiseError(ArgumentError)
+      expect{GMail.new("/nonexistent")}.to raise_exception(ArgumentError)
     end
 
     it "should have the necessary attributes" do
