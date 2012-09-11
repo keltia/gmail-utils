@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v e2a77e3951dd 2012/09/11 19:45:56 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v 06adf81aaec0 2012/09/11 19:46:27 roberto $"
 
 # Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
 #
@@ -18,6 +18,7 @@ class GMail
     raise ParameterError if not File.exists?(filename)
     @name = File.basename(@path)
     @mail = Mail.new
+    @meta = nil
     @tags = []
   end # -- initialize
 
