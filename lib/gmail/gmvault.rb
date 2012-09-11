@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v aa332f92562c 2012/09/07 15:34:39 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v e2a77e3951dd 2012/09/11 19:45:56 roberto $"
 
 # Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
 #
@@ -13,7 +13,9 @@ class GMail
   attr_reader :tags
 
   def initialize(filename)
-    @path = filename.split(/\./)[0]
+    @path, ext = filename.split(/\./)
+    raise ParameterError if ext != "eml"
+    raise ParameterError if not File.exists?(filename)
     @name = File.basename(@path)
     @mail = Mail.new
     @tags = []
