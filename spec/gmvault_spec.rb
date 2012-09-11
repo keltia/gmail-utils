@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v 35119246e034 2012/09/11 23:52:54 roberto $
+# $Id: gmvault_spec.rb,v 447dc36a68cc 2012/09/11 23:57:50 roberto $
 
 require "rspec"
 require "mail"
@@ -19,7 +19,7 @@ describe GMail do
 
   describe "#initialize" do
     it "should raise an exception if no parameter is given" do
-      expect{GMail.new}.to RaiseError(ArgumentError)
+      expect{GMail.new}.to raise_exception(ArgumentError)
     end
 
     it "should raise an exception if filename does not end with .eml" do
