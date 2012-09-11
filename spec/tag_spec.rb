@@ -1,3 +1,9 @@
+# @abstract Tag handling and conversion specs
+#
+# @author Ollivier Robert <roberto@keltia.net>
+#
+# $Id: tag_spec.rb,v 77a31ebfd07f 2012/09/11 09:56:01 roberto $
+
 require "rspec"
 require "gmail/tag"
 
