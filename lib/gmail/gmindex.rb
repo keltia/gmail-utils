@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMI_ID = "$Id: gmindex.rb,v 39ec4d02a7a0 2012/09/12 13:54:49 roberto $"
+VCS_GMI_ID = "$Id: gmindex.rb,v f3a4da3ed2d3 2012/09/12 14:13:00 roberto $"
 
 require "rufus/tokyo"
 
@@ -10,4 +10,15 @@ require "rufus/tokyo"
 #
 class GmIndex
   attr_reader :path
+
+  def initialize(path)
+    if File.exists?("#{path}/cur") and File.exists?("#{path}/new")
+      @path = path
+    else
+      raise ArgumentError, "#{path} is not a Maildir mailbox"
+    end
+    if File.exists?("#{path}/index.tch")
+      @db = Rufus::Tokyo::Cabinet.new("#{path}/index.tch")
+    end
+  end
 end
