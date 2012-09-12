@@ -19,4 +19,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency "maildir"
   gem.add_dependency "mail"
   gem.add_dependency "rspec"
+  gem.add_dependency "rufus-tokyo"
 end
