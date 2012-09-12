@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v 3524520a80c1 2012/09/12 00:00:17 roberto $
+# $Id: gmvault_spec.rb,v 00395bc40138 2012/09/12 09:28:20 roberto $
 
 require "rspec"
 require "mail"
@@ -13,8 +13,8 @@ describe GMail do
 
   before(:all) do
     @tag = "Perso/Foo"
-    @goodmail = GMail.new(File.expand_path(File.dirname(__FILE__) + '/../test/good.meta'))
-    @badmail = GMail.new(File.expand_path(File.dirname(__FILE__) + '/../test/bad.meta'))
+    @goodmail = GMail.new(File.expand_path(File.dirname(__FILE__) + '/../test/1412679471642059988.meta'))
+    @badmail = GMail.new(File.expand_path(File.dirname(__FILE__) + '/../test/1412714559964509103.meta'))
   end
 
   describe "#initialize" do
@@ -75,15 +75,15 @@ describe GMail do
 
   describe "#meta_path" do
     it "should give you back a .meta filename" do
-      File.basename(@badmail.meta_path).should eq("bad.meta")
-      File.basename(@goodmail.meta_path).should eq("good.meta")
+      File.basename(@badmail.meta_path).should eq("1412714559964509103.meta")
+      File.basename(@goodmail.meta_path).should eq("1412679471642059988.meta")
     end
   end
 
   describe "#mail_path" do
     it "should give you back a .eml filename" do
-      File.basename(@badmail.mail_path).should eq("bad.eml")
-      File.basename(@goodmail.mail_path).should eq("good.eml")
+      File.basename(@badmail.mail_path).should eq("1412714559964509103.eml")
+      File.basename(@goodmail.mail_path).should eq("1412679471642059988.eml")
     end
   end
 end
