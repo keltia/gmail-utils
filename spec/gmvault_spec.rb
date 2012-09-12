@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v 81b289ed1bf8 2012/09/12 10:02:46 roberto $
+# $Id: gmvault_spec.rb,v 30ac83de6595 2012/09/12 10:23:09 roberto $
 
 require "rspec"
 require "mail"
@@ -32,25 +32,28 @@ describe GMail do
 
     it "should have the necessary attributes" do
       @goodmail.name.should be_an_instance_of(String)
-      @goodmail.meta.should be_an_instance_of(NilClass)
       @goodmail.mail.should be_an_instance_of(NilClass)
       @goodmail.tags.should be_an_instance_of(Array)
-      @goodmail.tags.should == []
+      @goodmail.meta.should_not be_nil
     end
   end
 
   describe "#load" do
-    it "should return the mail if tag is nil" do
-      @goodmail.load(nil).should_not be_nil
-      @badmail.load(nil).should_not be_nil
+    it "should load all metadata" do
+      @goodmail.load.should_not be_nil
+      @badmail.load.should_not be_nil
     end
 
-    it "should return a gm_id for a matching mail" do
-      @goodmail.load(@tag).should_not be_nil
+    it "should have consistent metadata" do
+      @goodmail.name.to_i.should == @goodmail.meta["gm_id"]
+      @badmail.name.to_i.should == @badmail.meta["gm_id"]
     end
 
-    it "should return nil for a non-matching mail" do
-      @badmail.load(@tag).should be_nil
+    it "should remove all internal tags" do
+      clean = @goodmail.tags.map{|e| e =~ /\\(.*?)/}.compact
+      clean.should == []
+      clean = @badmail.tags.map{|e| e =~ /\\(.*?)/}.compact
+      clean.should == []
     end
   end
 
