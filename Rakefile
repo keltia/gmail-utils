@@ -1,6 +1,6 @@
 #!/usr/bin/env rake
 #
-# $Id: Rakefile,v 917a2a0e653c 2012/09/07 14:11:37 roberto $
+# $Id: Rakefile,v 1093e4bba7dd 2012/09/12 09:29:13 roberto $
 
 require "bundler/gem_tasks"
 
@@ -19,5 +19,6 @@ end
 desc "Sync the changesets to both central & bitbucket repos"
 task :push do
   system "/usr/local/bin/hg push"
+  system "/usr/local/bin/hg push ~/Dropbox/HG/gmail-utils"
   system "/usr/local/bin/hg push ssh://hg@bitbucket.org/keltia/gmail-utils"
 end
