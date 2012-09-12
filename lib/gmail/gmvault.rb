@@ -2,14 +2,13 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v 185060bc60a2 2012/09/12 10:23:30 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v 9a06da40adf7 2012/09/12 13:53:44 roberto $"
 
 # Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
 #
 class GMail
   attr_reader :name
   attr_reader :meta
-  attr_reader :mail
   attr_reader :tags
 
   def initialize(filename)
@@ -39,6 +38,14 @@ class GMail
     # Remove "internal tags"
     @tags = @meta['labels'].delete_if{|e| e =~ /^\\/ }
     @meta["gm_id"]
+  end
+
+  # @return[Mail::Message] returns the mail content
+  def mail
+    if @mail.nil?
+      @mail = Mail.read(self.mail_path)
+    end
+    @mail
   end
 
   # @param maildir save the mail in the given mailbox
