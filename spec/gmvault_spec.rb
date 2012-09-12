@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v 00395bc40138 2012/09/12 09:28:20 roberto $
+# $Id: gmvault_spec.rb,v 483acf1662dd 2012/09/12 09:28:34 roberto $
 
 require "rspec"
 require "mail"
@@ -40,11 +40,6 @@ describe GMail do
   end
 
   describe "#load" do
-    it "should return the mail if tag is nil" do
-      @goodmail.load(nil).should_not be_nil
-      @badmail.load(nil).should_not be_nil
-    end
-
     it "should return the mail if tag is nil" do
       @goodmail.load(nil).should_not be_nil
       @badmail.load(nil).should_not be_nil
