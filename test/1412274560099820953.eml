@@ -1,0 +1,80 @@
+Delivered-To: keltia@gmail.com
+Received: by 10.60.60.170 with SMTP id i10csp221312oer;
+        Wed, 5 Sep 2012 05:59:35 -0700 (PDT)
+Received: by 10.229.137.147 with SMTP id w19mr12045611qct.58.1346849975349;
+        Wed, 05 Sep 2012 05:59:35 -0700 (PDT)
+Date: Wed, 5 Sep 2012 05:59:35 -0700
+From: sanssecours <notifications@github.com>
+Reply-To: textmate/textmate <reply+i-6659400-1321c6c627d6ec1287137a9df1234155e25d4aaf-142030@reply.github.com>
+To: textmate/textmate <textmate@noreply.github.com>
+Message-Id: <textmate/textmate/issues/386/8296982@github.com>
+In-Reply-To: <textmate/textmate/issues/386@github.com>
+References: <textmate/textmate/issues/386@github.com>
+Subject: Re: [textmate] Allow configuration of TABs in a GUI not in tm_properties and return Text -> Convert Tabs to Spaces (#386)
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=mimepart_50474cb713b7f_2ae61373a747188e
+List-Post: <mailto:reply+i-6659400-1321c6c627d6ec1287137a9df1234155e25d4aaf-142030@reply.github.com>
+Precedence: list
+List-Archive: https://github.com/textmate/textmate
+X-Github-Recipient: keltia
+List-Unsubscribe: <mailto:unsub+i-6659400-1321c6c627d6ec1287137a9df1234155e25d4aaf-142030@reply.github.com>
+List-Id: textmate/textmate <textmate.textmate.github.com>
+
+
+--mimepart_50474cb713b7f_2ae61373a747188e
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+> Allow configuration of TABs in a GUI not in tm_properties
+
+You can set both, the tab width and which kind of whitespace character yo=
+u want to use for indentation, in the bar at the bottom of the editor. Th=
+e =E2=80=9Cbutton=E2=80=9D for this option is located between the gear ic=
+on showing the bundle items for the current language, and the symbol list=
+.
+
+> Text -> Convert Tabs to Spaces
+
+This functionality is now implemented as command inside the `Source` bund=
+le. =E2=80=94 Shortcut: `^=E2=87=A7=E2=8C=98T`
+
+---
+Reply to this email directly or view it on GitHub:
+https://github.com/textmate/textmate/issues/386#issuecomment-8296982=
+
+--mimepart_50474cb713b7f_2ae61373a747188e
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+<blockquote>
+<p>Allow configuration of TABs in a GUI not in tm_properties</p>
+</blockquote>
+
+<p>You can set both, the tab width and which kind of whitespace character=
+ you want to use for indentation, in the bar at the bottom of the editor.=
+ The =E2=80=9Cbutton=E2=80=9D for this option is located between the gear=
+ icon showing the bundle items for the current language, and the symbol l=
+ist.</p>
+
+<blockquote>
+<p>Text -&gt; Convert Tabs to Spaces</p>
+</blockquote>
+
+<p>This functionality is now implemented as command inside the <code>Sour=
+ce</code> bundle. =E2=80=94 Shortcut: <code>^=E2=87=A7=E2=8C=98T</code></=
+p>
+
+            <p style=3D"font-size:small;-webkit-text-size-adjust:none;col=
+or:#666;">
+              &mdash;<br>
+              Reply to this email directly or <a href=3D'https://github.c=
+om/textmate/textmate/issues/386#issuecomment-8296982'>view it on GitHub</=
+a>.
+            </p>
+            <img src=3D'https://github.com/notifications/beacon/J6T91GIPI=
+yhU-8ti4GCGP0KnCBKoepZOZvMUQc2T_dEFZcA3Mond5iNRxjp8gHoq.gif' height=3D'1'=
+ width=3D'1'>
+
+--mimepart_50474cb713b7f_2ae61373a747188e--
