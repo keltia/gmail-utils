@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v 08f531278443 2012/09/12 10:30:40 roberto $
+# $Id: gmvault_spec.rb,v 08a094d3886b 2012/09/12 10:33:08 roberto $
 
 require "rspec"
 require "mail"
@@ -15,7 +15,7 @@ describe GMail do
     @tag = "Perso/Foo"
     @goodmail = GMail.new(File.expand_path(File.dirname(__FILE__) + '/../test/1412679471642059988.meta'))
     @badmail = GMail.new(File.expand_path(File.dirname(__FILE__) + '/../test/1412714559964509103.meta'))
-    @empty = GMail.new(File.expand_path(File.dirname(__FILE__) + '/../test/1412714559964509103.meta'))
+    @empty = GMail.new(File.expand_path(File.dirname(__FILE__) + '/../test/1412274560099820953.meta'))
   end
 
   describe "#initialize" do
