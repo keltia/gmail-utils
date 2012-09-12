@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v aea6eb82f953 2012/09/12 09:54:21 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v 185060bc60a2 2012/09/12 10:23:30 roberto $"
 
 # Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
 #
@@ -17,14 +17,14 @@ class GMail
     raise ArgumentError if ext != "meta"
     raise ArgumentError if not File.exists?(filename)
     @name = File.basename(@path)
-    @mail = Mail.new
-    @meta = nil
+    @mail = nil
     @tags = []
+    self.load
   end # -- initialize
 
-  # @param tag the tag we want to filter on
+  # Preload metadata
   # @return[String] returns the mail id
-  def load(tag = nil)
+  def load
     File.open(self.meta_path) do |fh|
       @meta = JSON.load(fh)
     end
@@ -37,27 +37,23 @@ class GMail
     end
 
     # Remove "internal tags"
-    @tags = @meta['labels']
-    @tags.delete_if{|e| e =~ /^\\/ }
-    puts(@tags)
-    if @tags.include?(tag) or @tags == tag
-      @mail = Mail.read(self.mail_path)
-      if $debug
-        if @meta['msg_id'] != @mail.message_id then
-          $stderr.puts("Warning: Internal inconsistency on #{@mail.message_id} vs #{@meta['msg_id']}")
-        end
-      end
-      return(@meta["gm_id"])
-    else
-      return(nil)
-    end
+    @tags = @meta['labels'].delete_if{|e| e =~ /^\\/ }
+    @meta["gm_id"]
   end
 
   # @param maildir save the mail in the given mailbox
   # @return[Comparable] say whether it has been saved
   def save(maildir)
-
+    return nil
+    @mail = Mail.read(self.mail_path)
+    if $debug
+       if @meta['msg_id'] != @mail.message_id then
+          $stderr.puts("Warning: Internal inconsistency on #{@mail.message_id} vs #{@meta['msg_id']}")
+       end
+    end
+    return(@meta["gm_id"])
   end
+
 
   # @return[String] returns the full filename to the mail itself
   def mail_path

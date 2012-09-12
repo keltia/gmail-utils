@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v aea6eb82f953 2012/09/12 09:54:21 roberto $
+# $Id: gmvault_spec.rb,v 08f531278443 2012/09/12 10:30:40 roberto $
 
 require "rspec"
 require "mail"
@@ -15,6 +15,7 @@ describe GMail do
     @tag = "Perso/Foo"
     @goodmail = GMail.new(File.expand_path(File.dirname(__FILE__) + '/../test/1412679471642059988.meta'))
     @badmail = GMail.new(File.expand_path(File.dirname(__FILE__) + '/../test/1412714559964509103.meta'))
+    @empty = GMail.new(File.expand_path(File.dirname(__FILE__) + '/../test/1412714559964509103.meta'))
   end
 
   describe "#initialize" do
@@ -32,25 +33,32 @@ describe GMail do
 
     it "should have the necessary attributes" do
       @goodmail.name.should be_an_instance_of(String)
-      @goodmail.meta.should be_an_instance_of(NilClass)
-      @goodmail.mail.should be_an_instance_of(Mail::Message)
+      @goodmail.mail.should be_an_instance_of(NilClass)
       @goodmail.tags.should be_an_instance_of(Array)
-      @goodmail.tags.should == []
+      @goodmail.meta.should_not be_nil
     end
   end
 
   describe "#load" do
-    it "should return the mail if tag is nil" do
-      @goodmail.load(nil).should_not be_nil
-      @badmail.load(nil).should_not be_nil
+    it "should load all metadata" do
+      @goodmail.load.should_not be_nil
+      @badmail.load.should_not be_nil
     end
 
-    it "should return a gm_id for a matching mail" do
-      @goodmail.load(@tag).should_not be_nil
+    it "should have consistent metadata" do
+      @goodmail.name.to_i.should == @goodmail.meta["gm_id"]
+      @badmail.name.to_i.should == @badmail.meta["gm_id"]
     end
 
-    it "should return nil for a non-matching mail" do
-      @badmail.load(@tag).should be_nil
+    it "can have an empty set of tags" do
+      @empty.tags.should == []
+    end
+    
+    it "should remove all internal tags" do
+      clean = @goodmail.tags.map{|e| e =~ /\\(.*?)/}.compact
+      clean.should == []
+      clean = @badmail.tags.map{|e| e =~ /\\(.*?)/}.compact
+      clean.should == []
     end
   end
 
