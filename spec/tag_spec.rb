@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: tag_spec.rb,v 77a31ebfd07f 2012/09/11 09:56:01 roberto $
+# $Id: tag_spec.rb,v 256f7d966186 2012/09/12 09:53:02 roberto $
 
 require "rspec"
 require "gmail/tag"
@@ -48,6 +48,18 @@ describe Tag do
 
     it "should convert '/' into '-'" do
       @tag2.normalize.should == "Perso-Foo"
+    end
+  end
+
+  describe "#match" do
+    it "should not match the '' (null) tag" do
+      @tag1.match('').should be_false
+      @tag2.match('').should be_false
+    end
+
+    it "should match the correct tag" do
+      @tag1.match("Perso/Foo").should be_false
+      @tag2.match("Perso/Foo").should_not be_false
     end
   end
 end

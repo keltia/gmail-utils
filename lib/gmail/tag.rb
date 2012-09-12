@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_TAG_ID = "$Id: tag.rb,v 2d42c3830ab0 2012/09/07 13:56:17 roberto $"
+VCS_TAG_ID = "$Id: tag.rb,v 256f7d966186 2012/09/12 09:53:02 roberto $"
 
 # Handles GMail tags
 #
@@ -23,5 +23,18 @@ class Tag
   # @return [String] the converted label
   def normalize
     return @label.gsub(%r{/}, '-')
+  end
+  
+  # Match the tag against another one, string/array
+  # @param tags string or array representing a tag or list thereof
+  # @return[True|False] rematching result
+  def match(tags)
+    t = tags.dup
+    if tags.class == String
+      t = [ tags ]
+    end
+    flag = false
+    t.each{|e| flag = @label == e ? true : false }
+    flag
   end
 end # -- Tag
