@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v 483acf1662dd 2012/09/12 09:28:34 roberto $
+# $Id: gmvault_spec.rb,v aea6eb82f953 2012/09/12 09:54:21 roberto $
 
 require "rspec"
 require "mail"
@@ -56,16 +56,6 @@ describe GMail do
 
   describe "#save" do
     it "should save the mail in the given maildir mailbox"
-  end
-
-  describe "#match" do
-    it "should return false if mail does not have the tag" do
-      @badmail.match(@tag).should be_false
-    end
-
-    it "should return true if mail has the tag" do
-      @goodmail.match(@tag).should be_true
-    end
   end
 
   describe "#meta_path" do

@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v ea0a61596c05 2012/09/11 20:24:00 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v aea6eb82f953 2012/09/12 09:54:21 roberto $"
 
 # Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
 #
@@ -51,12 +51,6 @@ class GMail
     else
       return(nil)
     end
-  end
-
-  # @param tag match the mail to a given tag
-  # @return[Comparable] say whether it has the given tag or not
-  def match(tag)
-
   end
 
   # @param maildir save the mail in the given mailbox
