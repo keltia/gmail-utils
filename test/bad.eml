@@ -1,0 +1,63 @@
+Delivered-To: keltia@gmail.com
+Received: by 10.60.60.170 with SMTP id i10csp82184oer;
+        Mon, 10 Sep 2012 02:33:12 -0700 (PDT)
+Received: by 10.52.29.47 with SMTP id g15mr14701594vdh.89.1347269592102;
+        Mon, 10 Sep 2012 02:33:12 -0700 (PDT)
+Return-Path: <noreply@github.com>
+Received: from smtp1-ext.rs.github.com (smtp1-ext.rs.github.com. [207.97.227.250])
+        by mx.google.com with ESMTP id a10si11809923vcp.82.2012.09.10.02.33.11;
+        Mon, 10 Sep 2012 02:33:12 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noreply@github.com designates 207.97.227.250 as permitted sender) client-ip=207.97.227.250;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of noreply@github.com designates 207.97.227.250 as permitted sender) smtp.mail=noreply@github.com
+Date: Mon, 10 Sep 2012 02:33:11 -0700
+From: Michael Sheets <notifications@github.com>
+Reply-To: textmate/textmate <reply+i-6746033-2bfa583c04138b323e9108e402c982bd0a6ce6fe-142030@reply.github.com>
+To: textmate/textmate <textmate@noreply.github.com>
+Message-Id: <textmate/textmate/issues/405/8418408@github.com>
+In-Reply-To: <textmate/textmate/issues/405@github.com>
+References: <textmate/textmate/issues/405@github.com>
+Subject: Re: [textmate] Selecting search result in list does not necessarily update selection in text (#405)
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=mimepart_504db3d7b780b_4048f76a7073859
+List-Unsubscribe: <mailto:unsub+i-6746033-2bfa583c04138b323e9108e402c982bd0a6ce6fe-142030@reply.github.com>
+List-Id: textmate/textmate <textmate.textmate.github.com>
+List-Post: <mailto:reply+i-6746033-2bfa583c04138b323e9108e402c982bd0a6ce6fe-142030@reply.github.com>
+X-Github-Recipient: keltia
+List-Archive: https://github.com/textmate/textmate
+Precedence: list
+
+
+--mimepart_504db3d7b780b_4048f76a7073859
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+It appears that the selection is changed by the view doesn't reflect this=
+ until it gets back focus. (When you close the find window or switch back=
+ to the document window.)
+
+---
+Reply to this email directly or view it on GitHub:
+https://github.com/textmate/textmate/issues/405#issuecomment-8418408=
+
+--mimepart_504db3d7b780b_4048f76a7073859
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: Quoted-printable
+Content-Disposition: inline
+
+<p>It appears that the selection is changed by the view doesn't reflect t=
+his until it gets back focus. (When you close the find window or switch b=
+ack to the document window.)</p>
+
+            <p style=3D"font-size:small;-webkit-text-size-adjust:none;col=
+or:#666;">
+              &mdash;<br>
+              Reply to this email directly or <a href=3D'https://github.c=
+om/textmate/textmate/issues/405#issuecomment-8418408'>view it on GitHub</=
+a>.
+            </p>
+            <img src=3D'https://github.com/notifications/beacon/J6T91GIPI=
+yhU-8ti4GCGP0KnCBKoepZOZvMUQc2T_dFTSTvAsX69A1u71dgSa8TG.gif' height=3D'1'=
+ width=3D'1'>
+
+--mimepart_504db3d7b780b_4048f76a7073859--

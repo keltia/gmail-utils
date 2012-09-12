@@ -1,0 +1,27 @@
+Delivered-To: keltia@gmail.com
+Received: by 10.60.60.170 with SMTP id i10csp67287oer;
+        Sun, 9 Sep 2012 17:15:30 -0700 (PDT)
+Return-Path: <someone@gmail.com>
+Received-SPF: pass (google.com: domain of someone@gmail.com designates 10.216.9.162 as permitted sender) client-ip=10.216.9.162
+Authentication-Results: mr.google.com; spf=pass (google.com: domain of someone@gmail.com designates 10.216.9.162 as permitted sender) smtp.mail=someone@gmail.com; dkim=pass header.i=someone@gmail.com
+Received: from mr.google.com ([10.216.9.162])
+        by 10.216.9.162 with SMTP id 34mr6180531wet.85.1347236129379 (num_hops = 1);
+        Sun, 09 Sep 2012 17:15:29 -0700 (PDT)
+Received: by 10.216.9.162 with SMTP id 34mr6180531wet.85.1347236129372; Sun,
+ 09 Sep 2012 17:15:29 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.216.217.8 with HTTP; Sun, 9 Sep 2012 17:15:09 -0700 (PDT)
+In-Reply-To: <CADrHthHzaNa0wJESUVek6QaZxE8vHXgB7rwarQosBGKEqwcgzg@mail.gmail.com>
+References: <CAJnB4vAEtOzv7i6NzaD9NtE36FzQZuadwWLudkkhyTMGWyMArg@mail.gmail.com>
+ <CADrHthFpbmBkJwVPZWRWKtw3vYpmk5xcztSDYy5zHhR7Qa-GDg@mail.gmail.com>
+ <CAJnB4vA2s1ezMcqforiYVumLVEsFoad5dqmNbRnDJm4zR0caCw@mail.gmail.com>
+ <CADrHthFB5h+h-vnRQkwDH-kzHCTnTqAMoFeUBjBKfJ7jPLpTnw@mail.gmail.com>
+ <CAJnB4vCYc-ic0UfWMyf6obTDzM3Z0CSR21o8DDB+NVFO8zCjtw@mail.gmail.com> <CADrHthHzaNa0wJESUVek6QaZxE8vHXgB7rwarQosBGKEqwcgzg@mail.gmail.com>
+From: Foo Bar <someone@gmail.com>
+Date: Sun, 9 Sep 2012 20:15:09 -0400
+Message-ID: <CAJnB4vBb5eS43vQPSphQiyo8oGQGtmDsMgFKZq9Pk1L1W6uZDA@mail.gmail.com>
+Subject: Re: some subject
+To: Ollivier Robert <keltia@gmail.com>
+Content-Type: text/plain; charset=ISO-8859-1
+
+some content
