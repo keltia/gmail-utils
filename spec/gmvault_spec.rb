@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v 8695eec41f49 2012/09/12 11:37:46 roberto $
+# $Id: gmvault_spec.rb,v 96324aee5371 2012/09/12 13:52:59 roberto $
 
 require "rspec"
 require "mail"
@@ -33,7 +33,6 @@ describe GMail do
 
     it "should have the necessary attributes" do
       @goodmail.name.should be_an_instance_of(String)
-      @goodmail.mail.should be_an_instance_of(NilClass)
       @goodmail.tags.should be_an_instance_of(Array)
       @goodmail.meta.should_not be_nil
       @goodmail.meta.should be_an_instance_of(Hash)
@@ -60,6 +59,14 @@ describe GMail do
       clean.should == []
       clean = @badmail.tags.map{|e| e =~ /\\(.*?)/}.compact
       clean.should == []
+    end
+  end
+
+  describe "#mail" do
+    it "should return the mail content" do
+      m = Mail.read(File.expand_path(File.dirname(__FILE__) + '/../test/1412274560099820953.eml'))
+      @empty.mail.should be_instance_of(Mail::Message)
+      #@empty.mail.to_s.should eq(m.to_s)
     end
   end
 
