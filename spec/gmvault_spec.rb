@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v 08a094d3886b 2012/09/12 10:33:08 roberto $
+# $Id: gmvault_spec.rb,v 8695eec41f49 2012/09/12 11:37:46 roberto $
 
 require "rspec"
 require "mail"
@@ -36,6 +36,7 @@ describe GMail do
       @goodmail.mail.should be_an_instance_of(NilClass)
       @goodmail.tags.should be_an_instance_of(Array)
       @goodmail.meta.should_not be_nil
+      @goodmail.meta.should be_an_instance_of(Hash)
     end
   end
 
