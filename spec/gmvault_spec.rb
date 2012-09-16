@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v 96324aee5371 2012/09/12 13:52:59 roberto $
+# $Id: gmvault_spec.rb,v 25e035702819 2012/09/16 23:19:44 roberto $
 
 require "rspec"
 require "mail"
@@ -68,10 +68,6 @@ describe GMail do
       @empty.mail.should be_instance_of(Mail::Message)
       #@empty.mail.to_s.should eq(m.to_s)
     end
-  end
-
-  describe "#save" do
-    it "should save the mail in the given maildir mailbox"
   end
 
   describe "#meta_path" do

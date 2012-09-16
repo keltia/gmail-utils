@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v 9a06da40adf7 2012/09/12 13:53:44 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v 25e035702819 2012/09/16 23:19:44 roberto $"
 
 # Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
 #
@@ -47,20 +47,6 @@ class GMail
     end
     @mail
   end
-
-  # @param maildir save the mail in the given mailbox
-  # @return[Comparable] say whether it has been saved
-  def save(maildir)
-    return nil
-    @mail = Mail.read(self.mail_path)
-    if $debug
-       if @meta['msg_id'] != @mail.message_id then
-          $stderr.puts("Warning: Internal inconsistency on #{@mail.message_id} vs #{@meta['msg_id']}")
-       end
-    end
-    return(@meta["gm_id"])
-  end
-
 
   # @return[String] returns the full filename to the mail itself
   def mail_path
