@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v 6fa9a848f56d 2012/09/17 15:42:03 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v 56b33329c4e5 2012/09/17 23:58:18 roberto $"
 
 # Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
 #
@@ -11,6 +11,7 @@ class GMail
   attr_reader :meta
   attr_reader :tags
 
+  # @param filename name of the file to open
   def initialize(filename)
     @path, ext = filename.split(/\./)
     raise ArgumentError if ext != "meta"
@@ -22,7 +23,7 @@ class GMail
   end # -- initialize
 
   # Preload metadata
-  # @return[String] returns the mail id
+  # @return [String] returns the mail id
   def load
     File.open(self.meta_path) do |fh|
       @meta = JSON.load(fh)
@@ -40,7 +41,7 @@ class GMail
     @meta["gm_id"]
   end
 
-  # @return[Mail::Message] returns the mail content
+  # @return [Mail::Message] returns the mail content
   def mail
     if @mail.nil?
       @mail = Mail.read(self.mail_path)
@@ -53,12 +54,12 @@ class GMail
     @mail
   end
 
-  # @return[String] returns the full filename to the mail itself
+  # @return [String] returns the full filename to the mail itself
   def mail_path
     @path + ".eml"
   end
 
-  # @return[String] returns full filename of the metadata
+  # @return [String] returns full filename of the metadata
   def meta_path
     @path + ".meta"
   end
