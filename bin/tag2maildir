@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v b19744cf166d 2012/09/12 13:54:21 roberto $
+# @version $Id: tag2maildir,v 3acfc29966b6 2012/09/17 16:15:47 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v b19744cf166d 2012/09/12 13:54:21 roberto $"
+VCS_ID = "$Id: tag2maildir,v 3acfc29966b6 2012/09/17 16:15:47 roberto $"
 
 require "date"
 require "time"
@@ -32,6 +32,7 @@ class DataError < Exception; end
 
 require "gmail/tag"
 require "gmail/gmvault"
+require "gmail/gmindex"
 
 # Starting point
 #
@@ -90,12 +91,15 @@ Revision #{VCS_ID}
     maildir = Maildir.new(my_base + "/#{tag.normalize}")
     maildir.serializer = Maildir::Serializer::Mail.new
 
+    index = GmIndex.new(my_base + "/#{tag.normalize}")
+
     begin
       Dir["**/*.meta"].each do |m|
         gm = GMail.new(m)
         # load metadata
         if tag.match(gm.tags)
           new = maildir.add(gm.mail)
+          index[gm.gm_id] = true
           print("T")
         else
           print(".")
