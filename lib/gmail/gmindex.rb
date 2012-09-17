@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMI_ID = "$Id: gmindex.rb,v 21869571174d 2012/09/13 16:07:30 roberto $"
+VCS_GMI_ID = "$Id: gmindex.rb,v 1a60f17647f7 2012/09/17 16:14:19 roberto $"
 
 require "rufus/tokyo"
 
@@ -18,5 +18,12 @@ class GmIndex
       raise ArgumentError, "#{path} is not a Maildir mailbox"
     end
     @db = Rufus::Tokyo::Cabinet.new("#{path}/index.tch")
+  end
+
+  # @param gm_id GMail ID of the message
+  # @return[Comaprable] true if present
+  def present?(gm_id)
+    false if @db[gm_id].nil?
+    true
   end
 end
