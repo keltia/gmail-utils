@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v 25e035702819 2012/09/16 23:19:44 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v fade78987a9f 2012/09/17 15:18:20 roberto $"
 
 # Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
 #
@@ -44,6 +44,8 @@ class GMail
   def mail
     if @mail.nil?
       @mail = Mail.read(self.mail_path)
+      lines = @mail.body.raw_source.split(%r{\r\n}).size
+      @mail['Lines'] = lines.to_s
     end
     @mail
   end

@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v 25e035702819 2012/09/16 23:19:44 roberto $
+# $Id: gmvault_spec.rb,v fade78987a9f 2012/09/17 15:18:20 roberto $
 
 require "rspec"
 require "mail"
@@ -64,9 +64,33 @@ describe GMail do
 
   describe "#mail" do
     it "should return the mail content" do
-      m = Mail.read(File.expand_path(File.dirname(__FILE__) + '/../test/1412274560099820953.eml'))
+      @goodmail.mail.should be_instance_of(Mail::Message)
+      @badmail.mail.should be_instance_of(Mail::Message)
       @empty.mail.should be_instance_of(Mail::Message)
-      #@empty.mail.to_s.should eq(m.to_s)
+    end
+
+    it 'should have the right types' do
+      @goodmail.mail.header.should be_an_instance_of(Mail::Header)
+      @badmail.mail.header.should be_an_instance_of(Mail::Header)
+      @empty.mail.header.should be_an_instance_of(Mail::Header)
+    end
+
+    it "should have a Lines: header entry" do
+      @goodmail.mail['Lines'].should_not be_nil
+      @badmail.mail['Lines'].should_not be_nil
+      @empty.mail['Lines'].should_not be_nil
+    end
+
+    it "should have a Lines: header entry with the right type" do
+      @goodmail.mail['Lines'].should be_an_instance_of(Mail::Field)
+      @badmail.mail['Lines'].should be_an_instance_of(Mail::Field)
+      @empty.mail['Lines'].should be_an_instance_of(Mail::Field)
+    end
+
+    it "should have the right number of lines" do
+      @goodmail.mail.header['Lines'].to_s.should eq("1")
+      @badmail.mail.header['Lines'].to_s.should eq("35")
+      @empty.mail.header['Lines'].to_s.should eq ("58")
     end
   end
 
