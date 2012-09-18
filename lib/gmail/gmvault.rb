@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v 8aa5c9d46616 2012/09/18 15:53:13 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v 6fc5132a4c97 2012/09/18 15:53:46 roberto $"
 
 # Non-standard packages
 #
@@ -18,8 +18,8 @@ class GMail
   # @param filename name of the file to open
   def initialize(filename)
     @path, ext = filename.split(/\./)
-    raise ArgumentError if ext != "meta"
-    raise ArgumentError if not File.exists?(filename)
+    raise(ArgumentError, "File should end in .meta: #{filename}") if ext != "meta"
+    raise(ArgumentError, "File does not exist #{filename}") if not File.exists?(filename)
     @name = File.basename(@path)
     @mail = nil
     @tags = []
