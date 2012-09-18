@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v 3da4876eb367 2012/09/18 15:54:24 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v e3e84bf9e104 2012/09/18 16:10:14 roberto $"
 
 # Non-standard packages
 #
@@ -49,9 +49,6 @@ class GMail
   def mail
     if @mail.nil?
       @mail = Mail.read(self.mail_path)
-      if @meta['msg_id'] != @mail.message_id then
-        $stderr.puts("Warning: Internal inconsistency on #{@mail.message_id} vs #{@meta['msg_id']}")
-      end
       lines = @mail.body.raw_source.split(%r{\r\n}).size
       @mail['Lines'] = lines.to_s
     end
