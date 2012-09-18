@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v c1066719b6ef 2012/09/18 16:58:43 roberto $
+# @version $Id: tag2maildir,v b97cb2447a5e 2012/09/18 16:59:09 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v c1066719b6ef 2012/09/18 16:58:43 roberto $"
+VCS_ID = "$Id: tag2maildir,v b97cb2447a5e 2012/09/18 16:59:09 roberto $"
 
 require "date"
 require "time"
@@ -96,21 +96,35 @@ Revision #{VCS_ID}
 
     begin
       Dir["**/*.meta"].each do |m|
-        gm = GMail.new(m)
         # load metadata
-        if tag.match(gm.tags)
-          new = maildir.add(gm.mail)
-          index[gm.gm_id] = true
-          print("T")
+        #
+        gm = GMail.new(m)
+
+        # test index
+        #
+        if index[gm.gm_id] == "true"
+          print("+")
         else
-          print(".")
+          # not in index
+          #
+          if tag.match(gm.tags)
+            # match, insert and put into index
+            #
+            new = maildir.add(gm.mail)
+            index[gm.gm_id] = "true"
+            print("T")
+          else
+            # no match
+            #
+            print(".")
+          end
         end
       end
     rescue
       puts("Interrupted")
     end
 
-    puts("\nTotal messages in #{tag.normalize}: #{maildir.list(:cur).length}, #{maildir.list(:cur).length} new.")
+    puts("\nTotal messages in #{tag.normalize}: #{maildir.list(:cur).length}, #{maildir.list(:new).length} new.")
   end
 
   return 0
