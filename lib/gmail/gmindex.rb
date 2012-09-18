@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMI_ID = "$Id: gmindex.rb,v 1a60f17647f7 2012/09/17 16:14:19 roberto $"
+VCS_GMI_ID = "$Id: gmindex.rb,v 9cb95816af03 2012/09/18 09:07:18 roberto $"
 
 require "rufus/tokyo"
 
@@ -21,7 +21,7 @@ class GmIndex
   end
 
   # @param gm_id GMail ID of the message
-  # @return[Comaprable] true if present
+  # @return [TrueClass|FalseClass] true if present
   def present?(gm_id)
     false if @db[gm_id].nil?
     true
