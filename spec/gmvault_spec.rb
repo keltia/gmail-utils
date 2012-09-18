@@ -2,20 +2,33 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v fade78987a9f 2012/09/17 15:18:20 roberto $
+# $Id: gmvault_spec.rb,v d0bf51a76319 2012/09/18 15:52:19 roberto $
 
 require "rspec"
 require "mail"
 require "json"
 require "gmail/gmvault"
 
+ID_LIST = {
+    "@goodmail" => "1412679471642059988",
+    "@badmail"  => "1412714559964509103",
+    "@empty"    => "1412274560099820953",
+}
+
 describe GMail do
 
   before(:all) do
     @tag = "Perso/Foo"
-    @goodmail = GMail.new(File.expand_path(File.dirname(__FILE__) + '/../test/1412679471642059988.meta'))
-    @badmail = GMail.new(File.expand_path(File.dirname(__FILE__) + '/../test/1412714559964509103.meta'))
-    @empty = GMail.new(File.expand_path(File.dirname(__FILE__) + '/../test/1412274560099820953.meta'))
+    ID_LIST.each_pair do |k, v|
+      eval("#{k} = GMail.new(File.expand_path(File.dirname(__FILE__) + '/test/#{v}.meta'))")
+    end
+
+    # load meta for testing
+    ID_LIST.each_pair do |k, v|
+      File.open(File.expand_path(File.dirname(__FILE__) + "/../test/#{v}.meta")) do |fh|
+        eval("#{k}_m = JSON.load(fh)")
+      end
+    end
   end
 
   describe "#initialize" do
