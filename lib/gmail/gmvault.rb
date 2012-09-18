@@ -2,7 +2,11 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v 56b33329c4e5 2012/09/17 23:58:18 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v 8aa5c9d46616 2012/09/18 15:53:13 roberto $"
+
+# Non-standard packages
+#
+require "json"
 
 # Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
 #
