@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v 4ec898f55bf9 2012/09/18 16:11:57 roberto $
+# @version $Id: tag2maildir,v c1066719b6ef 2012/09/18 16:58:43 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v 4ec898f55bf9 2012/09/18 16:11:57 roberto $"
+VCS_ID = "$Id: tag2maildir,v c1066719b6ef 2012/09/18 16:58:43 roberto $"
 
 require "date"
 require "time"
@@ -36,6 +36,7 @@ require "gmail/gmindex"
 
 # Starting point
 #
+# @param [Array] argv
 def main(argv)
   my_tag = nil
   my_base = MYBASE
