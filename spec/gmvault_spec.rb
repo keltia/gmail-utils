@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v d0bf51a76319 2012/09/18 15:52:19 roberto $
+# $Id: gmvault_spec.rb,v c1ba0f25214f 2012/09/18 15:54:10 roberto $
 
 require "rspec"
 require "mail"
@@ -104,6 +104,22 @@ describe GMail do
       @goodmail.mail.header['Lines'].to_s.should eq("1")
       @badmail.mail.header['Lines'].to_s.should eq("35")
       @empty.mail.header['Lines'].to_s.should eq ("58")
+    end
+  end
+
+  describe "#gm_id" do
+    it "should return the GMail ID of the mail" do
+      @goodmail.gm_id.should eq(@goodmail_m["gm_id"].to_s)
+      @badmail.gm_id.should eq(@badmail_m["gm_id"].to_s)
+      @empty.gm_id.should eq(@empty_m["gm_id"].to_s)
+    end
+  end
+
+  describe "#thread_ids" do
+    it "should return the thread IDs of the conversation" do
+      @goodmail.thread_ids.should eq(@goodmail_m["thread_ids"].to_s)
+      @badmail.thread_ids.should eq(@badmail_m["thread_ids"].to_s)
+      @empty.thread_ids.should eq(@empty_m["thread_ids"].to_s)
     end
   end
 
