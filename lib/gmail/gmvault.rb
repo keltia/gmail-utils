@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v 6fc5132a4c97 2012/09/18 15:53:46 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v 3da4876eb367 2012/09/18 15:54:24 roberto $"
 
 # Non-standard packages
 #
@@ -56,6 +56,18 @@ class GMail
       @mail['Lines'] = lines.to_s
     end
     @mail
+  end
+
+  # Return the GMail ID
+  # @@return [String] gm_id
+  def gm_id
+    @meta["gm_id"].to_s
+  end
+
+  # Return the GMail thread IDs
+  # @@return [String] thread_ids
+  def thread_ids
+    @meta["thread_ids"].to_s
   end
 
   # @return [String] returns the full filename to the mail itself
