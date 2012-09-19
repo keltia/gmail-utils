@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmindex_spec.rb,v c76853b5a5b0 2012/09/18 15:50:12 roberto $
+# $Id: gmindex_spec.rb,v 2f556d4a06bf 2012/09/19 09:55:31 roberto $
 
 require "rspec"
 require "mail"
@@ -34,6 +34,23 @@ describe GmIndex do
       @ind[@mail.gm_id] = true
       @ind[@mail.gm_id].should_not be_nil
       @ind.db[@mail.gm_id].should_not be_nil
+    end
+  end
+
+  describe "#[]" do
+    it "should return nil if nil is asked for" do
+      foo = @ind[nil]
+      foo.should be_nil
+    end
+
+    it "should return nil if not present" do
+      foo = @ind["should-not-be-there"]
+      foo.should be_nil
+    end
+
+    it "should return a unique key if present" do
+      foo = @ind["1412679471642059988"]
+      foo.should eq("new/1348045599.M364547P44602Q2.roberto-aw.eurocontrol.fr")
     end
   end
 
