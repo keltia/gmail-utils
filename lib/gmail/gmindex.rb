@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMI_ID = "$Id: gmindex.rb,v 9550041a1c28 2012/09/19 09:57:27 roberto $"
+VCS_GMI_ID = "$Id: gmindex.rb,v f229eec0d4b6 2012/09/19 10:01:15 roberto $"
 
 require "rufus/tokyo"
 
@@ -43,6 +43,7 @@ class GmIndex
   # @param gm_id GMail ID of the message
   #
   def []=(gm_id, value)
+    return nil if gm_id.nil?
     @db[gm_id] = value
   end
 
