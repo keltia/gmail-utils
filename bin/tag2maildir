@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v 3ca99efea2dc 2012/09/19 09:59:09 roberto $
+# @version $Id: tag2maildir,v 90db8e0aa145 2012/09/19 14:35:56 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v 3ca99efea2dc 2012/09/19 09:59:09 roberto $"
+VCS_ID = "$Id: tag2maildir,v 90db8e0aa145 2012/09/19 14:35:56 roberto $"
 
 require "date"
 require "time"
@@ -75,12 +75,12 @@ Revision #{VCS_ID}
   argv.options = nil
   top_dir = argv.shift
 
-  if top_dir.nil? then
+  if top_dir.nil?
     $stderr.puts("Error: directory where to load mail from must be specified")
     return(1)
   end
 
-  if my_tag.nil? then
+  if my_tag.nil?
     $stderr.puts("Error: the -t TAG option must be specified")
     return(1)
   end
@@ -91,18 +91,24 @@ Revision #{VCS_ID}
     tag = Tag.new(my_tag)
     maildir = Maildir.new(my_base + "/#{tag.normalize}")
     maildir.serializer = Maildir::Serializer::Mail.new
+    puts("Opening maildir at #{my_base + '/' + tag.normalize}")
 
     index = GmIndex.new(my_base + "/#{tag.normalize}")
+    start = index.last_id.to_i
+    last_id = start
+    puts("Opening index, last id is #{last_id}")
+    puts("+: already seen / H: already in index / T: match tag / .: unseen, no match")
 
+    added = 0
     begin
       Dir["**/*.meta"].each do |m|
         # load metadata
         #
         gm = GMail.new(m)
 
-        # test index
+        # skip over gm_id already seen
         #
-        if index.present?(gm.gm_id)
+        if gm.gm_id.to_i < start
           print("+")
         else
           # not in index
@@ -110,24 +116,36 @@ Revision #{VCS_ID}
           if tag.match(gm.tags)
             # match, insert and put into index
             #
-            msg = maildir.add(gm.mail)
-            index[gm.gm_id] = msg.key
-            print("T")
+            if index.present?(gm.gm_id)
+              print("H")
+            else
+              msg = maildir.add(gm.mail)
+              index[gm.gm_id] = msg.key
+              added += 1
+              print("T")
+            end
           else
             # no match
             #
             print(".")
           end
         end
+        last_id = gm.gm_id.to_i
       end
-    rescue
-      puts("Interrupted")
+      # Update 'last_id' field in db
+      #
+      index.last_id = last_id
+    rescue => msg
+      puts("Interrupted: #{msg}")
     end
 
-    puts("\nTotal messages in #{tag.normalize}: #{maildir.list(:cur).length}, #{maildir.list(:new).length} new.")
+    puts <<"EOTEXT"
+Total messages in #{tag.normalize}:
+  #{maildir.list(:cur).length} old, #{maildir.list(:new).length} new, #{added} added.
+EOTEXT
   end
 
-  return 0
+  0
 end # -- main
 
 exit(main(ARGV) || 1)
