@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmindex_spec.rb,v a3b769dcee76 2012/09/19 10:00:49 roberto $
+# $Id: gmindex_spec.rb,v da77c9495fa5 2012/09/19 14:33:09 roberto $
 
 require "rspec"
 require "mail"
@@ -68,5 +68,20 @@ describe GmIndex do
       @ind.present?(@mail.gm_id).should be_true
     end
   end
-  
+
+  describe "#last_id" do
+    it "should return the 'last_id' property from db" do
+      @ind.last_id.should_not be_nil
+      @ind.last_id.should_not eq(0)
+      @ind.last_id.should eq(@ind.db["last_id"])
+    end
+  end
+
+  describe "#last_id=" do
+    it "should update the 'last_id' property in the db" do
+      @ind.last_id = 2
+      @ind.last_id.to_i.should eq(2)
+      @ind.db["last_id"].should eq(@ind.last_id)
+    end
+  end
 end
