@@ -1,0 +1,516 @@
+2012-09-19  Ollivier Robert  <roberto@keltia.net>
+
+	* .hgtags:
+	Added tag v_0_2_1 for changeset 90db8e0aa145
+	[865f2c8d48a8] [tip]
+
+	* bin/tag2maildir:
+	Several usability changes, almost complete now:
+	- use GmIndex#last_id & GmIndex#last_id= properly
+	- more informative messages
+	[90db8e0aa145] [v_0_2_1]
+
+	* lib/gmail/gmindex.rb:
+	Implement #last_id @ #last_id= according to specs.
+	[d90d0f67b2e6]
+
+	* spec/gmindex_spec.rb:
+	Specs for #last_id @ #last_id= which are methods now, not accessors.
+	[da77c9495fa5]
+
+	* test/Perso-Foo/index.tch:
+	Sync.
+	[a9a0a00a22df]
+
+	* lib/gmail/gmindex.rb:
+	Return nil on nil.
+	[f229eec0d4b6]
+
+	* spec/gmindex_spec.rb:
+	#save is now #[]=.
+	[a3b769dcee76]
+
+	* bin/tag2maildir:
+	Conform to new GmIndex API.
+	[3ca99efea2dc]
+
+	* spec/gmindex_spec.rb:
+	Fix specs for #save.
+	[26ca821f7e56]
+
+	* lib/gmail-utils/version.rb:
+	New API version.
+	[fe17907330eb]
+
+	* lib/gmail/gmindex.rb:
+	Conform to new API, GmIndex#[] store the unique maildir ID, not
+	true|false.
+	[9550041a1c28]
+
+	* bin/tag2maildir, spec/gmindex_spec.rb:
+	Specs for GmIndex#[].
+	[2f556d4a06bf]
+
+	* test/Perso-Foo/index.tch, test/Perso-
+	Foo/new/1348046023.M440385P44755Q1.roberto-aw.eurocontrol.fr:
+	More test data.
+	[7eb292e56d4e]
+
+2012-09-18  Ollivier Robert  <roberto@keltia.net>
+
+	* .hgtags:
+	Added tag v_0_1_0 for changeset 21986e01d85b
+	[29f6ae9b64f3]
+
+	* lib/gmail-utils/version.rb:
+	Push version to 0.1.0. GmIndex still WIP but it works.
+	[21986e01d85b] [v_0_1_0]
+
+	* bin/tag2maildir:
+	Try to properly use index, WIP. Add stats.
+	[b97cb2447a5e]
+
+	* bin/tag2maildir:
+	Document main().
+	[c1066719b6ef]
+
+	* bin/tag2maildir:
+	Count properly.
+	[4ec898f55bf9]
+
+	* lib/gmail/gmvault.rb:
+	msg_id is null for sent messages.
+	[e3e84bf9e104]
+
+	* lib/gmail/gmvault.rb:
+	Implement #gm_id and #thread_ids.
+	[3da4876eb367]
+
+	* spec/gmvault_spec.rb:
+	Add specs for #gm_id and #thread_ids.
+	[c1ba0f25214f]
+
+	* lib/gmail/gmvault.rb:
+	More meaningful exception messages.
+	[6fc5132a4c97]
+
+	* lib/gmail/gmvault.rb:
+	JSON is required here for tests.
+	[8aa5c9d46616]
+
+	* spec/gmvault_spec.rb:
+	Refactor loading of test data.
+	[d0bf51a76319]
+
+	* lib/gmail/gmindex.rb:
+	Fix [] to conform to specs.
+	[49b5b960f817]
+
+	* spec/gmindex_spec.rb:
+	More specs for #save & #present?.
+	[c76853b5a5b0]
+
+	* lib/gmail/gmindex.rb:
+	One more check for #present?
+	[28cfb633bebe]
+
+	* lib/gmail/gmindex.rb:
+	Fix code according to failing specs.
+	[c7d70eb97799]
+
+	* spec/gmindex_spec.rb:
+	Add specs for #present? & #save.
+	[4cbb5180fbdc]
+
+	* lib/gmail/gmindex.rb:
+	Fix doc string.
+	[9cb95816af03]
+
+	* .rspec:
+	Configure RSpec.
+	[ada721c7aebc]
+
+	* lib/gmail/gmvault.rb, lib/gmail/tag.rb:
+	Fix yard doc strings.
+	[56b33329c4e5]
+
+	* .hgignore:
+	Add the yard directories.
+	[da709ed883fa]
+
+2012-09-17  Ollivier Robert  <roberto@keltia.net>
+
+	* bin/tag2maildir:
+	Add GmIndex support.
+	[3acfc29966b6]
+
+	* Rakefile, rake/code_statistics.rb:
+	Add code stats module.
+	[22b3299fb1c2]
+
+	* lib/gmail/gmindex.rb:
+	Add #present?.
+	[1a60f17647f7]
+
+	* lib/gmail/gmvault.rb:
+	Add consistency check to #mail.
+	[6fa9a848f56d]
+
+	* lib/gmail/gmvault.rb, spec/gmvault_spec.rb:
+	More specs for GMail#mail, add Lines: support.
+	[fade78987a9f]
+
+	* lib/gmail-utils/version.rb, lib/gmail/gmvault.rb,
+	spec/gmvault_spec.rb:
+	GMail#save is obsolete and removed from API. Bump version.
+	[25e035702819]
+
+2012-09-13  Ollivier Robert  <roberto@keltia.net>
+
+	* spec/gmindex_spec.rb:
+	More GmIndex specs.
+	[fceaf6eb2d38]
+
+	* lib/gmail/gmindex.rb:
+	R::T::C.new is DTRT.
+	[21869571174d]
+
+	* gmail-utils.gemspec:
+	ffi is a direct dependency of TC.
+	[ac1dbe5f4e84]
+
+	* lib/gmail/gmindex.rb:
+	Handle to the TC db.
+	[a31bbe7943fe]
+
+2012-09-12  Ollivier Robert  <roberto@keltia.net>
+
+	* lib/gmail/gmindex.rb, spec/gmindex_spec.rb:
+	Begin implementation of GmIndex.
+	[f3a4da3ed2d3]
+
+	* lib/gmail/gmindex.rb, spec/gmindex_spec.rb:
+	Add specs and skeletton for class GmIndex.
+	[39ec4d02a7a0]
+
+	* bin/tag2maildir:
+	Use GMail#mail now.
+	[b19744cf166d]
+
+	* lib/gmail/gmvault.rb:
+	Add GMail#mail method according to specs, retire attr_reader.
+	[9a06da40adf7]
+
+	* spec/gmvault_spec.rb:
+	Add specs for GMail#mail, now a method.
+	[96324aee5371]
+
+	* gmail-utils.gemspec:
+	Add dependency on TokyoCabinet.
+	[f94912026065]
+
+	* lib/gmail-utils/version.rb:
+	Move to 0.0.2.
+	[bb178a698dc5]
+
+	* spec/gmvault_spec.rb:
+	Add one more spec for @meta.
+	[8695eec41f49]
+
+	* spec/gmvault_spec.rb:
+	Use the right file.
+	[08a094d3886b]
+
+	* Automated merge with file:///Users/roberto/Dropbox/HG/gmail-utils
+	[1e0db82a874a]
+
+	* test/1412274560099820953.eml, test/1412274560099820953.meta:
+	Add mail with no tag.
+	[ce2cb6b8bd43]
+
+	* bin/tag2maildir:
+	Conform to new state of GMail/Tag.
+	[0a4658a35cb9]
+
+	* spec/gmvault_spec.rb:
+	Supports mail with no tag.
+	[08f531278443]
+
+	* lib/gmail/gmvault.rb:
+	Reflect specs change.
+	[185060bc60a2]
+
+	* spec/gmvault_spec.rb:
+	Change GMail specs to reflect API change: #load is internal, called
+	by #new.
+	[30ac83de6595]
+
+	* lib/gmail/gmvault.rb, spec/gmvault_spec.rb:
+	Don't preload @mail.
+	[81b289ed1bf8]
+
+	* lib/gmail/gmvault.rb, spec/gmvault_spec.rb:
+	Remove GMail#match.
+	[aea6eb82f953]
+
+	* lib/gmail/tag.rb, spec/tag_spec.rb:
+	Change the way we match to copy Regexp/String behaviour.
+	[256f7d966186]
+
+	* Rakefile:
+	Push to another copy.
+	[1093e4bba7dd]
+
+	* spec/gmvault_spec.rb:
+	Remove redundant test.
+	[483acf1662dd]
+
+	* spec/gmvault_spec.rb, test/1412679471642059988.eml,
+	test/1412679471642059988.meta, test/1412714559964509103.eml,
+	test/1412714559964509103.meta, test/bad.eml, test/bad.meta,
+	test/good.eml, test/good.meta:
+	Rename back for consistency with metadata.
+	[00395bc40138]
+
+	* Automated merge with file:///Users/roberto/Dropbox/HG/gmail-utils
+	[c08395df7075]
+
+	* test/bad.eml, test/bad.meta, test/good.eml, test/good.meta:
+	Add test data.
+	[d97b785e84bd]
+
+	* lib/gmail-utils.rb, lib/gmail-utils/version.rb:
+	GMail is a class.
+	[af6034a67bc3]
+
+	* spec/gmvault_spec.rb:
+	Use the right variable.
+	[3524520a80c1]
+
+	* spec/gmvault_spec.rb:
+	Fix one more spec.
+
+	(maybe coding this late is not a good idea, stupid mistakes)
+	[447dc36a68cc]
+
+	* spec/gmvault_spec.rb:
+	Fix two more specs.
+	[35119246e034]
+
+	* spec/gmvault_spec.rb:
+	Use the right class in spec.
+	[5f26f8433b7f]
+
+	* spec/gmvault_spec.rb:
+	Use the right method to test.
+	[f58a56341c42]
+
+	* spec/gmvault_spec.rb:
+	JSON in a requirement.
+	[9057fe4c620c]
+
+	* spec/gmvault_spec.rb:
+	Fix one failing spec.
+	[76956216f536]
+
+	* spec/gmvault_spec.rb:
+	Mail is required in the specs run.
+	[5f0ff9a11f77]
+
+2012-09-11  Ollivier Robert  <roberto@keltia.net>
+
+	* lib/gmail/gmvault.rb:
+	Fix errors found by specs run.
+	[ea0a61596c05]
+
+	* lib/gmail/gmvault.rb:
+	Add missing methods from specs.
+	[0b06e25b77fc]
+
+	* lib/gmail/gmvault.rb:
+	Raise exception if needed.
+	[3ea10bfcb6ac]
+
+	* lib/gmail/gmvault.rb:
+	Documentation.
+	[6a1787535c6e]
+
+	* lib/gmail/gmvault.rb:
+	Initialize @meta properly.
+	[06adf81aaec0]
+
+	* lib/gmail/gmvault.rb:
+	Raise exception on faulty assumptions.
+	[e2a77e3951dd]
+
+	* spec/gmvault_spec.rb:
+	Specs for class GMail.
+	[a2ae461f4ec7]
+
+	* spec/gmvault_spec.rb:
+	Add GMail specs.
+	[0e232010aa72]
+
+	* README.md:
+	Add comments.
+	[5fa67f1c59db]
+
+	* spec/tag_spec.rb:
+	Add comments.
+	[77a31ebfd07f]
+
+2012-09-07  Ollivier Robert  <roberto@keltia.net>
+
+	* bin/tag2maildir:
+	clarify what we get from GMail.new/load.
+	[63a9de442458]
+
+	* lib/gmail/gmvault.rb:
+	Try to fix tag management & matching.
+	[aa332f92562c]
+
+	* bin/tag2maildir:
+	Change progress on hit.
+	[068c72c4846f]
+
+	* bin/tag2maildir, lib/gmail/gmvault.rb:
+	Add filtering by tag.
+	[f246a68714e7]
+
+	* lib/gmail/gmvault.rb:
+	Remove debug message.
+	[c185f5403d85]
+
+	* lib/gmail/gmvault.rb:
+	This is a warning, not an error.
+	[426495c40260]
+
+	* Rakefile:
+	Don't add tasks two times.
+	[917a2a0e653c]
+
+	* spec/tag_spec.rb:
+	Add specs for class Tag.
+	[fc9d3aea8273]
+
+	* Rakefile:
+	Add RSpec requires.
+	[5fcec21f0593]
+
+	* lib/gmail/tag.rb:
+	Raising exception is redundant.
+	[2d42c3830ab0]
+
+	* Rakefile:
+	Add rspec tests run.
+	[1681b2e2f64c]
+
+	* bin/tag2maildir:
+	Make the script executable.
+	[2d3c14556bf7]
+
+	* gmail-utils.gemspec:
+	Typos.
+	[bc89d522e9f0]
+
+	* gmail-utils.gemspec:
+	Add rspec to the dependencies.
+	[9ad9a6bfc540]
+
+	* bin/tag2maildir, lib/gmail/gmvault.rb, lib/gmail/tag.rb:
+	Move classes Tag & GMail into their own file.
+	[b0db47628bab]
+
+2012-09-06  Ollivier Robert  <roberto@keltia.net>
+
+	* .hgignore:
+	Ignore pkg directory.
+	[db92accd0382]
+
+	* bin/tag2maildir:
+	Load the right file and add messages for progress.
+	[ecb178e4c804]
+
+	* bin/tag2maildir:
+	Remove GMaili/IMAP own internal tags.
+	[779f07ced313]
+
+	* bin/tag2maildir:
+	More checks on data.
+	[bde2f2ce755a]
+
+	* bin/tag2maildir:
+	Use the right method.
+	[3cf975ef7f34]
+
+	* bin/tag2maildir:
+	Not needed.
+	[e45cb7b19c3d]
+
+	* bin/tag2maildir:
+	Add a @path variable to have full path to open.
+	[e2ae617dcdaa]
+
+	* bin/tag2maildir:
+	Define our own exception.
+	[b4ce66d0e446]
+
+	* bin/tag2maildir:
+	We need it for option handling.
+	[427bb115266a]
+
+	* bin/tag2maildir:
+	Be consistent in naming.
+	[bdf61ecf6f4f]
+
+	* gmail-utils.gemspec:
+	Complete renaming to gmail-utils.
+	[c78825a7f027]
+
+2012-09-05  Ollivier Robert  <roberto@keltia.net>
+
+	* bin/tag2maildir:
+	1st version.
+	[c21c176b1284]
+
+	* gmail-utils.gemspec:
+	Add maildir as a dependency.
+	[4a45d77981a0]
+
+	* README.md:
+	Rename gem, sync.
+	[9d2abc405338]
+
+	* bin/tag2maildir, gmail-utils.gemspec, lib/gmail-utils.rb, lib/gmail-
+	utils/version.rb, lib/mail-utils.rb, lib/mail-utils/version.rb,
+	mail-utils.gemspec:
+	Rename into gmail-utils.
+	[b1fd669d8c60]
+
+	* Rakefile:
+	Add "push" target.
+	[e65c392e811d]
+
+	* bin/tag2maildir:
+	Add comment for Tag class.
+	[158f908cd6ad]
+
+	* bin/tag2maildir:
+	Begin.
+	[6b53c275cd34]
+
+	* mail-utils.gemspec:
+	Sync.
+	[dc06ac95a62c]
+
+	* .hgignore:
+	Add this.
+	[9d619e497c0f]
+
+2012-08-21  Ollivier Robert  <roberto@keltia.net>
+
+	* Gemfile, LICENSE, README.md, Rakefile, lib/mail-utils.rb, lib/mail-
+	utils/version.rb, mail-utils.gemspec:
+	Import gem skeletton.
+	[c530e90aac50]
+
