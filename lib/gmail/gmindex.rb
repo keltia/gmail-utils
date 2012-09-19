@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMI_ID = "$Id: gmindex.rb,v f229eec0d4b6 2012/09/19 10:01:15 roberto $"
+VCS_GMI_ID = "$Id: gmindex.rb,v d90d0f67b2e6 2012/09/19 14:33:33 roberto $"
 
 require "rufus/tokyo"
 
@@ -47,4 +47,15 @@ class GmIndex
     @db[gm_id] = value
   end
 
+  # Return the last_id from the db
+  # @return [Fixnum] 'last_id' property from the db
+  def last_id
+    @db["last_id"]
+  end
+
+  # Set the last_id property in the db
+  # @param [Fixnum] value set the 'last_id' property to 'value'
+  def last_id=(value)
+    @db["last_id"] = value
+  end
 end
