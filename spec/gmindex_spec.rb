@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmindex_spec.rb,v 26ca821f7e56 2012/09/19 09:58:37 roberto $
+# $Id: gmindex_spec.rb,v a3b769dcee76 2012/09/19 10:00:49 roberto $
 
 require "rspec"
 require "mail"
@@ -28,7 +28,7 @@ describe GmIndex do
     end
   end
 
-  describe "#save" do
+  describe "#[]=" do
     it "should save the given message-id in the db" do
       @mail.gm_id.should_not be_nil
       @ind[@mail.gm_id] = "new/1348045599.M364547P44602Q2.roberto-aw.eurocontrol.fr"
