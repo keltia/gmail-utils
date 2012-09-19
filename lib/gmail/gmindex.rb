@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMI_ID = "$Id: gmindex.rb,v 49b5b960f817 2012/09/18 15:50:46 roberto $"
+VCS_GMI_ID = "$Id: gmindex.rb,v 9550041a1c28 2012/09/19 09:57:27 roberto $"
 
 require "rufus/tokyo"
 
@@ -34,9 +34,9 @@ class GmIndex
   # @return [TrueClass|FalseClass] whether it has been stored
   def [](gm_id)
     if gm_id.nil?
-      return(false)
+      return(gm_id)
     end
-    @db[gm_id].nil? ? false : true
+    @db[gm_id]
   end
 
   # Allow inserting a new value
