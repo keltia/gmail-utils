@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v 0998dcfab31c 2012/09/19 15:51:52 roberto $
+# @version $Id: tag2maildir,v 55513a099d0b 2012/09/23 18:10:07 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v 0998dcfab31c 2012/09/19 15:51:52 roberto $"
+VCS_ID = "$Id: tag2maildir,v 55513a099d0b 2012/09/23 18:10:07 roberto $"
 
 require "date"
 require "time"
@@ -100,6 +100,7 @@ Revision #{VCS_ID}
     puts("+: already seen / H: already in index / T: match tag / .: unseen, no match")
 
     added = 0
+    t1 = Time.now
     begin
       Dir["**/*.meta"].each do |m|
         # load metadata
@@ -132,6 +133,7 @@ Revision #{VCS_ID}
         end
         last_id = gm.gm_id.to_i
       end
+      t2 = Time.now
       # Update 'last_id' field in db
       #
       index.last_id = last_id
@@ -142,7 +144,7 @@ Revision #{VCS_ID}
     puts <<"EOTEXT"
 
 Total messages in #{tag.normalize}:
-  #{maildir.list(:cur).length} old, #{maildir.list(:new).length} new, #{added} added.
+  #{maildir.list(:cur).length} old, #{maildir.list(:new).length} new, #{added} added in #{t2 - t1} s.
 EOTEXT
   end
 
