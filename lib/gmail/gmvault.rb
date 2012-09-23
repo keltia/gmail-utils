@@ -2,19 +2,20 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: gmvault.rb,v e3e84bf9e104 2012/09/18 16:10:14 roberto $"
+VCS_GMV_ID = "$Id: gmvault.rb,v c1c73d6b8671 2012/09/23 21:24:55 roberto $"
 
 # Non-standard packages
 #
 require "json"
 
-# Handle GmVault mails with .eml as raw mail and .meta as metadata (i.e.tags)
+# Handle +GmVault+ mails with +.eml+ as raw mail and +.meta+ as metadata (i.e.tags, date)
 #
 class GMail
   attr_reader :name
   attr_reader :meta
   attr_reader :tags
 
+  # Create a new object based on the metadata from +filename+.
   # @param filename name of the file to open
   def initialize(filename)
     @path, ext = filename.split(/\./)
@@ -27,7 +28,7 @@ class GMail
   end # -- initialize
 
   # Preload metadata
-  # @return [String] returns the mail id
+  # @return [String] returns the gm_id
   def load
     File.open(self.meta_path) do |fh|
       @meta = JSON.load(fh)
@@ -45,6 +46,7 @@ class GMail
     @meta["gm_id"]
   end
 
+  # Load and return the mail associated with the given metadata
   # @return [Mail::Message] returns the mail content
   def mail
     if @mail.nil?
@@ -56,22 +58,24 @@ class GMail
   end
 
   # Return the GMail ID
-  # @@return [String] gm_id
+  # @return [String] gm_id
   def gm_id
     @meta["gm_id"].to_s
   end
 
   # Return the GMail thread IDs
-  # @@return [String] thread_ids
+  # @return [String] thread_ids
   def thread_ids
     @meta["thread_ids"].to_s
   end
 
+  # Return the full path to the mail
   # @return [String] returns the full filename to the mail itself
   def mail_path
     @path + ".eml"
   end
 
+  # Return the full path to the metadata file
   # @return [String] returns full filename of the metadata
   def meta_path
     @path + ".meta"

@@ -2,15 +2,17 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMI_ID = "$Id: gmindex.rb,v d90d0f67b2e6 2012/09/19 14:33:33 roberto $"
+VCS_GMI_ID = "$Id: gmindex.rb,v c1c73d6b8671 2012/09/23 21:24:55 roberto $"
 
 require "rufus/tokyo"
 
-# Manages a database of message-id from mail converted from gmvault into Maildir
+# Manages a database of message-ids from mail converted from gmvault into Maildir
 #
 class GmIndex
   attr_reader :path, :db
 
+  # Create a new index if the file is not present or open the current one.
+  # @param [String] path path to the mailbox in Maildir format
   def initialize(path)
     if File.exists?("#{path}/cur") and File.exists?("#{path}/new")
       @path = path
@@ -41,20 +43,20 @@ class GmIndex
 
   # Allow inserting a new value
   # @param gm_id GMail ID of the message
-  #
+  # @param value Value to assign
   def []=(gm_id, value)
     return nil if gm_id.nil?
     @db[gm_id] = value
   end
 
   # Return the last_id from the db
-  # @return [Fixnum] 'last_id' property from the db
+  # @return [String] +last_id'+property from the db
   def last_id
     @db["last_id"]
   end
 
   # Set the last_id property in the db
-  # @param [Fixnum] value set the 'last_id' property to 'value'
+  # @param [Fixnum] value set the +last_id+ property to +value+
   def last_id=(value)
     @db["last_id"] = value
   end

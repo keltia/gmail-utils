@@ -5,5 +5,4 @@ syntax: glob
 **.lock
 *~
 pkg
-doc
 .yardoc
