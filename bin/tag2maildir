@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v 55513a099d0b 2012/09/23 18:10:07 roberto $
+# @version $Id: tag2maildir,v 3d2bf914ec7c 2012/09/23 19:06:20 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v 55513a099d0b 2012/09/23 18:10:07 roberto $"
+VCS_ID = "$Id: tag2maildir,v 3d2bf914ec7c 2012/09/23 19:06:20 roberto $"
 
 require "date"
 require "time"
@@ -88,6 +88,7 @@ Revision #{VCS_ID}
   tag = nil
   Dir.chdir(top_dir) do
 
+    t1 = t2 = 0
     tag = Tag.new(my_tag)
     maildir = Maildir.new(my_base + "/#{tag.normalize}")
     maildir.serializer = Maildir::Serializer::Mail.new
