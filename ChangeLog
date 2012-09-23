@@ -1,8 +1,73 @@
+2012-09-23  Ollivier Robert  <roberto@keltia.net>
+
+	* .hgtags:
+	Removed tag v_0_2_2
+	[3900b03f270b] [tip]
+
+	* .hgtags:
+	Added tag v_0_2_2 for changeset 8b7912a3825e
+	[203897859cf1]
+
+	* lib/gmail-utils/version.rb:
+	Update version to 0.2.2.
+	[8b7912a3825e]
+
+	* .hgignore, doc/GMail.html, doc/GMail/Utils.html, doc/GmIndex.html,
+	doc/Tag.html, doc/_index.html, doc/class_list.html,
+	doc/css/common.css, doc/css/full_list.css, doc/css/style.css,
+	doc/file.README.html, doc/file_list.html, doc/frames.html,
+	doc/index.html, doc/js/app.js, doc/js/full_list.js,
+	doc/js/jquery.js, doc/method_list.html, doc/top-level-
+	namespace.html, lib/gmail/gmindex.rb, lib/gmail/gmvault.rb:
+	Add YaRD documentation.
+	[c1c73d6b8671]
+
+	* lib/gmail/tag.rb:
+	Improve documentation.
+	[312efb7675ea]
+
+	* bin/tag2maildir:
+	Use the fact that filenames are gm_ids to avoid reading unecessary
+	data. Skipping over old files is now 5-6x faster.
+	[e8bda36731b7]
+
+	* bin/tag2maildir:
+	Readability.
+	[67641f98b884]
+
+	* bin/tag2maildir:
+	Initialize variables earlier to avoid having the wrong scope.
+	[3d2bf914ec7c]
+
+	* Automated merge with ssh://centre.keltia.net//data/HG/mirrors/gmail-
+	utils
+	[0a4c107720d7]
+
+2012-09-20  Ollivier Robert  <roberto@keltia.net>
+
+	* lib/gmail-utils/version.rb:
+	Bump to 0.2.1.
+	[d807ae75a619]
+
+2012-09-23  Ollivier Robert  <roberto@keltia.net>
+
+	* bin/tag2maildir:
+	Add timing.
+	[55513a099d0b]
+
 2012-09-19  Ollivier Robert  <roberto@keltia.net>
+
+	* bin/tag2maildir:
+	Add a blank line to final output.
+	[0998dcfab31c]
+
+	* ChangeLog:
+	Add ChangeLog.
+	[c5571f50a906]
 
 	* .hgtags:
 	Added tag v_0_2_1 for changeset 90db8e0aa145
-	[865f2c8d48a8] [tip]
+	[865f2c8d48a8]
 
 	* bin/tag2maildir:
 	Several usability changes, almost complete now:
@@ -224,10 +289,6 @@
 	* Automated merge with file:///Users/roberto/Dropbox/HG/gmail-utils
 	[1e0db82a874a]
 
-	* test/1412274560099820953.eml, test/1412274560099820953.meta:
-	Add mail with no tag.
-	[ce2cb6b8bd43]
-
 	* bin/tag2maildir:
 	Conform to new state of GMail/Tag.
 	[0a4658a35cb9]
@@ -248,6 +309,10 @@
 	* lib/gmail/gmvault.rb, spec/gmvault_spec.rb:
 	Don't preload @mail.
 	[81b289ed1bf8]
+
+	* test/1412274560099820953.eml, test/1412274560099820953.meta:
+	Add mail with no tag.
+	[ce2cb6b8bd43]
 
 	* lib/gmail/gmvault.rb, spec/gmvault_spec.rb:
 	Remove GMail#match.
@@ -275,13 +340,13 @@
 	* Automated merge with file:///Users/roberto/Dropbox/HG/gmail-utils
 	[c08395df7075]
 
-	* test/bad.eml, test/bad.meta, test/good.eml, test/good.meta:
-	Add test data.
-	[d97b785e84bd]
-
 	* lib/gmail-utils.rb, lib/gmail-utils/version.rb:
 	GMail is a class.
 	[af6034a67bc3]
+
+	* test/bad.eml, test/bad.meta, test/good.eml, test/good.meta:
+	Add test data.
+	[d97b785e84bd]
 
 	* spec/gmvault_spec.rb:
 	Use the right variable.
