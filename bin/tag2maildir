@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v 67641f98b884 2012/09/23 19:06:45 roberto $
+# @version $Id: tag2maildir,v e8bda36731b7 2012/09/23 19:09:22 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v 67641f98b884 2012/09/23 19:06:45 roberto $"
+VCS_ID = "$Id: tag2maildir,v e8bda36731b7 2012/09/23 19:09:22 roberto $"
 
 require "date"
 require "time"
@@ -105,15 +105,17 @@ Revision #{VCS_ID}
     t1 = Time.now
     begin
       Dir["**/*.meta"].each do |m|
-        # load metadata
         #
-        gm = GMail.new(m)
-
-        # skip over gm_id already seen
+        # In order to avoid opening and reading lots of file, use the fact that filenames are gm_ids
         #
-        if gm.gm_id.to_i < start
+        f_m = File.basename(m).split(%r{\.})[0]
+        if f_m.to_i < start
           print("+")
         else
+          # load metadata
+          #
+          gm = GMail.new(m)
+
           # not in index
           #
           if tag.match(gm.tags)
@@ -132,8 +134,8 @@ Revision #{VCS_ID}
             #
             print(".")
           end
+          last_id = gm.gm_id.to_i
         end
-        last_id = gm.gm_id.to_i
       end
       t2 = Time.now
       # Update 'last_id' field in db
