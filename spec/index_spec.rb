@@ -2,14 +2,13 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id$
+# $Id: index_spec.rb,v e005048b8a29 2012/09/24 23:25:43 roberto $
 
 require "rspec"
 require "mail"
 require "maildir"
 
-require "gmail/entity"
-require "gmail/index"
+require "gmail"
 
 describe GMail::Index do
 

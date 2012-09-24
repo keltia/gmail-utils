@@ -2,10 +2,10 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: tag_spec.rb,v 1346dbf1059d 2012/09/24 21:41:27 roberto $
+# $Id: tag_spec.rb,v e005048b8a29 2012/09/24 23:25:43 roberto $
 
 require "rspec"
-require "gmail/tag"
+require "gmail"
 
 class DataError < Exception; end
 

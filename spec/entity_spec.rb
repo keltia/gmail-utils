@@ -2,12 +2,12 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id$
+# $Id: entity_spec.rb,v e005048b8a29 2012/09/24 23:25:43 roberto $
 
 require "rspec"
 require "mail"
 require "json"
-require "gmail/entity"
+require "gmail"
 
 ID_LIST = {
     "@goodmail" => "1412679471642059988",
