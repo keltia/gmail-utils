@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v e8bda36731b7 2012/09/23 19:09:22 roberto $
+# @version $Id: tag2maildir,v b5660e96d49d 2012/09/24 21:42:04 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v e8bda36731b7 2012/09/23 19:09:22 roberto $"
+VCS_ID = "$Id: tag2maildir,v b5660e96d49d 2012/09/24 21:42:04 roberto $"
 
 require "date"
 require "time"
@@ -30,9 +30,7 @@ MYBASE = ENV["HOME"] + "/Maildir"
 
 class DataError < Exception; end
 
-require "gmail/tag"
-require "gmail/gmvault"
-require "gmail/gmindex"
+require "gmail"
 
 # Starting point
 #
@@ -89,12 +87,12 @@ Revision #{VCS_ID}
   Dir.chdir(top_dir) do
 
     t1 = t2 = 0
-    tag = Tag.new(my_tag)
+    tag = GMail::Tag.new(my_tag)
     maildir = Maildir.new(my_base + "/#{tag.normalize}")
     maildir.serializer = Maildir::Serializer::Mail.new
     puts("Opening maildir at #{my_base + '/' + tag.normalize}")
 
-    index = GmIndex.new(my_base + "/#{tag.normalize}")
+    index = GMail::Index.new(my_base + "/#{tag.normalize}")
     start = index.last_id.to_i
     last_id = start
 
@@ -114,7 +112,7 @@ Revision #{VCS_ID}
         else
           # load metadata
           #
-          gm = GMail.new(m)
+          gm = GMail::Entity.new(m)
 
           # not in index
           #
