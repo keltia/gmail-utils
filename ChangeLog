@@ -1,8 +1,37 @@
+2012-09-24  Ollivier Robert  <roberto@keltia.net>
+
+	* lib/gmail.rb, lib/gmail/gmail.rb:
+	Move gmail.rb in its proper place.
+	[e4ac00b0ca51] [tip]
+
+	* bin/tag2maildir:
+	Conform to API v0.3.0.
+	[b5660e96d49d]
+
+	* lib/gmail-utils/version.rb:
+	Bump version to 0.3.0.
+	[feea0adbdc62]
+
+	* lib/gmail/entity.rb, lib/gmail/gmail.rb, lib/gmail/gmindex.rb,
+	lib/gmail/gmvault.rb, lib/gmail/index.rb, lib/gmail/tag.rb,
+	spec/entity_spec.rb, spec/gmindex_spec.rb, spec/gmvault_spec.rb,
+	spec/index_spec.rb, spec/tag_spec.rb:
+	Massive refactor, create GMail module and namespace.
+	[1346dbf1059d]
+
 2012-09-23  Ollivier Robert  <roberto@keltia.net>
 
 	* .hgtags:
+	Added tag v_0_2_2 for changeset e927b13255b5
+	[0d5d8b548dac]
+
+	* ChangeLog:
+	Update for 0.2.2.
+	[e927b13255b5] [v_0_2_2]
+
+	* .hgtags:
 	Removed tag v_0_2_2
-	[3900b03f270b] [tip]
+	[3900b03f270b]
 
 	* .hgtags:
 	Added tag v_0_2_2 for changeset 8b7912a3825e
