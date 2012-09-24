@@ -63,7 +63,14 @@
 
     <div id="content"><div id='filecontents'><h1>GMail::Utils</h1>
 
-<p>TODO: Write a gem description</p>
+<p>GmVault is a small utility to backup all or parts of a given GMail mailbox.  It generates
+a set of directories organized by date (YYYY-MM/*).  Each folder has two files per mail, one
+.eml containing the actual mail (headers and body) and a .meta containing all GMail metadata
+(id of the mail, date sent, subject, thread ID for a given conversation and so on).</p>
+
+<p>This gem is composed of a library (GMail::Utils) and the corresponding script to transform that
+backup into a proper Maildir-formatted mailbox.  The script takes a tag as main argument and
+will take only mails matching the given tag.</p>
 
 <h2>Installation</h2>
 
@@ -84,14 +91,18 @@
 
 <h2>Usage</h2>
 
-<p>TODO: Write usage instructions here</p>
+<pre class="code ruby"><code>tag2maildir [-h] [-b DIR] -t TAG DIR
 
-<pre class="code ruby"><code>$Id: README.md,v 5fa67f1c59db 2012/09/11 09:56:39 roberto $
+-t TAG      Use the following tag +TAG+ to filter the mails
+-b DIR      Use the given directory as base dir to create the mailbox (defaults to +~/Maildir+)
+DIR         Use the following path to the gmvault directory
+
+$Id: README.md,v af7380ec209e 2012/09/24 22:14:17 roberto $
 </code></pre>
 </div></div>
 
     <div id="footer">
-  Generated on Mon Sep 24 23:52:50 2012 by
+  Generated on Tue Sep 25 00:14:44 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.2.1 (ruby-1.9.3).
 </div>
