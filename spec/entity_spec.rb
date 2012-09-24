@@ -2,12 +2,12 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault_spec.rb,v c1ba0f25214f 2012/09/18 15:54:10 roberto $
+# $Id$
 
 require "rspec"
 require "mail"
 require "json"
-require "gmail/gmvault"
+require "gmail/entity"
 
 ID_LIST = {
     "@goodmail" => "1412679471642059988",
@@ -15,12 +15,12 @@ ID_LIST = {
     "@empty"    => "1412274560099820953",
 }
 
-describe GMail do
+describe GMail::Entity do
 
   before(:all) do
     @tag = "Perso/Foo"
     ID_LIST.each_pair do |k, v|
-      eval("#{k} = GMail.new(File.expand_path(File.dirname(__FILE__) + '/test/#{v}.meta'))")
+      eval("#{k} = GMail::Entity.new(File.expand_path(File.dirname(__FILE__) + '/test/#{v}.meta'))")
     end
 
     # load meta for testing
@@ -33,15 +33,15 @@ describe GMail do
 
   describe "#initialize" do
     it "should raise an exception if no parameter is given" do
-      expect{GMail.new}.to raise_exception(ArgumentError)
+      expect{GMail::Entity.new}.to raise_exception(ArgumentError)
     end
 
     it "should raise an exception if filename does not end with .eml" do
-      expect{GMail.new("foo.bar")}.to raise_exception(ArgumentError)
+      expect{GMail::Entity.new("foo.bar")}.to raise_exception(ArgumentError)
     end
 
     it "should raise an exception if file does not exist" do
-      expect{GMail.new("/nonexistent")}.to raise_exception(ArgumentError)
+      expect{GMail::Entity.new("/nonexistent")}.to raise_exception(ArgumentError)
     end
 
     it "should have the necessary attributes" do

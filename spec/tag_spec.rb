@@ -2,32 +2,32 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: tag_spec.rb,v 256f7d966186 2012/09/12 09:53:02 roberto $
+# $Id: tag_spec.rb,v 1346dbf1059d 2012/09/24 21:41:27 roberto $
 
 require "rspec"
 require "gmail/tag"
 
 class DataError < Exception; end
 
-describe Tag do
+describe GMail::Tag do
 
   before(:all) do
     @tags = [ "Perso", "Perso/Foo" ]
-    @tag1 = Tag.new(@tags[0])
-    @tag2 = Tag.new(@tags[1])
+    @tag1 = GMail::Tag.new(@tags[0])
+    @tag2 = GMail::Tag.new(@tags[1])
   end
 
   describe "#initialize" do
 
     it "should raise an exception if @tag is nil" do
-      expect{@tag = Tag.new}.to raise_error(ArgumentError)
+      expect{@tag = GMail::Tag.new}.to raise_error(ArgumentError)
     end
 
     it "should create a @tag object" do
       @tag1.should_not be_nil
       @tag2.should_not be_nil
-      @tag1.should be_an_instance_of(Tag)
-      @tag2.should be_an_instance_of(Tag)
+      @tag1.should be_an_instance_of(GMail::Tag)
+      @tag2.should be_an_instance_of(GMail::Tag)
     end
 
     it "should have a label member" do

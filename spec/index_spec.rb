@@ -1,21 +1,22 @@
-# @abstract GmIndex-specific specs
+# @abstract Index-specific specs
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmindex_spec.rb,v da77c9495fa5 2012/09/19 14:33:09 roberto $
+# $Id$
 
 require "rspec"
 require "mail"
 require "maildir"
-require "gmail/gmvault"
-require "gmail/gmindex"
 
-describe GmIndex do
+require "gmail/entity"
+require "gmail/index"
+
+describe GMail::Index do
 
   before(:all) do
     @md = Maildir.new(File.expand_path(File.dirname(__FILE__) + '/../test/Perso-Foo'))
-    @ind = GmIndex.new(File.expand_path(File.dirname(__FILE__) + '/../test/Perso-Foo'))
-    @mail = GMail.new(File.expand_path(File.dirname(__FILE__) + '/../test/1412679471642059988.meta'))
+    @ind = GMail::Index.new(File.expand_path(File.dirname(__FILE__) + '/../test/Perso-Foo'))
+    @mail = GMail::Entity.new(File.expand_path(File.dirname(__FILE__) + '/../test/1412679471642059988.meta'))
   end
 
   describe "#initialize" do
