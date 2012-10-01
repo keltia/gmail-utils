@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v a1a48c1988ce 2012/10/01 23:09:40 roberto $
+# @version $Id: tag2maildir,v b5db205481c2 2012/10/01 23:10:20 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v a1a48c1988ce 2012/10/01 23:09:40 roberto $"
+VCS_ID = "$Id: tag2maildir,v b5db205481c2 2012/10/01 23:10:20 roberto $"
 
 require "date"
 require "time"
@@ -109,7 +109,7 @@ Revision #{VCS_ID}
         # In order to avoid opening and reading lots of file, use the fact that filenames are gm_ids
         #
         f_m = File.basename(m).split(%r{\.})[0]
-        if f_m.to_i < start
+        if f_m.to_i <= start
           skipped += 1
         else
           # load metadata
