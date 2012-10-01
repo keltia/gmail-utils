@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v b5660e96d49d 2012/09/24 21:42:04 roberto $
+# @version $Id: tag2maildir,v a1a48c1988ce 2012/10/01 23:09:40 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v b5660e96d49d 2012/09/24 21:42:04 roberto $"
+VCS_ID = "$Id: tag2maildir,v a1a48c1988ce 2012/10/01 23:09:40 roberto $"
 
 require "date"
 require "time"
@@ -100,6 +100,8 @@ Revision #{VCS_ID}
     puts("+: already seen / H: already in index / T: match tag / .: unseen, no match")
 
     added = 0
+    skipped = 0
+    already = 0
     t1 = Time.now
     begin
       Dir["**/*.meta"].each do |m|
@@ -108,7 +110,7 @@ Revision #{VCS_ID}
         #
         f_m = File.basename(m).split(%r{\.})[0]
         if f_m.to_i < start
-          print("+")
+          skipped += 1
         else
           # load metadata
           #
@@ -120,6 +122,7 @@ Revision #{VCS_ID}
             # match, insert and put into index
             #
             if index.present?(gm.gm_id)
+              already += 1
               print("H")
             else
               msg = maildir.add(gm.mail)
@@ -146,7 +149,7 @@ Revision #{VCS_ID}
     puts <<"EOTEXT"
 
 Total messages in #{tag.normalize}:
-  #{maildir.list(:cur).length} old, #{maildir.list(:new).length} new, #{added} added in #{t2 - t1} s.
+  #{maildir.list(:cur).length} old, #{maildir.list(:new).length} new, #{added} added in #{t2 - t1} s, #{already} already there, #{skipped} skipped.
 EOTEXT
   end
 
