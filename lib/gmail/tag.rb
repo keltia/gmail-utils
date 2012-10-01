@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_TAG_ID = "$Id: tag.rb,v 1346dbf1059d 2012/09/24 21:41:27 roberto $"
+VCS_TAG_ID = "$Id: tag.rb,v f1029ea0acc1 2012/10/01 23:17:16 roberto $"
 
 module GMail
 # Handles GMail tags
@@ -22,10 +22,10 @@ module GMail
 
     # Generate a FS-compatible label
     # If +@label+ is "Foo/Bar"
-    #   self.normalize # => "Foo-Bar"
+    #   self.to_s # => "Foo-Bar"
     #
     # @return [String] the converted label
-    def normalize
+    def to_s
       return @label.gsub(%r{/}, '-')
     end
 

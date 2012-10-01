@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: tag_spec.rb,v e005048b8a29 2012/09/24 23:25:43 roberto $
+# $Id: tag_spec.rb,v f1029ea0acc1 2012/10/01 23:17:16 roberto $
 
 require "rspec"
 require "gmail"
@@ -41,13 +41,18 @@ describe GMail::Tag do
     end
   end
 
-  describe "#normalize" do
+  describe "#to_s" do
     it "should keep the right value if no '/'" do
-      @tag1.normalize.should == "Perso"
+      @tag1.to_s.should == "Perso"
     end
 
     it "should convert '/' into '-'" do
-      @tag2.normalize.should == "Perso-Foo"
+      @tag2.to_s.should == "Perso-Foo"
+    end
+
+    it "should be used as default method when using the object" do
+      @tag1.to_s.should == "#{@tag1}"
+      @tag2.to_s.should == "#{@tag2}"
     end
   end
 
