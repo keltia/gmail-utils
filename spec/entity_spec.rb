@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: entity_spec.rb,v e005048b8a29 2012/09/24 23:25:43 roberto $
+# $Id: entity_spec.rb,v bd8dde2b5d0a 2012/10/02 17:50:46 roberto $
 
 require "rspec"
 require "mail"
@@ -36,7 +36,7 @@ describe GMail::Entity do
       expect{GMail::Entity.new}.to raise_exception(ArgumentError)
     end
 
-    it "should raise an exception if filename does not end with .eml" do
+    it "should raise an exception if filename does not end with .meta" do
       expect{GMail::Entity.new("foo.bar")}.to raise_exception(ArgumentError)
     end
 
