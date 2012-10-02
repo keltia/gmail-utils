@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMI_ID = "$Id$"
+VCS_GMI_ID = "$Id: index.rb,v 0615bf17baf3 2012/10/02 19:04:02 roberto $"
 
 require "rufus/tokyo"
 
@@ -60,6 +60,12 @@ module GMail
     # @param [Fixnum] value set the +last_id+ property to +value+
     def last_id=(value)
       @db["last_id"] = value
+    end
+
+    # Returns the size of the db
+    # @return [Fixnum] size of the db
+    def size
+      @db.size
     end
   end
 end

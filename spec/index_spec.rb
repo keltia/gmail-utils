@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: index_spec.rb,v e005048b8a29 2012/09/24 23:25:43 roberto $
+# $Id: index_spec.rb,v 0615bf17baf3 2012/10/02 19:04:02 roberto $
 
 require "rspec"
 require "mail"
@@ -82,6 +82,12 @@ describe GMail::Index do
       @ind.last_id = 2
       @ind.last_id.to_i.should eq(2)
       @ind.db["last_id"].should eq(@ind.last_id)
+    end
+  end
+
+  describe "#size" do
+    it "should return the number of mails present in the index" do
+      @ind.size.should == @ind.db.size
     end
   end
 end
