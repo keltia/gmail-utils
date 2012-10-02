@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v e33d8268207d 2012/10/01 23:21:57 roberto $
+# @version $Id: tag2maildir,v cb68b2641c40 2012/10/02 19:06:19 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v e33d8268207d 2012/10/01 23:21:57 roberto $"
+VCS_ID = "$Id: tag2maildir,v cb68b2641c40 2012/10/02 19:06:19 roberto $"
 
 require "date"
 require "time"
@@ -96,7 +96,7 @@ Revision #{VCS_ID}
     start = index.last_id.to_i
     last_id = start
 
-    puts("Opening index, last id is #{last_id}")
+    puts("Opening index, last id is #{last_id}, #{index.size} mails present")
     puts("+: already seen / H: already in index / T: match tag / .: unseen, no match")
 
     added = 0
