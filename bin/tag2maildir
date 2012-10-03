@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v cb68b2641c40 2012/10/02 19:06:19 roberto $
+# @version $Id: tag2maildir,v d297860a06d4 2012/10/03 23:19:03 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v cb68b2641c40 2012/10/02 19:06:19 roberto $"
+VCS_ID = "$Id: tag2maildir,v d297860a06d4 2012/10/03 23:19:03 roberto $"
 
 require "date"
 require "time"
@@ -125,6 +125,7 @@ Revision #{VCS_ID}
               already += 1
               print("H")
             else
+              gm.mail.header["X-Label"] = gm.tags.join(',')
               msg = maildir.add(gm.mail)
               index[gm.gm_id] = msg.key
               added += 1
