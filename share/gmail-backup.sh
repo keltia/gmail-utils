@@ -1,8 +1,8 @@
-#! /usr/bin/env ruby
+#! /bin/sh
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmail-backup.sh,v 38db2fb81eac 2012/10/18 16:07:51 roberto $
+# $Id: gmail-backup.sh,v e325783196a5 2012/10/18 22:42:35 roberto $
 
 OPTS="-o -d $HOME/Mail/gmvault-db --no-compression -t quick"
 ADDR="keltia@gmail.com"
