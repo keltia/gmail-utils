@@ -1,4 +1,4 @@
-# $Id: core.rb,v 004b15a184a6 2012/10/18 21:45:32 roberto $
+# $Id: core.rb,v 5a113e62ab59 2012/10/18 21:53:44 roberto $
 #
 module GMail
   module Utils
@@ -7,7 +7,7 @@ module GMail
     end
 
     def self.share_directory
-      @data_directory ||= File.expand_path(File.join(Raw::Utils.install_directory, "/../../share/"))
+      @share_directory ||= File.expand_path(File.join(GMail::Utils.install_directory, "/../../share/"))
     end
   end
 end
