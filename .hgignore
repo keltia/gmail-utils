@@ -1,7 +1,8 @@
 syntax: glob
-.svn
+.bundle
 .hg
 .idea
+.svn
 **.lock
 *~
 pkg
