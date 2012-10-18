@@ -2,6 +2,6 @@
 #
 # @abstract Wrapper for the gmail-backup.sh shell script
 #
-# $Id: gmail-backup,v 004b15a184a6 2012/10/18 21:45:32 roberto $
+# $Id: gmail-backup,v ce01211c39c8 2012/10/18 21:48:13 roberto $
 
-exec("/bin/sh", "-c", GMail::Utils.share_directory + __FILE__ + ".sh"), *ARGV)
+exec("/bin/sh", "-c", GMail::Utils.share_directory + __FILE__ + ".sh", *ARGV)
