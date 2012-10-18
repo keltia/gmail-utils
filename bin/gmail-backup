@@ -1,0 +1,7 @@
+#! /usr/bin/env ruby
+#
+# @abstract Wrapper for the gmail-backup.sh shell script
+#
+# $Id: gmail-backup,v 7687718141dc 2012/10/18 16:07:24 roberto $
+
+exec("/bin/sh", "-c", File.expand_path("../share/" + __FILE__ + ".sh"), *ARGV)
