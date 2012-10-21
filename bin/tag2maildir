@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v d297860a06d4 2012/10/03 23:19:03 roberto $
+# @version $Id: tag2maildir,v cab4d9edc46c 2012/10/21 23:30:31 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v d297860a06d4 2012/10/03 23:19:03 roberto $"
+VCS_ID = "$Id: tag2maildir,v cab4d9edc46c 2012/10/21 23:30:31 roberto $"
 
 require "date"
 require "time"
@@ -31,6 +31,7 @@ MYBASE = ENV["HOME"] + "/Maildir"
 class DataError < Exception; end
 
 require "gmail"
+require "gmail-utils/version"
 
 # Starting point
 #
@@ -44,8 +45,7 @@ Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
   EOTEXT
 
   banner = <<-"EOTEXT"
-#{MYNAME}
-Revision #{VCS_ID}
+#{MYNAME} v#{GMail::Utils::VERSION}
 
 #{usage}
   EOTEXT
