@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: index_spec.rb,v 0615bf17baf3 2012/10/02 19:04:02 roberto $
+# $Id: index_spec.rb,v 49d0c765ad5c 2012/10/26 22:59:40 roberto $
 
 require "rspec"
 require "mail"
@@ -82,6 +82,21 @@ describe GMail::Index do
       @ind.last_id = 2
       @ind.last_id.to_i.should eq(2)
       @ind.db["last_id"].should eq(@ind.last_id)
+    end
+  end
+
+  describe "#gmdb" do
+    it "should return the path of the gmvault db" do
+      @ind.db["gmdb"] = "/tmp/foo"
+      @ind.gmdb = "/tmp/foo"
+      @ind.gmdb.should eq("/tmp/foo")
+    end
+  end
+
+  describe "#gmdb=" do
+    it "should save the path to the gmvault db in the index" do
+      @ind.gmdb = "/tmp/foo"
+      @ind.gmdb.should eq(@ind.db["gmdb"])
     end
   end
 
