@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v 24b716f83b96 2012/10/26 23:00:43 roberto $
+# @version $Id: tag2maildir,v d911d2829b92 2012/10/27 10:09:29 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v 24b716f83b96 2012/10/26 23:00:43 roberto $"
+VCS_ID = "$Id: tag2maildir,v d911d2829b92 2012/10/27 10:09:29 roberto $"
 
 require "date"
 require "time"
@@ -73,33 +73,40 @@ Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
   argv.options = nil
   top_dir = argv.shift
 
+  tag = GMail::Tag.new(my_tag)
+  maildir = Maildir.new("#{my_base}/#{tag}")
+  maildir.serializer = Maildir::Serializer::Mail.new
+  puts("Opening maildir at #{my_base}/#{tag}")
+
+  index = GMail::Index.new("#{my_base}/#{tag}")
+  start = index.last_id.to_i
+  last_id = start
+  puts("Opening index, last id is #{last_id}, #{index.size} mails present")
+  puts("+: already seen / H: already in index / T: match tag / .: unseen, no match")
+
+  # Check arguments and the directory that may be stored in the index
+  #
   if top_dir.nil?
-    $stderr.puts("Error: directory where to load mail from must be specified")
-    return(1)
+    if index.gmdb.nil?
+      $stderr.puts("Error: directory where to load mail from must be specified")
+      return(1)
+    else
+      top_dir = index.gmdb
+    end
+  else
+    index.gmdb = top_dir
   end
 
+  # XXX deprecated the -t option and just requiring the tag?
+  #
   if my_tag.nil?
     $stderr.puts("Error: the -t TAG option must be specified")
     return(1)
   end
 
-  tag = nil
   Dir.chdir(top_dir) do
 
     t1 = t2 = 0
-    tag = GMail::Tag.new(my_tag)
-    maildir = Maildir.new("#{my_base}/#{tag}")
-    maildir.serializer = Maildir::Serializer::Mail.new
-    puts("Opening maildir at #{my_base}/#{tag}")
-
-    index = GMail::Index.new("#{my_base}/#{tag}")
-    start = index.last_id.to_i
-    index.gmdb = top_dir
-    last_id = start
-
-    puts("Opening index, last id is #{last_id}, #{index.size} mails present")
-    puts("+: already seen / H: already in index / T: match tag / .: unseen, no match")
-
     added = 0
     skipped = 0
     already = 0
