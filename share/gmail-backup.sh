@@ -2,7 +2,9 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmail-backup.sh,v e325783196a5 2012/10/18 22:42:35 roberto $
+# TODO: to be rewritten in Ruby
+#
+# $Id: gmail-backup.sh,v a7821bf8be6d 2012/10/31 14:18:59 roberto $
 
 OPTS="-o -d $HOME/Mail/gmvault-db --no-compression -t quick"
 ADDR="keltia@gmail.com"
