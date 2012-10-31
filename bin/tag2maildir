@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v 34eeed2f7dad 2012/10/31 17:50:58 roberto $
+# @version $Id: tag2maildir,v 8a45925e1fc1 2012/10/31 23:59:53 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v 34eeed2f7dad 2012/10/31 17:50:58 roberto $"
+VCS_ID = "$Id: tag2maildir,v 8a45925e1fc1 2012/10/31 23:59:53 roberto $"
 
 require "date"
 require "time"
@@ -122,6 +122,10 @@ Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
           # load metadata
           #
           gm = GMail::Entity.new(m)
+
+          # Skip anything invalid
+          #
+          next if gm.nil?
 
           # not in index
           #
