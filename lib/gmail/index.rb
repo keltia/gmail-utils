@@ -2,9 +2,10 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMI_ID = "$Id: index.rb,v 49d0c765ad5c 2012/10/26 22:59:40 roberto $"
+VCS_GMI_ID = "$Id: index.rb,v 64d724f6c964 2012/10/31 10:55:33 roberto $"
 
 require "rufus/tokyo"
+require "gmail/version"
 
 module GMail
 # Manages a database of message-ids from mail converted from gmvault into Maildir
@@ -21,6 +22,17 @@ module GMail
         raise ArgumentError, "#{path} is not a Maildir mailbox"
       end
       @db = Rufus::Tokyo::Cabinet.new("#{path}/index.tch")
+      check_db()
+    end
+
+    # Check db version and upgrade it if needed
+    def check_db
+      if @db["db_version"].nil?
+          @db["db_version"] = GMail::Utils::DB_VERSION
+      end
+      if @db["gmdb"].nil?
+        puts("Warning: gmdb not found...")
+      end
     end
 
     # Check if a given gm_id is present
@@ -75,7 +87,7 @@ module GMail
     end
 
     # Set the gmvault db path in the index
-    # @@param [String] value path to the gmvault db
+    # @param [String] value path to the gmvault db
     def gmdb=(value)
       @db["gmdb"] = value || ""
     end
