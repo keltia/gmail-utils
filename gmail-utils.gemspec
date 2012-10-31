@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-require File.expand_path('../lib/gmail-utils/version', __FILE__)
+require File.expand_path('../lib/gmail/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Ollivier Robert"]

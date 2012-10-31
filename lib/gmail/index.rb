@@ -2,10 +2,10 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMI_ID = "$Id: index.rb,v a37d0dd5a275 2012/10/31 10:51:04 roberto $"
+VCS_GMI_ID = "$Id: index.rb,v 64d724f6c964 2012/10/31 10:55:33 roberto $"
 
 require "rufus/tokyo"
-require "gmail-utils/version"
+require "gmail/version"
 
 module GMail
 # Manages a database of message-ids from mail converted from gmvault into Maildir
