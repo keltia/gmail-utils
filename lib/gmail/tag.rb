@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_TAG_ID = "$Id: tag.rb,v f1029ea0acc1 2012/10/01 23:17:16 roberto $"
+VCS_TAG_ID = "$Id: tag.rb,v 322d1be5001a 2012/11/01 00:03:09 roberto $"
 
 module GMail
 # Handles GMail tags
@@ -26,7 +26,7 @@ module GMail
     #
     # @return [String] the converted label
     def to_s
-      return @label.gsub(%r{/}, '-')
+      @label.gsub(%r{/}, '-')
     end
 
     # Match the tag against another one or multiple values
