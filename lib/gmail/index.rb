@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMI_ID = "$Id: index.rb,v 64d724f6c964 2012/10/31 10:55:33 roberto $"
+VCS_GMI_ID = "$Id: index.rb,v 9e9f0ea1ecf3 2012/11/01 21:03:29 roberto $"
 
 require "rufus/tokyo"
 require "gmail/version"
@@ -90,6 +90,12 @@ module GMail
     # @param [String] value path to the gmvault db
     def gmdb=(value)
       @db["gmdb"] = value || ""
+    end
+
+    # Returns the db version
+    # @return [Fixnum] version number
+    def version
+      @db["db_version"].to_i || 0
     end
   end
 end
