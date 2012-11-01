@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id$"
+VCS_GMV_ID = "$Id: entity.rb,v 0ed856a82bc2 2012/11/01 00:02:43 roberto $"
 
 # Non-standard packages
 #
@@ -37,7 +37,7 @@ module GMail
 
       # check consistency
       raise DataError if @meta.nil?
-      if @name.to_i != @meta["gm_id"] then
+      if @name.to_i != @meta["gm_id"]
         $stderr.puts(@meta)
         raise DataError, "Error: Internal inconsistency on #{@name} vs #{@meta['gm_id']}"
       end
