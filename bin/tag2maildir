@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v 8a45925e1fc1 2012/10/31 23:59:53 roberto $
+# @version $Id: tag2maildir,v 10e9be32a427 2012/11/01 00:16:26 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v 8a45925e1fc1 2012/10/31 23:59:53 roberto $"
+VCS_ID = "$Id: tag2maildir,v 10e9be32a427 2012/11/01 00:16:26 roberto $"
 
 require "date"
 require "time"
@@ -81,7 +81,6 @@ Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
   start = index.last_id.to_i
   last_id = start
   puts("Opening index, last id is #{last_id}, #{index.size} mails present")
-  puts("+: already seen / H: already in index / T: match tag / .: unseen, no match")
 
   # Check arguments and the directory that may be stored in the index
   #
@@ -103,13 +102,15 @@ Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
     return(1)
   end
 
+  puts("Main GmVault directory is #{index.gmdb}")
+  puts("+: already seen / H: already in index / T: match tag / .: unseen, no match")
   Dir.chdir(top_dir) do
 
-    t1 = t2 = 0
     added = 0
     skipped = 0
     already = 0
     t1 = Time.now
+    t2 = 0
     begin
       Dir["**/*.meta"].each do |m|
         #
