@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: index_spec.rb,v 9e9f0ea1ecf3 2012/11/01 21:03:29 roberto $
+# $Id: index_spec.rb,v f4193721a614 2012/11/01 21:28:58 roberto $
 
 require "rspec"
 require "mail"
@@ -88,7 +88,6 @@ describe GMail::Index do
   describe "#gmdb" do
     it "should return the path of the gmvault db" do
       @ind.db["gmdb"] = "/tmp/foo"
-      @ind.gmdb = "/tmp/foo"
       @ind.gmdb.should eq("/tmp/foo")
     end
   end
