@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: index_spec.rb,v f4193721a614 2012/11/01 21:28:58 roberto $
+# $Id: index_spec.rb,v 6de8415ee19d 2012/11/03 19:47:35 roberto $
 
 require "rspec"
 require "mail"
@@ -20,11 +20,11 @@ describe GMail::Index do
 
   describe "#initialize" do
     it "should have the required attributes" do
+      @ind.db.should_not be_nil
       @ind.path.should be_an_instance_of(String)
       @ind.db.should be_an_instance_of(Rufus::Tokyo::Cabinet)
       @ind.path.should_not be_nil
       @ind.path.should_not eq("")
-      @ind.db.should_not be_nil
     end
   end
 
