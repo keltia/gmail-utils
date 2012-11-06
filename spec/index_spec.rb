@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: index_spec.rb,v 49d0c765ad5c 2012/10/26 22:59:40 roberto $
+# $Id: index_spec.rb,v 9e9f0ea1ecf3 2012/11/01 21:03:29 roberto $
 
 require "rspec"
 require "mail"
@@ -103,6 +103,15 @@ describe GMail::Index do
   describe "#size" do
     it "should return the number of mails present in the index" do
       @ind.size.should == @ind.db.size
+    end
+  end
+
+  describe "#version" do
+    it "should return an integer" do
+      @ind.db["db_version"] = 2
+      @ind.version.should be_an_instance_of(Fixnum)
+      @ind.version.should_not be_nil
+      @ind.version.should eq(2)
     end
   end
 end

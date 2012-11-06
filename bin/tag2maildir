@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v 64d724f6c964 2012/10/31 10:55:33 roberto $
+# @version $Id: tag2maildir,v 20ea3b7deb76 2012/11/01 21:04:07 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v 64d724f6c964 2012/10/31 10:55:33 roberto $"
+VCS_ID = "$Id: tag2maildir,v 20ea3b7deb76 2012/11/01 21:04:07 roberto $"
 
 require "date"
 require "time"
@@ -72,37 +72,45 @@ Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
   argv.options = nil
   top_dir = argv.shift
 
+  tag = GMail::Tag.new(my_tag)
+  maildir = Maildir.new("#{my_base}/#{tag}")
+  maildir.serializer = Maildir::Serializer::Mail.new
+  puts("Opening maildir at #{my_base}/#{tag}")
+
+  index = GMail::Index.new("#{my_base}/#{tag}")
+  start = index.last_id.to_i
+  last_id = start
+  puts("Opening index, last id is #{last_id}, #{index.size} mails present, db version #{index.version}")
+
+  # Check arguments and the directory that may be stored in the index
+  #
   if top_dir.nil?
-    $stderr.puts("Error: directory where to load mail from must be specified")
-    return(1)
+    if index.gmdb.nil?
+      $stderr.puts("Error: directory where to load mail from must be specified")
+      return(1)
+    else
+      top_dir = index.gmdb
+    end
+  else
+    index.gmdb = top_dir
   end
 
+  # XXX deprecated the -t option and just requiring the tag?
+  #
   if my_tag.nil?
     $stderr.puts("Error: the -t TAG option must be specified")
     return(1)
   end
 
-  tag = nil
+  puts("Main GmVault directory is #{index.gmdb}")
+  puts("+: already seen / H: already in index / T: match tag / .: unseen, no match")
   Dir.chdir(top_dir) do
-
-    t1 = t2 = 0
-    tag = GMail::Tag.new(my_tag)
-    maildir = Maildir.new("#{my_base}/#{tag}")
-    maildir.serializer = Maildir::Serializer::Mail.new
-    puts("Opening maildir at #{my_base}/#{tag}")
-
-    index = GMail::Index.new("#{my_base}/#{tag}")
-    start = index.last_id.to_i
-    index.gmdb = top_dir
-    last_id = start
-
-    puts("Opening index, last id is #{last_id}, #{index.size} mails present")
-    puts("+: already seen / H: already in index / T: match tag / .: unseen, no match")
 
     added = 0
     skipped = 0
     already = 0
     t1 = Time.now
+    t2 = 0
     begin
       Dir["**/*.meta"].each do |m|
         #
@@ -115,6 +123,10 @@ Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
           # load metadata
           #
           gm = GMail::Entity.new(m)
+
+          # Skip anything invalid
+          #
+          next if gm.nil?
 
           # not in index
           #
