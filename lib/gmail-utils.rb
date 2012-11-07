@@ -1,1 +1,0 @@
-require "gmail-utils/version"

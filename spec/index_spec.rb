@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: index_spec.rb,v 0615bf17baf3 2012/10/02 19:04:02 roberto $
+# $Id: index_spec.rb,v 9e9f0ea1ecf3 2012/11/01 21:03:29 roberto $
 
 require "rspec"
 require "mail"
@@ -85,9 +85,33 @@ describe GMail::Index do
     end
   end
 
+  describe "#gmdb" do
+    it "should return the path of the gmvault db" do
+      @ind.db["gmdb"] = "/tmp/foo"
+      @ind.gmdb = "/tmp/foo"
+      @ind.gmdb.should eq("/tmp/foo")
+    end
+  end
+
+  describe "#gmdb=" do
+    it "should save the path to the gmvault db in the index" do
+      @ind.gmdb = "/tmp/foo"
+      @ind.gmdb.should eq(@ind.db["gmdb"])
+    end
+  end
+
   describe "#size" do
     it "should return the number of mails present in the index" do
       @ind.size.should == @ind.db.size
+    end
+  end
+
+  describe "#version" do
+    it "should return an integer" do
+      @ind.db["db_version"] = 2
+      @ind.version.should be_an_instance_of(Fixnum)
+      @ind.version.should_not be_nil
+      @ind.version.should eq(2)
     end
   end
 end
