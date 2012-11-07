@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: index_spec.rb,v 9e9f0ea1ecf3 2012/11/01 21:03:29 roberto $
+# $Id: index_spec.rb,v 6de8415ee19d 2012/11/03 19:47:35 roberto $
 
 require "rspec"
 require "mail"
@@ -20,11 +20,11 @@ describe GMail::Index do
 
   describe "#initialize" do
     it "should have the required attributes" do
+      @ind.db.should_not be_nil
       @ind.path.should be_an_instance_of(String)
       @ind.db.should be_an_instance_of(Rufus::Tokyo::Cabinet)
       @ind.path.should_not be_nil
       @ind.path.should_not eq("")
-      @ind.db.should_not be_nil
     end
   end
 
@@ -88,7 +88,6 @@ describe GMail::Index do
   describe "#gmdb" do
     it "should return the path of the gmvault db" do
       @ind.db["gmdb"] = "/tmp/foo"
-      @ind.gmdb = "/tmp/foo"
       @ind.gmdb.should eq("/tmp/foo")
     end
   end
