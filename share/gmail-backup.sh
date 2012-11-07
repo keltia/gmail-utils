@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmail-backup.sh,v e325783196a5 2012/10/18 22:42:35 roberto $
+# $Id: gmail-backup.sh,v f23344581031 2012/11/07 09:25:27 roberto $
 
 OPTS="-o -d $HOME/Mail/gmvault-db --no-compression -t quick"
 ADDR="keltia@gmail.com"
@@ -16,7 +16,7 @@ if [ $errcode != 0 ]; then
 fi
 
 set -- $args
-for i
+for i in $*
 do
 	case "$i"
 	in
@@ -27,7 +27,7 @@ do
 		;;
 		-t)
 		echo 'Using tsocks'
-		TSOCKS="tsocks"
+		TSOCKS="tsocks sh"
 		shift
 		;;
 	esac
