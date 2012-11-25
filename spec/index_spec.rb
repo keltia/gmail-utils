@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: index_spec.rb,v 6de8415ee19d 2012/11/03 19:47:35 roberto $
+# $Id: index_spec.rb,v 11c93bfca476 2012/11/25 03:52:13 roberto $
 
 require "rspec"
 require "mail"
@@ -82,6 +82,25 @@ describe GMail::Index do
       @ind.last_id = 2
       @ind.last_id.to_i.should eq(2)
       @ind.db["last_id"].should eq(@ind.last_id)
+    end
+  end
+
+  describe "#last_sync" do
+    it "should return the 'last_sync' property in the db" do
+      @ind.last_sync.should_not be_nil
+      @ind.last_sync.should_not eq(0)
+      @ind.last_sync.should be_an_instance_of(String)
+      @ind.last_sync.should eq(@ind.db["last_sync"])
+    end
+  end
+
+  describe "#last_sync=" do
+    it "should update the 'last_sync' property in the db" do
+      now = Time.now
+      @ind.last_sync = now
+      @ind.last_sync.should_not be_nil
+      @ind.last_sync.should_not eq(0)
+      @ind.last_sync.should eq(@ind.db["last_sync"])
     end
   end
 
