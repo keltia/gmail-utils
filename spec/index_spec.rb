@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: index_spec.rb,v 11c93bfca476 2012/11/25 03:52:13 roberto $
+# $Id: index_spec.rb,v d28f37d11fce 2012/11/25 15:41:15 roberto $
 
 require "rspec"
 require "mail"
@@ -25,6 +25,15 @@ describe GMail::Index do
       @ind.db.should be_an_instance_of(Rufus::Tokyo::Cabinet)
       @ind.path.should_not be_nil
       @ind.path.should_not eq("")
+    end
+
+    it "different versions of the db should have some things" do
+      if @ind.version == "3"
+        @ind.last_sync.should_not be_nil
+      end
+      if @ind.version == "2"
+        @ind.last_id.should_not be_nil
+      end
     end
   end
 
