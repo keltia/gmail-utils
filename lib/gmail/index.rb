@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMI_ID = "$Id: index.rb,v dc5af50c1862 2012/11/25 14:50:11 roberto $"
+VCS_GMI_ID = "$Id: index.rb,v e5d6e5a6b22f 2012/11/25 15:41:00 roberto $"
 
 require "rufus/tokyo"
 require "gmail/version"
@@ -87,7 +87,7 @@ module GMail
     # Set the last_sync property in the db
     # @param [Fixnum] value set the +last_id+ property to +value+
     def last_sync=(value)
-      @db["last_sync"] = value || Time.now
+      @db["last_sync"] = value
     end
 
     # Returns the size of the db
