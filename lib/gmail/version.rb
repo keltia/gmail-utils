@@ -1,6 +1,6 @@
 module GMail
   module Utils
-    VERSION = "0.4.6"
-    DB_VERSION = "2"
+    VERSION = "0.4.7"
+    DB_VERSION = "3"
   end
 end
