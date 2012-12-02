@@ -4,14 +4,12 @@
 #
 # XXX Assume we use OAuth for all accounts
 
-VCS_CFG_ID = "$Id: config.rb,v 341f2ce15d43 2012/10/22 23:11:01 roberto $"
+VCS_CFG_ID = "$Id: config.rb,v ab6b367be5cf 2012/12/02 18:16:34 roberto $"
 
 # Non-standard packages
 #
 require "json"
 
-# Default location
-BASE_DIR = ENV["HOME"] + "/.gmvault"
 
 # Define our configuration class
 #
@@ -19,7 +17,10 @@ module GMail
   class Config
     attr_reader :path
 
-    def initialize(path = "#{ENV["HOME"] + "/.gmvault"}")
+    # Default location
+    BASE_DIR = ENV["HOME"] + "/.gmvault"
+
+    def initialize(path = BASE_DIR)
       @path = path
     end
 
