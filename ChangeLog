@@ -1,8 +1,378 @@
+2012-12-02  Ollivier Robert  <roberto@keltia.net>
+
+	* spec/config_spec.rb:
+	More specs for GMail::Config.
+	[a133689cd887] [tip]
+
+	* lib/gmail/config.rb:
+	More yard conments.
+	[034e1e09cbd0]
+
+	* test/Perso-Foo/index.tch:
+	Sync.
+	[73ef7f4dda49]
+
+	* lib/gmail/config.rb:
+	Move BASE_DIR definition within the class.
+	[ab6b367be5cf]
+
+	* lib/gmail/index.rb:
+	Classic = vs == blunder. Fix.
+	[2c42bdbd49e3]
+
+2012-11-25  Ollivier Robert  <roberto@keltia.net>
+
+	* test/Perso-Foo/index.tch:
+	Update test db.
+	[348014b128fb]
+
+	* spec/index_spec.rb:
+	Add specs for different db.
+	[d28f37d11fce]
+
+	* lib/gmail/index.rb:
+	Fix last_sync usage.
+	[e5d6e5a6b22f]
+
+	* lib/gmail/version.rb, test/Perso-Foo/index.tch:
+	Update to 0.4.7 & DB v3.
+	[afb8ea71b79f]
+
+	* test/Perso-Foo/index.tch:
+	Update test db.
+	[9ce96edbfc0e]
+
+	* bin/tag2maildir:
+	Update tag2maildir to DB v3.
+	[abb9c5b2fd7b]
+
+	* lib/gmail/index.rb:
+	Upgrade DB to 3.
+	[dc5af50c1862]
+
+	* test/Perso-Foo/index.tch:
+	Update local test index.
+	[5d5832ea5531]
+
+	* lib/gmail/index.rb, spec/index_spec.rb:
+	Add #last_sync & #last_sync= + specs.
+	[11c93bfca476]
+
+2012-11-08  Ollivier Robert  <roberto@keltia.net>
+
+	* Automated merge with ssh://centre.keltia.net//data/HG/mirrors/gmail-
+	utils
+	[b43ed56a509a]
+
+	* share/gmail-backup.sh:
+	Merge TODO entry.
+	[592034610789]
+
+2012-11-06  Ollivier Robert  <roberto@keltia.net>
+
+	* Automated merge with ssh://centre.keltia.net//data/HG/mirrors/gmail-
+	utils
+	[303040ebb22a]
+
+2012-10-31  Ollivier Robert  <roberto@keltia.net>
+
+	* share/gmail-backup.sh:
+	Mention a TODO item.
+	[a7821bf8be6d]
+
+2012-11-07  Ollivier Robert  <roberto@keltia.net>
+
+	* Automated merge with ssh://centre.keltia.net//data/HG/mirrors/gmail-
+	utils
+	[d5f54933b449]
+
+	* Automated merge with ssh://centre.keltia.net//data/HG/mirrors/gmail-
+	utils
+	[9b57c31407da]
+
+	* share/gmail-backup.sh:
+	Try to fix tsocks support.
+	[f23344581031]
+
+2012-11-03  Ollivier Robert  <roberto@keltia.net>
+
+	* spec/index_spec.rb:
+	Move nil test before the others.
+	[6de8415ee19d]
+
+2012-11-01  Ollivier Robert  <roberto@keltia.net>
+
+	* spec/index_spec.rb:
+	Remove unneeded setting.
+	[f4193721a614]
+
+	* bin/tag2maildir:
+	Use GMail::Index#version.
+	[20ea3b7deb76]
+
+	* lib/gmail/index.rb, spec/index_spec.rb:
+	Add GMail::Index#version + specs.
+	[9e9f0ea1ecf3]
+
+	* bin/tag2maildir:
+	Reformat some lines, displaying gmvault directory.
+	[10e9be32a427]
+
+	* lib/gmail/tag.rb:
+	return is useless here.
+	[322d1be5001a]
+
+	* lib/gmail/entity.rb:
+	then is useless here.
+	[0ed856a82bc2]
+
+	* bin/tag2maildir:
+	Skip invalid mails.
+	[8a45925e1fc1]
+
+2012-10-31  Ollivier Robert  <roberto@keltia.net>
+
+	* bin/tag2maildir:
+	Merge the move of initialization outside loop.
+	[34eeed2f7dad]
+
+	* doc/GMail.html, doc/GMail/Config.html, doc/GMail/Entity.html,
+	doc/GMail/Index.html, doc/GMail/Tag.html, doc/GMail/Utils.html,
+	doc/_index.html, doc/class_list.html, doc/file.README.html,
+	doc/frames.html, doc/index.html, doc/method_list.html, doc/top-
+	level-namespace.html:
+	Update documentation.
+	[6ea4d431a145]
+
+	* .hgtags:
+	Added tag v_0_4_6 for changeset 2fb5fbe8fd00
+	[8d017eaf449d]
+
+	* lib/gmail/version.rb:
+	Bump version to 0.4.6.
+	[2fb5fbe8fd00] [v_0_4_6]
+
+	* bin/tag2maildir, gmail-utils.gemspec, lib/gmail-utils.rb, lib/gmail-
+	utils/version.rb, lib/gmail.rb, lib/gmail/index.rb,
+	lib/gmail/version.rb:
+	Move gmail-utils/version.rb into gmail/.
+	[64d724f6c964]
+
+	* lib/gmail-utils/version.rb, lib/gmail/index.rb:
+	Add a version number to the Index database.
+	[a37d0dd5a275]
+
+	* lib/gmail/index.rb:
+	Fix comment.
+	[029b499b1b5b]
+
+	* test/Perso-Foo/index.tch:
+	Update the db version.
+	[b243d38967b2]
+
+2012-10-27  Ollivier Robert  <roberto@keltia.net>
+
+	* bin/tag2maildir:
+	Use the gmdb path index stored in the index (save it if not).
+	Reorder initialization.
+	[d911d2829b92]
+
+	* .hgtags:
+	Added tag v_0_4_5 for changeset adfa9463b401
+	[52fb062d963b]
+
+	* lib/gmail-utils/version.rb:
+	Bump version to 0.4.5.
+	[adfa9463b401] [v_0_4_5]
+
+	* test/Perso-Foo/index.tch:
+	gmdb is now saved in index.tch.
+	[de5af34d35bb]
+
+	* bin/tag2maildir:
+	Use the newly implemented Index#gmdb=
+	[24b716f83b96]
+
+	* lib/gmail/index.rb, spec/index_spec.rb:
+	Implement specs and code for #gmdb & #gmdb= in Index class.
+	[49d0c765ad5c]
+
+2012-10-23  Ollivier Robert  <roberto@keltia.net>
+
+	* lib/gmail/config.rb, spec/config_spec.rb,
+	test/dot.gmvault/keltia+fake@gmail.com.oauth:
+	Specs, code and test data for GMail::Config.
+	[341f2ce15d43]
+
+2012-10-22  Ollivier Robert  <roberto@keltia.net>
+
+	* lib/gmail/config.rb, spec/config_spec.rb:
+	Begin to implement GMail::Config to read gmvault config.
+	[d710b2d69339]
+
+	* lib/gmail.rb:
+	Add loading of GMail::Config.
+	[e6575f415994]
+
+	* bin/tag2maildir:
+	Replace displaying the $Id revision by the current tag.
+	[cab4d9edc46c]
+
+2012-10-21  Ollivier Robert  <roberto@keltia.net>
+
+	* lib/gmail-utils/version.rb:
+	Utils is a module, not a class.
+	[82f8e31a126b]
+
+2012-10-19  Ollivier Robert  <roberto@keltia.net>
+
+	* .hgtags:
+	Added tag v_0_4_4 for changeset e325783196a5
+	[f5db6647c2f1]
+
+	* bin/gmail-backup, lib/gmail-utils/version.rb, share/gmail-backup.sh:
+	Fix the way we find the shell script, bump version.
+	[e325783196a5] [v_0_4_4]
+
+2012-10-18  Ollivier Robert  <roberto@keltia.net>
+
+	* bin/gmail-backup, lib/gmail/core.rb:
+	Fix module name.
+	[5a113e62ab59]
+
+	* bin/gmail-backup:
+	Remove spurious parenthesis.
+	[ce01211c39c8]
+
+	* bin/gmail-backup, lib/gmail.rb, lib/gmail/core.rb:
+	Use the same method as Raw::Utils to know where we are.
+	[004b15a184a6]
+
+	* .hgtags:
+	Added tag v_0_4_3 for changeset d226231e0971
+	[ac7c46e01a8d]
+
+	* lib/gmail-utils/version.rb:
+	Bump it to 0.4.3 with addition of gmail-backup.
+	[d226231e0971] [v_0_4_3]
+
+	* share/gmail-backup.sh:
+	Add the shell script.
+	[38db2fb81eac]
+
+	* bin/gmail-backup:
+	Add a Ruby wrapper for the shell script.
+	[7687718141dc]
+
+	* bin/gmail-backup:
+	A Shell script is not correctly seen as such.
+	[cd06e57b99dc]
+
+	* .hgignore:
+	Add .bundle to the ignore list.
+	[820df62ba1a7]
+
+	* bin/gmail-backup:
+	Add gmail-backup as a convenient script.
+	[db983f0a4ce9]
+
+2012-10-04  Ollivier Robert  <roberto@keltia.net>
+
+	* bin/tag2maildir:
+	Add a custom header with all labels.
+	[d297860a06d4]
+
+2012-10-02  Ollivier Robert  <roberto@keltia.net>
+
+	* .hgtags:
+	Added tag v_0_4_2 for changeset cb68b2641c40
+	[26cb5b86580c]
+
+	* bin/tag2maildir:
+	Displays # of mails in index on startup.
+	[cb68b2641c40] [v_0_4_2]
+
+	* lib/gmail-utils/version.rb, lib/gmail/index.rb, spec/index_spec.rb:
+	Bump version to 0.4.2 after adding GMail::Index#size.
+	[0615bf17baf3]
+
+	* spec/entity_spec.rb:
+	Correct the comment in spec.
+	[bd8dde2b5d0a]
+
+	* .hgtags:
+	Added tag v_0_4_1 for changeset e33d8268207d
+	[22682cf54d6b]
+
+	* bin/tag2maildir, lib/gmail-utils/version.rb:
+	Fix one last usage of #normalize.
+	[e33d8268207d] [v_0_4_1]
+
+	* .hgtags:
+	Added tag v_0_4_0 for changeset 0e52dc00f44f
+	[e40a766415d9]
+
+	* bin/tag2maildir:
+	Update to API 0.4: be consistent in tag usage.
+	[0e52dc00f44f] [v_0_4_0]
+
+	* lib/gmail-utils/version.rb, lib/gmail/tag.rb, spec/tag_spec.rb:
+	Bump API to 0.4: change #normalize into #to_s.
+	[f1029ea0acc1]
+
+	* .hgtags:
+	Added tag v_0_3_1 for changeset ec9508f5637b
+	[4370ef1d46c3]
+
+	* lib/gmail-utils/version.rb:
+	Bump version to 0.3.1.
+	[ec9508f5637b] [v_0_3_1]
+
+	* bin/tag2maildir:
+	Fix an off-by-one error (harmless).
+	[b5db205481c2]
+
+	* bin/tag2maildir:
+	Add more statistics.
+	[a1a48c1988ce]
+
+2012-09-25  Ollivier Robert  <roberto@keltia.net>
+
+	* spec/entity_spec.rb, spec/index_spec.rb, spec/tag_spec.rb:
+	Only require gmail.rb.
+	[e005048b8a29]
+
+	* doc/GMail.html, doc/GMail/Entity.html, doc/GMail/Index.html,
+	doc/GMail/Tag.html, doc/GMail/Utils.html, doc/_index.html,
+	doc/file.README.html, doc/index.html, doc/top-level-namespace.html:
+	Update documentation.
+	[61df8c2eb61d]
+
+	* README.md:
+	Update README.
+	[af7380ec209e]
+
+	* .hgtags:
+	Added tag v_0_3_0 for changeset 55b80245a5bf
+	[bd70effb0744]
+
 2012-09-24  Ollivier Robert  <roberto@keltia.net>
+
+	* doc/GMail.html, doc/GMail/Entity.html, doc/GMail/Index.html,
+	doc/GMail/Tag.html, doc/GMail/Utils.html, doc/GmIndex.html,
+	doc/Tag.html, doc/_index.html, doc/class_list.html,
+	doc/file.README.html, doc/index.html, doc/method_list.html, doc/top-
+	level-namespace.html:
+	Update documentation.
+	[55b80245a5bf] [v_0_3_0]
+
+	* ChangeLog:
+	Sync.
+	[3d042de5c2f9]
 
 	* lib/gmail.rb, lib/gmail/gmail.rb:
 	Move gmail.rb in its proper place.
-	[e4ac00b0ca51] [tip]
+	[e4ac00b0ca51]
 
 	* bin/tag2maildir:
 	Conform to API v0.3.0.
@@ -72,17 +442,15 @@
 	utils
 	[0a4c107720d7]
 
+	* bin/tag2maildir:
+	Add timing.
+	[55513a099d0b]
+
 2012-09-20  Ollivier Robert  <roberto@keltia.net>
 
 	* lib/gmail-utils/version.rb:
 	Bump to 0.2.1.
 	[d807ae75a619]
-
-2012-09-23  Ollivier Robert  <roberto@keltia.net>
-
-	* bin/tag2maildir:
-	Add timing.
-	[55513a099d0b]
 
 2012-09-19  Ollivier Robert  <roberto@keltia.net>
 
