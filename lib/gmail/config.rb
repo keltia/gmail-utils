@@ -4,7 +4,7 @@
 #
 # XXX Assume we use OAuth for all accounts
 
-VCS_CFG_ID = "$Id: config.rb,v ab6b367be5cf 2012/12/02 18:16:34 roberto $"
+VCS_CFG_ID = "$Id: config.rb,v 034e1e09cbd0 2012/12/02 18:17:31 roberto $"
 
 # Non-standard packages
 #
@@ -24,6 +24,8 @@ module GMail
       @path = path
     end
 
+    # Looks at all configured email addresses
+    # @return [Array] list of different email addresses
     def find_addrs
       @list = Array.new
       Dir.chdir(@path) do
@@ -34,10 +36,14 @@ module GMail
       @list
     end
 
+    # Get all configured email addresses
+    # @return [Array] list of different email addresses
     def list
       @list || find_addrs()
     end
 
+    # Class method equiv. to #list
+    # @return [Array] list of different email addresses
     def self.list(path)
       self.new(path).list
     end
