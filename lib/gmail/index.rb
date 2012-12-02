@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMI_ID = "$Id: index.rb,v e5d6e5a6b22f 2012/11/25 15:41:00 roberto $"
+VCS_GMI_ID = "$Id: index.rb,v 2c42bdbd49e3 2012/12/02 15:56:10 roberto $"
 
 require "rufus/tokyo"
 require "gmail/version"
@@ -33,7 +33,7 @@ module GMail
       if @db["gmdb"].nil?
         puts("Warning: gmdb not found...")
       end
-      if @db["db_version"] = "2"
+      if @db["db_version"] == "2"
         @db["last_sync"] = Time.now
         @db["db_version"] = "3"
       end
