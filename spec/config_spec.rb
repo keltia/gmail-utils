@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: config_spec.rb,v 341f2ce15d43 2012/10/22 23:11:01 roberto $
+# $Id: config_spec.rb,v a133689cd887 2012/12/02 18:17:45 roberto $
 
 require "rspec"
 require "gmail"
@@ -32,12 +32,20 @@ describe GMail::Config do
   end
 
   describe "#list" do
+    it "should return an Array object" do
+      @cfg.list.should be_an_instance_of(Array)
+    end
+
     it "should get all the configured addresses" do
       @cfg.list.should eq([FAKE_ADDR])
     end
   end
 
   describe ".list" do
+    it "should return an Array object" do
+      GMail::Config.list(TEST_DIR).should be_an_instance_of(Array)
+    end
+
     it "should get all the configured addresses" do
       GMail::Config.list(TEST_DIR).should eq([FAKE_ADDR])
     end
