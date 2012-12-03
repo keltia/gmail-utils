@@ -2,7 +2,7 @@
 #
 # @abstract Wrapper for the gmail-backup.sh shell script
 #
-# $Id: gmail-backup,v d5a6e7dfc1e1 2012/12/03 19:18:11 roberto $
+# $Id: gmail-backup,v 1900df32c210 2012/12/03 22:28:26 roberto $
 
 require "optparse"
 
@@ -18,6 +18,8 @@ TSOCKS = "sh"
 ID = GMail::Utils::VERSION
 MYNAME = File.basename($0)
 
+# Entry point
+# @param Array argv all arguments
 def main(argv)
   do_resume = false
   do_tsocks = false

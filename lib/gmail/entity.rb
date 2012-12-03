@@ -2,15 +2,16 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: entity.rb,v 0ed856a82bc2 2012/11/01 00:02:43 roberto $"
+VCS_GMV_ID = "$Id: entity.rb,v 1900df32c210 2012/12/03 22:28:26 roberto $"
 
 # Non-standard packages
 #
 require "json"
 
+# Main namespace
 module GMail
+
   # Handle +GMail::Entity+ mails with +.eml+ as raw mail and +.meta+ as metadata (i.e.tags, date)
-  #
   class Entity
     attr_reader :name
     attr_reader :meta

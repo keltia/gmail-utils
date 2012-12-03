@@ -2,14 +2,14 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_TAG_ID = "$Id: tag.rb,v 322d1be5001a 2012/11/01 00:03:09 roberto $"
+VCS_TAG_ID = "$Id: tag.rb,v 1900df32c210 2012/12/03 22:28:26 roberto $"
 
 module GMail
-# Handles GMail tags
-#
-# Used when creating a mailbox based on the tag itself, after replacing the +"/"+ used
-# by GMail by +"-"+
-#
+
+  # Handles GMail tags
+  #
+  # Used when creating a mailbox based on the tag itself, after replacing the +"/"+ used
+  # by GMail by +"-"+
   class Tag
     # label tag's name
     attr_reader :label

@@ -2,15 +2,15 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMI_ID = "$Id: index.rb,v 2c42bdbd49e3 2012/12/02 15:56:10 roberto $"
+VCS_GMI_ID = "$Id: index.rb,v 1900df32c210 2012/12/03 22:28:26 roberto $"
 
 require "rufus/tokyo"
 require "gmail/version"
 
+# Main namespace
 module GMail
-# Manages a database of message-ids from mail converted from gmvault into Maildir
-#
-  class Index
+  # Manages a database of message-ids from mail converted from gmvault into Maildir
+    class Index
     attr_reader :path, :db
 
     # Create a new index if the file is not present or open the current one.
