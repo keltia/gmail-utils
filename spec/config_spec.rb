@@ -2,19 +2,19 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: config_spec.rb,v a133689cd887 2012/12/02 18:17:45 roberto $
+# $Id: config_spec.rb,v e99d7c820730 2012/12/03 13:10:23 roberto $
 
 require "rspec"
-require "gmail"
+require "gmvault"
 
 FAKE_ADDR="keltia+fake@gmail.com"
 TEST_DIR="test/dot.gmvault"
 
-describe GMail::Config do
+describe GmVault::Config do
   attr_reader :list
 
   before(:all) do
-    @cfg = GMail::Config.new(TEST_DIR)
+    @cfg = GmVault::Config.new(TEST_DIR)
   end
 
   describe "#initialize" do
@@ -23,7 +23,7 @@ describe GMail::Config do
     end
 
     it "should create a Config object" do
-      @cfg.should be_an_instance_of(GMail::Config)
+      @cfg.should be_an_instance_of(GmVault::Config)
     end
 
     it "should set the right members" do
@@ -43,11 +43,11 @@ describe GMail::Config do
 
   describe ".list" do
     it "should return an Array object" do
-      GMail::Config.list(TEST_DIR).should be_an_instance_of(Array)
+      GmVault::Config.list(TEST_DIR).should be_an_instance_of(Array)
     end
 
     it "should get all the configured addresses" do
-      GMail::Config.list(TEST_DIR).should eq([FAKE_ADDR])
+      GmVault::Config.list(TEST_DIR).should eq([FAKE_ADDR])
     end
   end
 

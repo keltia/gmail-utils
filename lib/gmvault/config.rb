@@ -4,7 +4,7 @@
 #
 # XXX Assume we use OAuth for all accounts
 
-VCS_CFG_ID = "$Id: config.rb,v 034e1e09cbd0 2012/12/02 18:17:31 roberto $"
+VCS_CFG_ID = "$Id$"
 
 # Non-standard packages
 #
@@ -13,7 +13,7 @@ require "json"
 
 # Define our configuration class
 #
-module GMail
+module GmVault
   class Config
     attr_reader :path
 
