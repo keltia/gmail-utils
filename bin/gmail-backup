@@ -2,13 +2,14 @@
 #
 # @abstract Wrapper for the gmail-backup.sh shell script
 #
-# $Id: gmail-backup,v 91c3e9a734f7 2012/12/03 13:48:34 roberto $
+# $Id: gmail-backup,v e07fe29320eb 2012/12/03 14:40:06 roberto $
 
-require "gmail"
+require "gmail/core"
 require "gmvault"
 
 email = GmVault::Config.list[0]
 base = GmVault::Config::DEF_DB
 
+puts("#{email} - #{base}")
 me = File.basename(__FILE__ + ".sh")
-exec("/bin/sh", "-c", GMail::Utils.share_directory + "/#{me}", email, base, *ARGV)
+exec("/bin/sh", "-c", GMail::Utils.share_directory + "/#{me}", email.to_s, base.to_s, *ARGV)
