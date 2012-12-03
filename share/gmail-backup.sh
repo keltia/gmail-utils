@@ -4,16 +4,16 @@
 #
 # TODO: to be rewritten in Ruby
 #
-# $Id: gmail-backup.sh,v 592034610789 2012/11/08 10:07:50 roberto $
+# $Id: gmail-backup.sh,v dbdfe7377aac 2012/12/03 13:48:59 roberto $
 
-OPTS="-o -d $HOME/Mail/gmvault-db --no-compression -t quick"
-ADDR="keltia@gmail.com"
+OPTS="-o --no-compression -t quick"
 BASE="$HOME/Downloads/gmvault-v1.7-beta/bin/"
+GMVAULT="$HOME/Mail/gmvault-db"
 TSOCKS="sh"
-args=`getopt rt $*`
+args=`getopt hrt $*`
 errcode=$?
 if [ $errcode != 0 ]; then
-	echo "Usage $0 [-r] [-t]"
+	echo "Usage $0 [-hrt] email directory"
 	exit 2
 fi
 
@@ -22,6 +22,10 @@ for i in $*
 do
 	case "$i"
 	in
+	    -h)
+	    echo "Backup for GMail"
+	    echo "$0 [rt] addr base_directory"
+	    exit 1
 		-r)
 		echo 'Resume'
 		OPTS="$OPTS --resume"
@@ -29,11 +33,14 @@ do
 		;;
 		-t)
 		echo 'Using tsocks'
-		TSOCKS="tsocks sh"
+		TSOCKS="tsocks sh -c "
 		shift
 		;;
 	esac
 done
-	
+
+ADDR=$1
+GMVAULT=$2
+
 cd $BASE
-$TSOCKS ./gmvault sync $OPTS $ADDR
+$TSOCKS ./gmvault sync $OPTS -d $GMVAULT $ADDR
