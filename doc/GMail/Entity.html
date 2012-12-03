@@ -6,7 +6,7 @@
 <title>
   Class: GMail::Entity
   
-    &mdash; Documentation by YARD 0.8.3
+    &mdash; Documentation by YARD 0.8.2.1
   
 </title>
 
@@ -453,7 +453,6 @@
       <pre class="lines">
 
 
-21
 22
 23
 24
@@ -461,10 +460,11 @@
 26
 27
 28
-29</pre>
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
   <span class='ivar'>@path</span><span class='comma'>,</span> <span class='id identifier rubyid_ext'>ext</span> <span class='op'>=</span> <span class='id identifier rubyid_filename'>filename</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\.</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
@@ -513,12 +513,12 @@
       <pre class="lines">
 
 
-16
 17
-18</pre>
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 16</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_meta'>meta</span>
   <span class='ivar'>@meta</span>
@@ -556,12 +556,12 @@
       <pre class="lines">
 
 
-15
 16
-17</pre>
+17
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 15</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 16</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
   <span class='ivar'>@name</span>
@@ -599,12 +599,12 @@
       <pre class="lines">
 
 
-17
 18
-19</pre>
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_tags'>tags</span>
   <span class='ivar'>@tags</span>
@@ -665,12 +665,12 @@
       <pre class="lines">
 
 
-63
 64
-65</pre>
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gm_id'>gm_id</span>
   <span class='ivar'>@meta</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gm_id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -737,7 +737,6 @@
       <pre class="lines">
 
 
-33
 34
 35
 36
@@ -752,10 +751,11 @@
 45
 46
 47
-48</pre>
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 34</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_load'>load</span>
   <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_meta_path'>meta_path</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_fh'>fh</span><span class='op'>|</span>
@@ -764,7 +764,7 @@
 
   <span class='comment'># check consistency
 </span>  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>DataError</span> <span class='kw'>if</span> <span class='ivar'>@meta</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-  <span class='kw'>if</span> <span class='ivar'>@name</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>!=</span> <span class='ivar'>@meta</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gm_id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='kw'>then</span>
+  <span class='kw'>if</span> <span class='ivar'>@name</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>!=</span> <span class='ivar'>@meta</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gm_id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
     <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='ivar'>@meta</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_raise'>raise</span> <span class='const'>DataError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Error: Internal inconsistency on </span><span class='embexpr_beg'>#{</span><span class='ivar'>@name</span><span class='rbrace'>}</span><span class='tstring_content'> vs </span><span class='embexpr_beg'>#{</span><span class='ivar'>@meta</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>gm_id</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
@@ -822,17 +822,17 @@
       <pre class="lines">
 
 
-52
 53
 54
 55
 56
 57
 58
-59</pre>
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_mail'>mail</span>
   <span class='kw'>if</span> <span class='ivar'>@mail</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -891,12 +891,12 @@
       <pre class="lines">
 
 
-75
 76
-77</pre>
+77
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_mail_path'>mail_path</span>
   <span class='ivar'>@path</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.eml</span><span class='tstring_end'>&quot;</span></span>
@@ -950,12 +950,12 @@
       <pre class="lines">
 
 
-81
 82
-83</pre>
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_meta_path'>meta_path</span>
   <span class='ivar'>@path</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>.meta</span><span class='tstring_end'>&quot;</span></span>
@@ -1009,12 +1009,12 @@
       <pre class="lines">
 
 
-69
 70
-71</pre>
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 69</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_thread_ids'>thread_ids</span>
   <span class='ivar'>@meta</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>thread_ids</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -1029,9 +1029,9 @@
 </div>
 
     <div id="footer">
-  Generated on Wed Oct 31 13:51:01 2012 by
+  Generated on Mon Dec  3 23:27:32 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.3 (ruby-1.9.3).
+  0.8.2.1 (ruby-1.9.3).
 </div>
 
   </body>

@@ -6,7 +6,7 @@
 <title>
   Class: GMail::Index
   
-    &mdash; Documentation by YARD 0.8.3
+    &mdash; Documentation by YARD 0.8.2.1
   
 </title>
 
@@ -386,6 +386,54 @@ Maildir</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#last_sync-instance_method" title="#last_sync (instance method)">- (Time) <strong>last_sync</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Return the time of the last sync through the 'last_sync' property.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#last_sync%3D-instance_method" title="#last_sync= (instance method)">- (Object) <strong>last_sync=</strong>(value) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Set the last_sync property in the db.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#present%3F-instance_method" title="#present? (instance method)">- (TrueClass|FalseClass) <strong>present?</strong>(gm_id) </a>
     
 
@@ -426,6 +474,30 @@ Maildir</p>
   
     <span class="summary_desc"><div class='inline'>
 <p>Returns the size of the db.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#version-instance_method" title="#version (instance method)">- (Fixnum) <strong>version</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the db version.</p>
 </div></span>
   
 </li>
@@ -672,15 +744,15 @@ Maildir</p>
       <pre class="lines">
 
 
-50
-51
-52
-53
 54
-55</pre>
+55
+56
+57
+58
+59</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id identifier rubyid_gm_id'>gm_id</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_gm_id'>gm_id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -755,13 +827,13 @@ Maildir</p>
       <pre class="lines">
 
 
-60
-61
-62
-63</pre>
+64
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='op'>[]=</span><span class='lparen'>(</span><span class='id identifier rubyid_gm_id'>gm_id</span><span class='comma'>,</span> <span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='id identifier rubyid_gm_id'>gm_id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -805,7 +877,11 @@ Maildir</p>
 33
 34
 35
-36</pre>
+36
+37
+38
+39
+40</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 29</span>
@@ -816,6 +892,10 @@ Maildir</p>
   <span class='kw'>end</span>
   <span class='kw'>if</span> <span class='ivar'>@db</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gmdb</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
     <span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Warning: gmdb not found...</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='kw'>if</span> <span class='ivar'>@db</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>db_version</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>2</span><span class='tstring_end'>&quot;</span></span>
+    <span class='ivar'>@db</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>last_sync</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span>
+    <span class='ivar'>@db</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>db_version</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>3</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -867,12 +947,12 @@ Maildir</p>
       <pre class="lines">
 
 
-85
-86
-87</pre>
+101
+102
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 101</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gmdb'>gmdb</span>
   <span class='ivar'>@db</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gmdb</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
@@ -928,12 +1008,12 @@ Maildir</p>
       <pre class="lines">
 
 
-91
-92
-93</pre>
+107
+108
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 91</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 107</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gmdb='>gmdb=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='ivar'>@db</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>gmdb</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_end'>&quot;</span></span>
@@ -987,12 +1067,12 @@ Maildir</p>
       <pre class="lines">
 
 
-67
-68
-69</pre>
+71
+72
+73</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 71</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_last_id'>last_id</span>
   <span class='ivar'>@db</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>last_id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
@@ -1048,15 +1128,135 @@ Maildir</p>
       <pre class="lines">
 
 
-73
-74
-75</pre>
+77
+78
+79</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 77</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_last_id='>last_id=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
   <span class='ivar'>@db</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>last_id</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="last_sync-instance_method">
+  
+    - (<tt>Time</tt>) <strong>last_sync</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Return the time of the last sync through the 'last_sync' property</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Time</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p><tt>last_sync</tt> property from the db</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+83
+84
+85</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 83</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_last_sync'>last_sync</span>
+  <span class='ivar'>@db</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>last_sync</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="last_sync=-instance_method">
+  
+    - (<tt>Object</tt>) <strong>last_sync=</strong>(value) 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Set the last_sync property in the db</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>value</span>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>set the <tt>last_id</tt> property to <tt>value</tt></p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+89
+90
+91</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 89</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_last_sync='>last_sync=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+  <span class='ivar'>@db</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>last_sync</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_value'>value</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1127,14 +1327,14 @@ Maildir</p>
       <pre class="lines">
 
 
-41
-42
-43
-44
-45</pre>
+45
+46
+47
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_present?'>present?</span><span class='lparen'>(</span><span class='id identifier rubyid_gm_id'>gm_id</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>false</span> <span class='kw'>if</span> <span class='id identifier rubyid_gm_id'>gm_id</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
@@ -1190,15 +1390,74 @@ Maildir</p>
       <pre class="lines">
 
 
-79
-80
-81</pre>
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 79</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 95</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_size'>size</span>
   <span class='ivar'>@db</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="version-instance_method">
+  
+    - (<tt>Fixnum</tt>) <strong>version</strong> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the db version</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>version number</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+113
+114
+115</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/gmail/index.rb', line 113</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_version'>version</span>
+  <span class='ivar'>@db</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>db_version</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>||</span> <span class='int'>0</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1210,9 +1469,9 @@ Maildir</p>
 </div>
 
     <div id="footer">
-  Generated on Wed Oct 31 13:51:01 2012 by
+  Generated on Mon Dec  3 23:27:32 2012 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.3 (ruby-1.9.3).
+  0.8.2.1 (ruby-1.9.3).
 </div>
 
   </body>
