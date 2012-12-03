@@ -2,7 +2,7 @@
 #
 # @abstract Wrapper for the gmail-backup.sh shell script
 #
-# $Id: gmail-backup,v 00a02a5a3fb6 2012/12/03 17:59:20 roberto $
+# $Id: gmail-backup,v d5a6e7dfc1e1 2012/12/03 19:18:11 roberto $
 
 require "optparse"
 
@@ -41,7 +41,7 @@ Revision v#{ID}
     opts.on("-d", "--db-dir", "Use that as main gmvault directory") do |opt_db|
       base = opt_db
     end
-    opts.on("-a", "--addr", "Use that as email address to sync") do |opt_db|
+    opts.on("-a", "--addr", "Use that as email address to sync") do |opt_addr|
       email = opt_addr
     end
     opts.on("-r", "--resume", "Resume failed transfers") do
