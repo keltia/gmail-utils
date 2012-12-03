@@ -2,14 +2,70 @@
 #
 # @abstract Wrapper for the gmail-backup.sh shell script
 #
-# $Id: gmail-backup,v e07fe29320eb 2012/12/03 14:40:06 roberto $
+# $Id: gmail-backup,v 00a02a5a3fb6 2012/12/03 17:59:20 roberto $
+
+require "optparse"
 
 require "gmail/core"
-require "gmvault"
+require "gmail/version"
+require "gmvault/config"
 
-email = GmVault::Config.list[0]
-base = GmVault::Config::DEF_DB
+OPTS = "-o --no-compression -t quick"
+BASE = ENV["HOME"] + "/Downloads/gmvault-v1.7-beta/bin/"
+GMVAULT = ENV["HOME"] + "/Mail/gmvault-db"
+TSOCKS = "sh"
 
-puts("#{email} - #{base}")
-me = File.basename(__FILE__ + ".sh")
-exec("/bin/sh", "-c", GMail::Utils.share_directory + "/#{me}", email.to_s, base.to_s, *ARGV)
+ID = GMail::Utils::VERSION
+MYNAME = File.basename($0)
+
+def main(argv)
+  do_resume = false
+  do_tsocks = false
+
+  email = GmVault::Config.list[0]
+  base = GmVault::Config::DEF_DB
+
+  usage = <<-"EOTEXT"
+Usage: #{MYNAME} [-hrt] [-a ADDR] [-d BASE]
+  EOTEXT
+
+  banner = <<-"EOTEXT"
+#{MYNAME}
+Revision v#{ID}
+
+#{usage}
+  EOTEXT
+
+  argv.options do |opts|
+    opts.banner = banner
+    opts.on("-d", "--db-dir", "Use that as main gmvault directory") do |opt_db|
+      base = opt_db
+    end
+    opts.on("-a", "--addr", "Use that as email address to sync") do |opt_db|
+      email = opt_addr
+    end
+    opts.on("-r", "--resume", "Resume failed transfers") do
+      do_resume = true
+    end
+    opts.on("-t", "--tsocks", "Use tsocks to connect") do
+      do_tsocks = true
+    end
+    opts.on("-h", "Help", "Display this usage") do
+      puts banner
+      return 255
+    end
+    opts.parse!
+  end
+
+  argv.options = nil
+
+  Dir.chdir(BASE) do
+    cmd = do_tsocks ? "tsocks" : "/bin/sh"
+    cmd = "#{cmd} ./gmvault sync #{OPTS} #{do_resume ? '--resume' : ''} -d  #{base} #{email}"
+    puts(cmd)
+    exec(cmd)
+    puts("NOT REACHED")
+  end
+end # -- main
+
+exit(main(ARGV) || 1)
