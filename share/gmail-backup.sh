@@ -4,28 +4,24 @@
 #
 # TODO: to be rewritten in Ruby
 #
-# $Id: gmail-backup.sh,v dbdfe7377aac 2012/12/03 13:48:59 roberto $
+# $Id: gmail-backup.sh,v c132a5c252dc 2012/12/03 14:39:07 roberto $
 
 OPTS="-o --no-compression -t quick"
 BASE="$HOME/Downloads/gmvault-v1.7-beta/bin/"
 GMVAULT="$HOME/Mail/gmvault-db"
 TSOCKS="sh"
-args=`getopt hrt $*`
+args=`getopt rt $*`
 errcode=$?
 if [ $errcode != 0 ]; then
-	echo "Usage $0 [-hrt] email directory"
+	echo "Usage $0 [-rt] email directory"
 	exit 2
 fi
 
-set -- $args
+set $args
 for i in $*
 do
 	case "$i"
 	in
-	    -h)
-	    echo "Backup for GMail"
-	    echo "$0 [rt] addr base_directory"
-	    exit 1
 		-r)
 		echo 'Resume'
 		OPTS="$OPTS --resume"
