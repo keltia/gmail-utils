@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net> 
 #
-# $Id: tags.rb,v e32a7944ce84 2012/12/06 14:02:16 roberto $
+# $Id: tags.rb,v b355ddc30947 2012/12/06 14:04:02 roberto $
 
 require "gmail/tag"
 
@@ -46,6 +46,7 @@ module GMail
       else
         @list[GMail::Tag.new(e)] += 1
       end
+      self
     end
 
     # add

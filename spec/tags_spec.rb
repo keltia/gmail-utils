@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net> 
 #
-# $Id: tags_spec.rb,v e32a7944ce84 2012/12/06 14:02:16 roberto $
+# $Id: tags_spec.rb,v b355ddc30947 2012/12/06 14:04:02 roberto $
 
 require "rspec"
 
@@ -33,9 +33,23 @@ describe GMail::TagList do
 
   describe "#add" do
     it "should add one element to the list" do
-      @tl.add(@t)
-      @tl.list.should eq(@tlkl)
-      @tl.include?(@t).should be_true
+      @tl.add(@t1)
+      @tl.keys.should eq(@tl1.keys)
+      @tl.include?(@t1).should be_true
+    end
+
+    it "adding an already present Tag should increment the counter" do
+      @tl.add(@t1)
+      @tl.keys.should eq(@tl2.keys)
+      @tl.list[@t1].should eq(2)
+    end
+  end
+
+  describe "#<<" do
+    it "should add one element to the list" do
+      @tl << @t1
+      @tl.keys.should eq(@tl1.keys)
+      @tl.include?(@t1).should be_true
     end
   end
 
