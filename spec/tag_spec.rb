@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: tag_spec.rb,v f1029ea0acc1 2012/10/01 23:17:16 roberto $
+# $Id: tag_spec.rb,v 1e1c49ee1b7c 2012/12/06 13:03:40 roberto $
 
 require "rspec"
 require "gmail"
@@ -65,6 +65,13 @@ describe GMail::Tag do
     it "should match the correct tag" do
       @tag1.match("Perso/Foo").should be_false
       @tag2.match("Perso/Foo").should_not be_false
+    end
+  end
+
+  describe "#<=>" do
+    it "should compare labels" do
+      @tag1.<=>(@tag2).should be_false
+      @tag1.<=>(@tag1).should be_true
     end
   end
 end

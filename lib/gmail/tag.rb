@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_TAG_ID = "$Id: tag.rb,v 1900df32c210 2012/12/03 22:28:26 roberto $"
+VCS_TAG_ID = "$Id: tag.rb,v 1e1c49ee1b7c 2012/12/06 13:03:40 roberto $"
 
 module GMail
 
@@ -11,6 +11,7 @@ module GMail
   # Used when creating a mailbox based on the tag itself, after replacing the +"/"+ used
   # by GMail by +"-"+
   class Tag
+    include Comparable
     # label tag's name
     attr_reader :label
 
@@ -45,6 +46,12 @@ module GMail
       flag = false
       t.each{|e| flag = @label == e ? true : false }
       flag
+    end
+
+    # comparizon
+    # @param [GMail::Tag] e element to compare to
+    def <=>(e)
+      @list <=> e.label
     end
   end # -- Tag
 end # -- GMail
