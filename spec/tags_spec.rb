@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net> 
 #
-# $Id: tags_spec.rb,v 97488c700e02 2012/12/05 00:12:56 roberto $
+# $Id: tags_spec.rb,v 9d3a6190d6e2 2012/12/06 10:03:31 roberto $
 
 require "rspec"
 
@@ -13,6 +13,8 @@ describe GMail::TagList do
   before(:all) do
     @tl = GMail::TagList.new
     @t = GMail::Tag.new("Foo")
+    @tlk = [ @t ]
+    @tlkl = { "Foo" => 1 }
   end
 
   describe "#initialize" do
