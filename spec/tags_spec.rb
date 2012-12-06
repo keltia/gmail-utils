@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net> 
 #
-# $Id: tags_spec.rb,v b355ddc30947 2012/12/06 14:04:02 roberto $
+# $Id: tags_spec.rb,v 2a0e0435ebdc 2012/12/06 14:05:07 roberto $
 
 require "rspec"
 
@@ -10,7 +10,7 @@ require "gmail/tags"
 
 describe GMail::TagList do
 
-  before(:all) do
+  before(:each) do
     @tl = GMail::TagList.new
     @t = GMail::Tag.new("Foo")
     @tlk = [ @t ]
