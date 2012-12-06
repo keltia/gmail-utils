@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net> 
 #
-# $Id: tags.rb,v b355ddc30947 2012/12/06 14:04:02 roberto $
+# $Id: tags.rb,v 1b72cc5227d7 2012/12/06 14:04:39 roberto $
 
 require "gmail/tag"
 
@@ -53,6 +53,12 @@ module GMail
     # @param [GMail::Tag] e new tag to insert
     def add(e)
       self.<<(e)
+    end
+
+    # include?
+    # @param [GMail::Tag|String] elem check if elem is present in the list
+    def include?(elem)
+      @list.include?(elem)
     end
 
     # length
