@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net> 
 #
-# $Id: tags.rb,v 97488c700e02 2012/12/05 00:12:56 roberto $
+# $Id: tags.rb,v 7f48d095873f 2012/12/06 10:04:19 roberto $
 
 module GMail
 # Represent a bag of tags backed by a TC db
@@ -41,6 +41,12 @@ module GMail
     # @return [Fixnum] list length
     def length
       @list.length
+    end
+
+    # keys
+    # @return [Array] list of all keys
+    def keys
+      @list.keys
     end
   end # -- TagList
 end # -- GMail
