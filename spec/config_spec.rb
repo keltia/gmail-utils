@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: config_spec.rb,v b2bc80da9142 2012/12/06 17:13:41 roberto $
+# $Id: config_spec.rb,v 89368b984cb2 2012/12/06 17:14:30 roberto $
 
 require 'rspec'
 require 'gmvault'
@@ -16,12 +16,12 @@ describe GmVault::Config do
     @cfg = GmVault::Config.new(TEST_DIR)
   end
 
-  describe "#initialize" do
-    it "should not be nil" do
+  describe '#initialize' do
+    it 'should not be nil' do
       @cfg.should_not be_nil
     end
 
-    it "should create a Config object" do
+    it 'should create a Config object' do
       @cfg.should be_an_instance_of(GmVault::Config)
     end
 
@@ -30,8 +30,8 @@ describe GmVault::Config do
     end
   end
 
-  describe "#list" do
-    it "should return an Array object" do
+  describe '#list' do
+    it 'should return an Array object' do
       @cfg.list.should be_an_instance_of(Array)
     end
 
@@ -40,17 +40,17 @@ describe GmVault::Config do
     end
   end
 
-  describe ".list" do
-    it "should return an Array object" do
+  describe '.list' do
+    it 'should return an Array object' do
       GmVault::Config.list(TEST_DIR).should be_an_instance_of(Array)
     end
 
-    it "should get all the configured addresses" do
+    it 'should get all the configured addresses' do
       GmVault::Config.list(TEST_DIR).should eq([FAKE_ADDR])
     end
   end
 
-  describe ".recent" do
-    it "should get the most recent used address"
+  describe '.recent' do
+    it 'should get the most recent used address'
   end
 end
