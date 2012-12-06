@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net> 
 #
-# $Id: tags_spec.rb,v 2a0e0435ebdc 2012/12/06 14:05:07 roberto $
+# $Id: tags_spec.rb,v a7be71c82634 2012/12/06 14:05:42 roberto $
 
 require "rspec"
 
@@ -12,9 +12,21 @@ describe GMail::TagList do
 
   before(:each) do
     @tl = GMail::TagList.new
-    @t = GMail::Tag.new("Foo")
-    @tlk = [ @t ]
-    @tlkl = { "Foo" => 1 }
+
+    @t1 = GMail::Tag.new("Foo")
+    @t2 = GMail::Tag.new("Bar/Baz")
+    @t3 = GMail::Tag.new("Bip")
+
+    @tl1 = @tl.dup.add(@t1)
+    @tl2 = @tl1.dup.add(@t2)
+    @tl3 = @tl2.dup.add(@t3)
+
+    @tlk1 = [ @t1 ]
+    @tlk2 = [ @t1, @t2 ]
+    @tlk3 = [ @t1, @t2, @t3 ]
+
+    @tll1 = { @t => 1 }
+    @tll2 = { @t => 2 }
   end
 
   describe "#initialize" do
@@ -55,15 +67,16 @@ describe GMail::TagList do
 
   describe "include?" do
     it "should return true for an element of the list" do
-      @tl.include?(@t).should be_true
+      @tl.include?(@t1).should be_true
     end
   end
 
   describe "#keys" do
     it "should return all keys." do
+      @tl.add(@t1)
       @tl.keys.should be_an_instance_of(Array)
       @tl.keys.should_not be_nil
-      @tl.keys.should eq(@tlk)
+      @tl.keys.should eq(@tlk3)
     end
   end
 
