@@ -1,8 +1,8 @@
-# tags_spec.rb
+# taglist_spec.rb
 #
 # @author Ollivier Robert <roberto@keltia.net> 
 #
-# $Id: tags_spec.rb,v faaf54365a90 2012/12/06 17:14:45 roberto $
+# $Id$
 
 require 'rspec'
 

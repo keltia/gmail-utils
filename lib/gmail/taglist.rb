@@ -1,8 +1,8 @@
-# tags.rb
+# taglist.rb
 #
 # @author Ollivier Robert <roberto@keltia.net> 
 #
-# $Id: tags.rb,v c4e297bd63db 2012/12/06 15:07:09 roberto $
+# $Id$
 
 require 'gmail/tag'
 
