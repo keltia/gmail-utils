@@ -2,7 +2,7 @@
 #
 # @abstract Wrapper for the gmail-backup.sh shell script
 #
-# $Id: gmail-backup,v 1900df32c210 2012/12/03 22:28:26 roberto $
+# $Id: gmail-backup,v 3429370b5e21 2012/12/06 14:43:45 roberto $
 
 require "optparse"
 
@@ -15,7 +15,7 @@ BASE = ENV["HOME"] + "/Downloads/gmvault-v1.7-beta/bin/"
 GMVAULT = ENV["HOME"] + "/Mail/gmvault-db"
 TSOCKS = "sh"
 
-ID = GMail::Utils::VERSION
+GMID = GMail::Utils::VERSION
 MYNAME = File.basename($0)
 
 # Entry point
@@ -33,7 +33,7 @@ Usage: #{MYNAME} [-hrt] [-a ADDR] [-d BASE]
 
   banner = <<-"EOTEXT"
 #{MYNAME}
-Revision v#{ID}
+Revision v#{GMID}
 
 #{usage}
   EOTEXT
