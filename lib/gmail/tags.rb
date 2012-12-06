@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net> 
 #
-# $Id: tags.rb,v 6869d2bfca55 2012/12/06 13:14:14 roberto $
+# $Id: tags.rb,v e32a7944ce84 2012/12/06 14:02:16 roberto $
 
 require "gmail/tag"
 
@@ -20,7 +20,22 @@ module GMail
 
     # iterator
     def each
-      @list.each{|e| yield e}
+      @list.each_key{|e| yield e}
+    end
+
+    # []
+    # @param [GMail::Tag] k tag to get the counter of
+    # @return [Fixnum] counter
+    def [](k)
+      @list[k]
+    end
+
+    # []=
+    # @param [GMail::Tag] k tag to get the counter of
+    # @param [Fixnum] v value to set the counter to
+    # @return [Fixnum] counter
+    def []=(k, v)
+      @list[k] = v
     end
 
     # <<

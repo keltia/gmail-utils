@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net> 
 #
-# $Id: tags_spec.rb,v 5f4aa7dd0f8d 2012/12/06 13:14:56 roberto $
+# $Id: tags_spec.rb,v e32a7944ce84 2012/12/06 14:02:16 roberto $
 
 require "rspec"
 
@@ -54,8 +54,33 @@ describe GMail::TagList do
   end
 
   describe "#each" do
-    it "iterate on all members of @list"
-    it "each element should of class Tag"
+    it "iterate on all members of @list" do
+      t = Array.new
+      @tl3.each do |e|
+        t << e
+      end
+      t.should eq(@tlk3)
+    end
+
+    it "each element should of class Tag" do
+      @tl3.each do |t|
+        t.should be_an_instance_of(GMail::Tag)
+      end
+    end
+  end
+
+  describe "#[]" do
+    it "should return the counter for the given tag" do
+      @tl3 << @t1
+      @tl3[@t1].should eq(2)
+    end
+  end
+
+  describe "#[]=" do
+    it "should set the given counter" do
+      @tl3[@t1] = 42
+      @tl3[@t1].should eq(42)
+    end
   end
 
   describe "#length" do
