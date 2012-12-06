@@ -1,2 +1,131 @@
 #! /usr/bin/env ruby
 #
+# @abstract Find all mail downloaded by gmvault from any given GMail account
+#   and create a list of all seen tags
+#
+# @author Ollivier Robert <roberto@keltia.net>
+#
+# Read all .eml with a given tag in .meta.  Save everything in a TC-backed DB
+# in the main gmvault directory.
+#
+# @version $Id: taglist,v e415b2a46a67 2012/12/06 22:52:37 roberto $
+
+# VCS ID
+MYNAME = File.basename($0)
+VCS_ID = '$Id: taglist,v e415b2a46a67 2012/12/06 22:52:37 roberto $'
+
+require 'date'
+require 'time'
+require 'json'
+require 'optparse'
+
+# Default config
+#
+
+class DataError < Exception; end
+
+require 'gmail'
+
+# Starting point
+#
+# @param [Array] argv
+def main(argv)
+
+  usage = <<-"EOTEXT"
+Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
+  EOTEXT
+
+  banner = <<-"EOTEXT"
+#{MYNAME} v#{GMail::Utils::VERSION}
+
+#{usage}
+  EOTEXT
+
+  argv.options do |opts|
+    opts.banner = banner
+    opts.on('-b', '--base=DIR', 'Use this directory to create mailboxes') do
+      |opt_base|
+      my_base = opt_base
+    end
+    opts.on('-t', '--tag=TAG', 'Use the following TAG ') do
+      |opt_tag|
+      my_tag = opt_tag
+    end
+    opts.on('-h', 'Help', 'Display this usage') do
+      puts banner
+      return 255
+    end
+    opts.parse!
+  end
+
+  argv.options = nil
+  top_dir = argv.shift
+
+  index = GMail::TagList.new(gm_dir)
+  start = index.last_id.to_i
+  last_id = start
+  puts("Opening index, last id is #{last_id}, #{index.size} mails present, db version #{index.version}")
+  puts("Last synced on #{index.last_sync}")
+
+  # Check arguments and the directory that may be stored in the index
+  #
+  if top_dir.nil?
+    if index.gmdb.nil?
+      $stderr.puts('Error: directory where to load mail from must be specified')
+      return(1)
+    else
+      top_dir = index.gmdb
+    end
+  else
+    index.gmdb = top_dir
+  end
+
+  puts("Main GmVault directory is #{index.gmdb}")
+  puts('+: already seen / N: new tag / .: unseen, no match')
+  Dir.chdir(top_dir) do
+
+    added = 0
+    skipped = 0
+    already = 0
+    t1 = Time.now
+    t2 = 0
+    begin
+      Dir['**/*.meta'].each do |m|
+        #
+        # In order to avoid opening and reading lots of file, use the fact that filenames are gm_ids
+        #
+        f_m = File.basename(m).split(%r{\.})[0]
+        if f_m.to_i <= start
+          skipped += 1
+        else
+          # load metadata
+          #
+          gm = GMail::Entity.new(m)
+
+          # Skip anything invalid
+          #
+          next if gm.nil?
+
+          last_id = gm.gm_id.to_i
+        end
+      end
+      t2 = Time.now
+      # Update 'last_id' field in db
+      #
+      index.last_id = last_id
+      index.last_sync = Time.now
+    rescue => msg
+      puts("Interrupted: #{msg}")
+    end
+
+    puts <<"EOTEXT"
+
+Total messages in #{tag}:
+  #{maildir.list(:cur).length} old, #{maildir.list(:new).length} new, #{added} added in #{t2 - t1} s, #{already} already there, #{skipped} skipped.
+EOTEXT
+  end
+
+  0
+end # -- main
+
+exit(main(ARGV) || 1)
