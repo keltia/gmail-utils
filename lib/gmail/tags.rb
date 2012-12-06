@@ -2,9 +2,9 @@
 #
 # @author Ollivier Robert <roberto@keltia.net> 
 #
-# $Id: tags.rb,v 1b72cc5227d7 2012/12/06 14:04:39 roberto $
+# $Id: tags.rb,v c4e297bd63db 2012/12/06 15:07:09 roberto $
 
-require "gmail/tag"
+require 'gmail/tag'
 
 module GMail
 # Represent a bag of tags backed by a TC db

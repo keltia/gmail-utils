@@ -2,6 +2,6 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmvault.rb,v e99d7c820730 2012/12/03 13:10:23 roberto $
+# $Id: gmvault.rb,v c4e297bd63db 2012/12/06 15:07:09 roberto $
 
-require "gmvault/config"
+require 'gmvault/config'

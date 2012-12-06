@@ -2,13 +2,13 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: config_spec.rb,v e99d7c820730 2012/12/03 13:10:23 roberto $
+# $Id: config_spec.rb,v c4e297bd63db 2012/12/06 15:07:09 roberto $
 
-require "rspec"
-require "gmvault"
+require 'rspec'
+require 'gmvault'
 
-FAKE_ADDR="keltia+fake@gmail.com"
-TEST_DIR="test/dot.gmvault"
+FAKE_ADDR='keltia+fake@gmail.com'
+TEST_DIR='test/dot.gmvault'
 
 describe GmVault::Config do
   attr_reader :list

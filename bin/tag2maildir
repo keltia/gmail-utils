@@ -8,29 +8,29 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v abb9c5b2fd7b 2012/11/25 14:51:13 roberto $
+# @version $Id: tag2maildir,v c4e297bd63db 2012/12/06 15:07:09 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = "$Id: tag2maildir,v abb9c5b2fd7b 2012/11/25 14:51:13 roberto $"
+VCS_ID = '$Id: tag2maildir,v c4e297bd63db 2012/12/06 15:07:09 roberto $'
 
-require "date"
-require "time"
-require "json"
-require "optparse"
+require 'date'
+require 'time'
+require 'json'
+require 'optparse'
 
 # Non standard packages
 #
-require "mail"
-require "maildir"
+require 'mail'
+require 'maildir'
 
 # Default config
 #
-MYBASE = ENV["HOME"] + "/Maildir"
+MYBASE = ENV['HOME'] + '/Maildir'
 
 class DataError < Exception; end
 
-require "gmail"
+require 'gmail'
 
 # Starting point
 #
@@ -51,18 +51,18 @@ Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
 
   argv.options do |opts|
     opts.banner = banner
-    opts.on("-b", "--base=DIR", "Use this directory to create mailboxes") do
+    opts.on('-b', '--base=DIR', 'Use this directory to create mailboxes') do
       |opt_base|
       my_base = opt_base
     end
-    opts.on("-d", "--debug", "Don't post directly - DEBUG mode") do
+    opts.on('-d', '--debug', 'Don\'t post directly - DEBUG mode') do
       $debug = true
     end
-    opts.on("-t", "--tag=TAG", "Use the following TAG ") do
+    opts.on('-t', '--tag=TAG', 'Use the following TAG ') do
       |opt_tag|
       my_tag = opt_tag
     end
-    opts.on("-h", "Help", "Display this usage") do
+    opts.on('-h', 'Help', 'Display this usage') do
       puts banner
       return 255
     end
@@ -87,7 +87,7 @@ Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
   #
   if top_dir.nil?
     if index.gmdb.nil?
-      $stderr.puts("Error: directory where to load mail from must be specified")
+      $stderr.puts('Error: directory where to load mail from must be specified')
       return(1)
     else
       top_dir = index.gmdb
@@ -99,12 +99,12 @@ Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
   # XXX deprecated the -t option and just requiring the tag?
   #
   if my_tag.nil?
-    $stderr.puts("Error: the -t TAG option must be specified")
+    $stderr.puts('Error: the -t TAG option must be specified')
     return(1)
   end
 
   puts("Main GmVault directory is #{index.gmdb}")
-  puts("+: already seen / H: already in index / T: match tag / .: unseen, no match")
+  puts('+: already seen / H: already in index / T: match tag / .: unseen, no match')
   Dir.chdir(top_dir) do
 
     added = 0
@@ -113,7 +113,7 @@ Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
     t1 = Time.now
     t2 = 0
     begin
-      Dir["**/*.meta"].each do |m|
+      Dir['**/*.meta'].each do |m|
         #
         # In order to avoid opening and reading lots of file, use the fact that filenames are gm_ids
         #
@@ -136,18 +136,18 @@ Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
             #
             if index.present?(gm.gm_id)
               already += 1
-              print("H")
+              print('H')
             else
-              gm.mail.header["X-Label"] = gm.tags.join(',')
+              gm.mail.header['X-Label'] = gm.tags.join(',')
               msg = maildir.add(gm.mail)
               index[gm.gm_id] = msg.key
               added += 1
-              print("T")
+              print('T')
             end
           else
             # no match
             #
-            print(".")
+            print('.')
           end
           last_id = gm.gm_id.to_i
         end

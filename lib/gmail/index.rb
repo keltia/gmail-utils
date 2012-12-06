@@ -2,10 +2,10 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMI_ID = "$Id: index.rb,v 1900df32c210 2012/12/03 22:28:26 roberto $"
+VCS_GMI_ID = '$Id: index.rb,v c4e297bd63db 2012/12/06 15:07:09 roberto $'
 
-require "rufus/tokyo"
-require "gmail/version"
+require 'rufus/tokyo'
+require 'gmail/version'
 
 # Main namespace
 module GMail
@@ -27,15 +27,15 @@ module GMail
 
     # Check db version and upgrade it if needed
     def check_db
-      if @db["db_version"].nil?
-          @db["db_version"] = GMail::Utils::DB_VERSION
+      if @db['db_version'].nil?
+          @db['db_version'] = GMail::Utils::DB_VERSION
       end
-      if @db["gmdb"].nil?
-        puts("Warning: gmdb not found...")
+      if @db['gmdb'].nil?
+        puts('Warning: gmdb not found...')
       end
-      if @db["db_version"] == "2"
-        @db["last_sync"] = Time.now
-        @db["db_version"] = "3"
+      if @db['db_version'] == '2'
+        @db['last_sync'] = Time.now
+        @db['db_version'] = '3'
       end
     end
 
@@ -69,25 +69,25 @@ module GMail
     # Return the last_id from the db
     # @return [String] +last_id'+property from the db
     def last_id
-      @db["last_id"]
+      @db['last_id']
     end
 
     # Set the last_id property in the db
     # @param [Fixnum] value set the +last_id+ property to +value+
     def last_id=(value)
-      @db["last_id"] = value
+      @db['last_id'] = value
     end
 
     # Return the time of the last sync through the 'last_sync' property
     # @return [Time] +last_sync+ property from the db
     def last_sync
-      @db["last_sync"]
+      @db['last_sync']
     end
 
     # Set the last_sync property in the db
     # @param [Fixnum] value set the +last_id+ property to +value+
     def last_sync=(value)
-      @db["last_sync"] = value
+      @db['last_sync'] = value
     end
 
     # Returns the size of the db
@@ -99,19 +99,19 @@ module GMail
     # Returns the path to the gmvault db
     # @return [String] path to gmvault db
     def gmdb
-      @db["gmdb"]
+      @db['gmdb']
     end
 
     # Set the gmvault db path in the index
     # @param [String] value path to the gmvault db
     def gmdb=(value)
-      @db["gmdb"] = value || ""
+      @db['gmdb'] = value || ''
     end
 
     # Returns the db version
     # @return [Fixnum] version number
     def version
-      @db["db_version"].to_i || 0
+      @db['db_version'].to_i || 0
     end
   end
 end

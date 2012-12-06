@@ -2,11 +2,11 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = "$Id: entity.rb,v 1900df32c210 2012/12/03 22:28:26 roberto $"
+VCS_GMV_ID = '$Id: entity.rb,v c4e297bd63db 2012/12/06 15:07:09 roberto $'
 
 # Non-standard packages
 #
-require "json"
+require 'json'
 
 # Main namespace
 module GMail
@@ -21,7 +21,7 @@ module GMail
     # @param filename name of the file to open
     def initialize(filename)
       @path, ext = filename.split(/\./)
-      raise(ArgumentError, "File should end in .meta: #{filename}") if ext != "meta"
+      raise(ArgumentError, "File should end in .meta: #{filename}") if ext != 'meta'
       raise(ArgumentError, "File does not exist #{filename}") if not File.exists?(filename)
       @name = File.basename(@path)
       @mail = nil
@@ -38,14 +38,14 @@ module GMail
 
       # check consistency
       raise DataError if @meta.nil?
-      if @name.to_i != @meta["gm_id"]
+      if @name.to_i != @meta['gm_id']
         $stderr.puts(@meta)
         raise DataError, "Error: Internal inconsistency on #{@name} vs #{@meta['gm_id']}"
       end
 
       # Remove "internal tags"
       @tags = @meta['labels'].delete_if{|e| e =~ /^\\/ }
-      @meta["gm_id"]
+      @meta['gm_id']
     end
 
     # Load and return the mail associated with the given metadata
@@ -62,25 +62,25 @@ module GMail
     # Return the GMail ID
     # @return [String] gm_id
     def gm_id
-      @meta["gm_id"].to_s
+      @meta['gm_id'].to_s
     end
 
     # Return the GMail thread IDs
     # @return [String] thread_ids
     def thread_ids
-      @meta["thread_ids"].to_s
+      @meta['thread_ids'].to_s
     end
 
     # Return the full path to the mail
     # @return [String] returns the full filename to the mail itself
     def mail_path
-      @path + ".eml"
+      @path + '.eml'
     end
 
     # Return the full path to the metadata file
     # @return [String] returns full filename of the metadata
     def meta_path
-      @path + ".meta"
+      @path + '.meta'
     end
   end # -- Entity
 end # -- GMail

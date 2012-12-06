@@ -4,11 +4,11 @@
 #
 # XXX Assume we use OAuth for all accounts
 
-VCS_CFG_ID = "$Id: config.rb,v 1900df32c210 2012/12/03 22:28:26 roberto $"
+VCS_CFG_ID = '$Id: config.rb,v c4e297bd63db 2012/12/06 15:07:09 roberto $'
 
 # Non-standard packages
 #
-require "json"
+require 'json'
 
 
 # Define our configuration class
@@ -19,9 +19,9 @@ module GmVault
     attr_reader :path
 
     # Default location
-    BASE_DIR = ENV["HOME"] + "/.gmvault"
+    BASE_DIR = ENV['HOME'] + '/.gmvault'
     # Default maildb location
-    DEF_DB = ENV["HOME"] + "/Mail/gmvault-db"
+    DEF_DB = ENV['HOME'] + '/Mail/gmvault-db'
 
     # Constructor
     # @param [String] path path to the base directory for configuration
@@ -34,8 +34,8 @@ module GmVault
     def find_addrs
       @list = Array.new
       Dir.chdir(@path) do
-        Dir["**.oauth"].each do |m|
-          @list << m.split(".")[0..-2].join(".")
+        Dir['**.oauth'].each do |m|
+          @list << m.split('.')[0..-2].join('.')
         end
       end
       @list

@@ -2,10 +2,10 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: gmail.rb,v e6cace01acd5 2012/12/03 14:07:39 roberto $
+# $Id: gmail.rb,v c4e297bd63db 2012/12/06 15:07:09 roberto $
 
-require "gmail/core"
-require "gmail/tag"
-require "gmail/entity"
-require "gmail/index"
-require "gmail/version"
+require 'gmail/core'
+require 'gmail/tag'
+require 'gmail/entity'
+require 'gmail/index'
+require 'gmail/version'

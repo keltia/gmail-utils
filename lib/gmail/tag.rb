@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_TAG_ID = "$Id: tag.rb,v aee8018a103b 2012/12/06 13:12:35 roberto $"
+VCS_TAG_ID = '$Id: tag.rb,v c4e297bd63db 2012/12/06 15:07:09 roberto $'
 
 module GMail
 
