@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: config_spec.rb,v c4e297bd63db 2012/12/06 15:07:09 roberto $
+# $Id: config_spec.rb,v c9004a1aeb2a 2012/12/06 17:12:41 roberto $
 
 require 'rspec'
 require 'gmvault'
@@ -26,7 +26,7 @@ describe GmVault::Config do
       @cfg.should be_an_instance_of(GmVault::Config)
     end
 
-    it "should set the right members" do
+    it 'should set the right members' do
       @cfg.path.should eq(TEST_DIR)
     end
   end
@@ -36,7 +36,7 @@ describe GmVault::Config do
       @cfg.list.should be_an_instance_of(Array)
     end
 
-    it "should get all the configured addresses" do
+    it 'should get all the configured addresses' do
       @cfg.list.should eq([FAKE_ADDR])
     end
   end

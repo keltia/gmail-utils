@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: tag_spec.rb,v c4e297bd63db 2012/12/06 15:07:09 roberto $
+# $Id: tag_spec.rb,v c9004a1aeb2a 2012/12/06 17:12:41 roberto $
 
 require 'rspec'
 require 'gmail'
@@ -12,7 +12,7 @@ class DataError < Exception; end
 describe GMail::Tag do
 
   before(:all) do
-    @tags = [ "Perso", "Perso/Foo" ]
+    @tags = %w(Perso Perso/Foo)
     @tag1 = GMail::Tag.new(@tags[0])
     @tag2 = GMail::Tag.new(@tags[1])
   end

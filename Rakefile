@@ -1,6 +1,6 @@
 #!/usr/bin/env rake
 #
-# $Id: Rakefile,v c4e297bd63db 2012/12/06 15:07:09 roberto $
+# $Id: Rakefile,v c9004a1aeb2a 2012/12/06 17:12:41 roberto $
 
 require 'bundler/gem_tasks'
 
@@ -20,8 +20,8 @@ desc 'Report code statistics (KLOCs, etc) from the application'
 task :stats do
   require './rake/code_statistics'
   CodeStatistics.new(
-      ["Code", "lib"],
-      ["Units", "spec"]
+      %w(Code lib),
+      %w(Units spec)
   ).to_s
 end
 
