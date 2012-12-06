@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net> 
 #
-# $Id: tags_spec.rb,v c8ff3e443bcb 2012/12/06 10:04:30 roberto $
+# $Id: tags_spec.rb,v 5f4aa7dd0f8d 2012/12/06 13:14:56 roberto $
 
 require "rspec"
 
@@ -39,8 +39,10 @@ describe GMail::TagList do
     end
   end
 
-  describe "#<<" do
-    it "should add one element to the list"
+  describe "include?" do
+    it "should return true for an element of the list" do
+      @tl.include?(@t).should be_true
+    end
   end
 
   describe "#keys" do
