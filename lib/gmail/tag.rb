@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_TAG_ID = "$Id: tag.rb,v 1e1c49ee1b7c 2012/12/06 13:03:40 roberto $"
+VCS_TAG_ID = "$Id: tag.rb,v aee8018a103b 2012/12/06 13:12:35 roberto $"
 
 module GMail
 
@@ -48,10 +48,10 @@ module GMail
       flag
     end
 
-    # comparizon
+    # comparison
     # @param [GMail::Tag] e element to compare to
     def <=>(e)
-      @list <=> e.label
+      @label <=> e.label
     end
   end # -- Tag
 end # -- GMail
