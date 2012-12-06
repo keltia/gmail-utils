@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net> 
 #
-# $Id: tags_spec.rb,v c4e297bd63db 2012/12/06 15:07:09 roberto $
+# $Id: tags_spec.rb,v faaf54365a90 2012/12/06 17:14:45 roberto $
 
 require 'rspec'
 
@@ -25,8 +25,8 @@ describe GMail::TagList do
     @tlk2 = [ @t1, @t2 ]
     @tlk3 = [ @t1, @t2, @t3 ]
 
-    @tll1 = { @t => 1 }
-    @tll2 = { @t => 2 }
+    @tll1 = { @t1 => 1 }
+    @tll2 = { @t1 => 2 }
   end
 
   describe '#initialize' do
