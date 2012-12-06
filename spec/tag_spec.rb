@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: tag_spec.rb,v 1e1c49ee1b7c 2012/12/06 13:03:40 roberto $
+# $Id: tag_spec.rb,v 368e427f1664 2012/12/06 13:12:16 roberto $
 
 require "rspec"
 require "gmail"
@@ -70,8 +70,9 @@ describe GMail::Tag do
 
   describe "#<=>" do
     it "should compare labels" do
-      @tag1.<=>(@tag2).should be_false
-      @tag1.<=>(@tag1).should be_true
+      @tag1.<=>(@tag2).should eq(-1)
+      @tag2.<=>(@tag1).should eq(1)
+      @tag1.<=>(@tag1).should eq(0)
     end
   end
 end
