@@ -2,11 +2,11 @@
 #
 # @author Ollivier Robert <roberto@keltia.net> 
 #
-# $Id$
+# $Id: taglist_spec.rb,v a08712c41a07 2012/12/06 22:53:38 roberto $
 
 require 'rspec'
 
-require 'gmail/tags'
+require 'gmail/taglist'
 
 describe GMail::TagList do
 
