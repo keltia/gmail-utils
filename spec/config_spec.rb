@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: config_spec.rb,v c9004a1aeb2a 2012/12/06 17:12:41 roberto $
+# $Id: config_spec.rb,v b2bc80da9142 2012/12/06 17:13:41 roberto $
 
 require 'rspec'
 require 'gmvault'
@@ -11,7 +11,6 @@ FAKE_ADDR='keltia+fake@gmail.com'
 TEST_DIR='test/dot.gmvault'
 
 describe GmVault::Config do
-  attr_reader :list
 
   before(:all) do
     @cfg = GmVault::Config.new(TEST_DIR)
