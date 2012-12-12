@@ -9,11 +9,11 @@
 # Read all .eml with a given tag in .meta.  Save everything in a TC-backed DB
 # in the main gmvault directory.
 #
-# @version $Id: taglist,v 93ee55710cb0 2012/12/06 23:07:33 roberto $
+# @version $Id: taglist,v 0e6e0adadff1 2012/12/12 22:24:21 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = '$Id: taglist,v 93ee55710cb0 2012/12/06 23:07:33 roberto $'
+VCS_ID = '$Id: taglist,v 0e6e0adadff1 2012/12/12 22:24:21 roberto $'
 
 require 'date'
 require 'time'
@@ -70,7 +70,7 @@ Usage: #{MYNAME} [-h] [-b DIR] [-d MAIL]
   index = GMail::TagList.new(gm_dir)
   start = index.last_id.to_i
   last_id = start
-  puts("Opening index, last id is #{last_id}, #{index.size} mails present, db version #{index.version}")
+  puts("Opening taglist, last id is #{last_id}, #{index.size} mails present, db version #{index.version}")
   puts("Last synced on #{index.last_sync}")
 
   # Check arguments and the directory that may be stored in the index
@@ -86,7 +86,7 @@ Usage: #{MYNAME} [-h] [-b DIR] [-d MAIL]
     index.gmdb = top_dir
   end
 
-  puts("Main GmVault directory is #{index.gmdb}")
+  puts("GmVault config directory is #{my_base}")
   puts('+: already seen / N: new tag / .: unseen, no match')
   Dir.chdir(top_dir) do
 
