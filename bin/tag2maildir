@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v c4e297bd63db 2012/12/06 15:07:09 roberto $
+# @version $Id: tag2maildir,v 4f69adb00959 2013/01/09 00:42:28 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = '$Id: tag2maildir,v c4e297bd63db 2012/12/06 15:07:09 roberto $'
+VCS_ID = '$Id: tag2maildir,v 4f69adb00959 2013/01/09 00:42:28 roberto $'
 
 require 'date'
 require 'time'
@@ -72,6 +72,13 @@ Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
   argv.options = nil
   top_dir = argv.shift
 
+# XXX deprecated the -t option and just requiring the tag?
+  #
+  if my_tag.nil?
+    $stderr.puts('Error: the -t TAG option must be specified')
+    return(1)
+  end
+
   tag = GMail::Tag.new(my_tag)
   maildir = Maildir.new("#{my_base}/#{tag}")
   maildir.serializer = Maildir::Serializer::Mail.new
@@ -94,13 +101,6 @@ Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
     end
   else
     index.gmdb = top_dir
-  end
-
-  # XXX deprecated the -t option and just requiring the tag?
-  #
-  if my_tag.nil?
-    $stderr.puts('Error: the -t TAG option must be specified')
-    return(1)
   end
 
   puts("Main GmVault directory is #{index.gmdb}")
