@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: tag_spec.rb,v c9004a1aeb2a 2012/12/06 17:12:41 roberto $
+# $Id: tag_spec.rb,v 77341a69ad08 2013/01/09 00:42:01 roberto $
 
 require 'rspec'
 require 'gmail'
@@ -21,6 +21,10 @@ describe GMail::Tag do
 
     it 'should raise an exception if @tag is nil' do
       expect{@tag = GMail::Tag.new}.to raise_error(ArgumentError)
+    end
+
+    it 'calling #new with nil should raise an exception' do
+      expect{@tag = GMail::Tag.new(nil)}.to raise_error(ArgumentError)
     end
 
     it 'should create a @tag object' do

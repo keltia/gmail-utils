@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_TAG_ID = '$Id: tag.rb,v c4e297bd63db 2012/12/06 15:07:09 roberto $'
+VCS_TAG_ID = '$Id: tag.rb,v 77341a69ad08 2013/01/09 00:42:01 roberto $'
 
 module GMail
 
@@ -19,6 +19,7 @@ module GMail
     #   Tag.new("the/tag") # => a new tag
     def initialize(label)
       @label = label
+      raise ArgumentError if label.nil?
     end
 
     # Generate a FS-compatible label
