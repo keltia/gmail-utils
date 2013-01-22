@@ -2,7 +2,7 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMI_ID = '$Id: index.rb,v c4e297bd63db 2012/12/06 15:07:09 roberto $'
+VCS_GMI_ID = '$Id: index.rb,v 53c04364fd11 2013/01/22 22:50:03 roberto $'
 
 require 'rufus/tokyo'
 require 'gmail/version'
@@ -44,8 +44,7 @@ module GMail
     # @return [TrueClass|FalseClass] true if present
     def present?(gm_id)
       return false if gm_id.nil?
-      return false if @db[gm_id].nil?
-      true
+      return @db.keys.include?(gm_id)
     end
 
     # Allow getting a value
