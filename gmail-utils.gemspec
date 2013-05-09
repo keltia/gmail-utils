@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Set of utilities to deal with GMail}
   gem.homepage      = ''
 
-  gem.files         = `/usr/local/bin/hg locate`.split($\)
-  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+  gem.files         = `git ls-files`.split("\n")
+  gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.name          = 'gmail-utils'
   gem.require_paths = ['lib']
   gem.version       = GMail::Utils::VERSION
