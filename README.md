@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/keltia/gmail-utils.png)](http://travis-ci.org/keltia/gmail-utils)
+
 # GMail::Utils
 
 GmVault is a small utility to backup all or parts of a given GMail mailbox.  It generates
