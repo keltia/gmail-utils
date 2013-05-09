@@ -8,4 +8,4 @@ rvm:
 script: rake test_specs
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -qq libtokyocabinet9 libtokyocabinet-dev 
+  - sudo apt-get install -qq libtokyocabinet-dev 
