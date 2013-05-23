@@ -2,11 +2,11 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 
-VCS_GMV_ID = '$Id: entity.rb,v c4e297bd63db 2012/12/06 15:07:09 roberto $'
+VCS_GMV_ID = '$Id: entity.rb,v 588cb5fa74c3 2013/05/23 15:25:29 roberto $'
 
 # Non-standard packages
 #
-require 'json'
+require 'oj'
 
 # Main namespace
 module GMail
@@ -33,7 +33,7 @@ module GMail
     # @return [String] returns the gm_id
     def load
       File.open(self.meta_path) do |fh|
-        @meta = JSON.load(fh)
+        @meta = Oj.load(fh)
       end
 
       # check consistency
