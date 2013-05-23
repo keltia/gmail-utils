@@ -6,7 +6,7 @@
 <title>
   Class: GMail::Entity
   
-    &mdash; Documentation by YARD 0.8.3
+    &mdash; Documentation by YARD 0.8.5.2
   
 </title>
 
@@ -102,8 +102,8 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Handle <tt>GMail::Entity</tt> mails with <tt>.eml</tt> as raw mail and
-<tt>.meta</tt> as metadata (i.e.tags, date)</p>
+<p>Handle <tt>GMail::Entity</tt> mails with <code>.eml</code> as raw mail and
+<code>.meta</code> as metadata (i.e.tags, date)</p>
 
 
   </div>
@@ -262,7 +262,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Create a new object based on the metadata from <tt>filename</tt>.</p>
+<p>Create a new object based on the metadata from <code>filename</code>.</p>
 </div></span>
   
 </li>
@@ -406,7 +406,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Create a new object based on the metadata from <tt>filename</tt>.</p>
+<p>Create a new object based on the metadata from <code>filename</code>.</p>
 
 
   </div>
@@ -468,8 +468,8 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
   <span class='ivar'>@path</span><span class='comma'>,</span> <span class='id identifier rubyid_ext'>ext</span> <span class='op'>=</span> <span class='id identifier rubyid_filename'>filename</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>\.</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>File should end in .meta: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_filename'>filename</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_ext'>ext</span> <span class='op'>!=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>meta</span><span class='tstring_end'>'</span></span>
-  <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>File does not exist </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_filename'>filename</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='kw'>not</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>File should end in .meta: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_filename'>filename</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_ext'>ext</span> <span class='op'>!=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>meta</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_raise'>raise</span><span class='lparen'>(</span><span class='const'>ArgumentError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>File does not exist </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_filename'>filename</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='kw'>not</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_filename'>filename</span><span class='rparen'>)</span>
   <span class='ivar'>@name</span> <span class='op'>=</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_basename'>basename</span><span class='lparen'>(</span><span class='ivar'>@path</span><span class='rparen'>)</span>
   <span class='ivar'>@mail</span> <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='ivar'>@tags</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -673,7 +673,7 @@
       <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gm_id'>gm_id</span>
-  <span class='ivar'>@meta</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>gm_id</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='ivar'>@meta</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>gm_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -764,14 +764,14 @@
 
   <span class='comment'># check consistency
 </span>  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>DataError</span> <span class='kw'>if</span> <span class='ivar'>@meta</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
-  <span class='kw'>if</span> <span class='ivar'>@name</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>!=</span> <span class='ivar'>@meta</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>gm_id</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+  <span class='kw'>if</span> <span class='ivar'>@name</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='op'>!=</span> <span class='ivar'>@meta</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>gm_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
     <span class='gvar'>$stderr</span><span class='period'>.</span><span class='id identifier rubyid_puts'>puts</span><span class='lparen'>(</span><span class='ivar'>@meta</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>DataError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Error: Internal inconsistency on </span><span class='embexpr_beg'>#{</span><span class='ivar'>@name</span><span class='rbrace'>}</span><span class='tstring_content'> vs </span><span class='embexpr_beg'>#{</span><span class='ivar'>@meta</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>gm_id</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'>DataError</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Error: Internal inconsistency on </span><span class='embexpr_beg'>#{</span><span class='ivar'>@name</span><span class='embexpr_end'>}</span><span class='tstring_content'> vs </span><span class='embexpr_beg'>#{</span><span class='ivar'>@meta</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>gm_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 
   <span class='comment'># Remove &quot;internal tags&quot;
-</span>  <span class='ivar'>@tags</span> <span class='op'>=</span> <span class='ivar'>@meta</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>labels</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_delete_if'>delete_if</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_e'>e</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\\</span><span class='regexp_end'>/</span></span> <span class='rbrace'>}</span>
-  <span class='ivar'>@meta</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>gm_id</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+</span>  <span class='ivar'>@tags</span> <span class='op'>=</span> <span class='ivar'>@meta</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>labels</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_delete_if'>delete_if</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_e'>e</span> <span class='op'>=~</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>^\\</span><span class='regexp_end'>/</span></span> <span class='rbrace'>}</span>
+  <span class='ivar'>@meta</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>gm_id</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -838,7 +838,7 @@
   <span class='kw'>if</span> <span class='ivar'>@mail</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
     <span class='ivar'>@mail</span> <span class='op'>=</span> <span class='const'>Mail</span><span class='period'>.</span><span class='id identifier rubyid_read'>read</span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mail_path'>mail_path</span><span class='rparen'>)</span>
     <span class='id identifier rubyid_lines'>lines</span> <span class='op'>=</span> <span class='ivar'>@mail</span><span class='period'>.</span><span class='id identifier rubyid_body'>body</span><span class='period'>.</span><span class='id identifier rubyid_raw_source'>raw_source</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>%r{</span><span class='tstring_content'>\r\n</span><span class='regexp_end'>}</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span>
-    <span class='ivar'>@mail</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Lines</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_lines'>lines</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+    <span class='ivar'>@mail</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Lines</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_lines'>lines</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
   <span class='kw'>end</span>
   <span class='ivar'>@mail</span>
 <span class='kw'>end</span></pre>
@@ -899,7 +899,7 @@
       <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_mail_path'>mail_path</span>
-  <span class='ivar'>@path</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.eml</span><span class='tstring_end'>'</span></span>
+  <span class='ivar'>@path</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.eml</span><span class='tstring_end'>&#39;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -958,7 +958,7 @@
       <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_meta_path'>meta_path</span>
-  <span class='ivar'>@path</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>.meta</span><span class='tstring_end'>'</span></span>
+  <span class='ivar'>@path</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>.meta</span><span class='tstring_end'>&#39;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1017,7 +1017,7 @@
       <pre class="code"><span class="info file"># File 'lib/gmail/entity.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_thread_ids'>thread_ids</span>
-  <span class='ivar'>@meta</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>thread_ids</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
+  <span class='ivar'>@meta</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>thread_ids</span><span class='tstring_end'>&#39;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1029,9 +1029,9 @@
 </div>
 
     <div id="footer">
-  Generated on Thu Dec  6 18:27:40 2012 by
+  Generated on Thu Apr 11 23:34:47 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.3 (ruby-1.9.3).
+  0.8.5.2 (ruby-2.0.0).
 </div>
 
   </body>
