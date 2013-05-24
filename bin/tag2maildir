@@ -8,11 +8,11 @@
 # Read all .eml with a given tag in .meta. Generate a maildir structure
 # with all .eml.
 #
-# @version $Id: tag2maildir,v 4f69adb00959 2013/01/09 00:42:28 roberto $
+# @version $Id: tag2maildir,v 789b9f4bf040 2013/05/24 13:42:19 roberto $
 
 # VCS ID
 MYNAME = File.basename($0)
-VCS_ID = '$Id: tag2maildir,v 4f69adb00959 2013/01/09 00:42:28 roberto $'
+VCS_ID = '$Id: tag2maildir,v 789b9f4bf040 2013/05/24 13:42:19 roberto $'
 
 require 'date'
 require 'time'
@@ -113,7 +113,7 @@ Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
     t1 = Time.now
     t2 = 0
     begin
-      Dir['**/*.meta'].each do |m|
+      Dir['**/*.meta'].sort.each do |m|
         #
         # In order to avoid opening and reading lots of file, use the fact that filenames are gm_ids
         #
