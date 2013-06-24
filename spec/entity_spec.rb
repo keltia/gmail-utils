@@ -2,11 +2,11 @@
 #
 # @author Ollivier Robert <roberto@keltia.net>
 #
-# $Id: entity_spec.rb,v c4e297bd63db 2012/12/06 15:07:09 roberto $
+# $Id: entity_spec.rb,v 588cb5fa74c3 2013/05/23 15:25:29 roberto $
 
 require 'rspec'
 require 'mail'
-require 'json'
+require 'oj'
 require 'gmail'
 
 ID_LIST = {
@@ -26,7 +26,7 @@ describe GMail::Entity do
     # load meta for testing
     ID_LIST.each_pair do |k, v|
       File.open(File.expand_path(File.dirname(__FILE__) + "/../test/#{v}.meta")) do |fh|
-        eval("#{k}_m = JSON.load(fh)")
+        eval("#{k}_m = Oj.load(fh)")
       end
     end
   end

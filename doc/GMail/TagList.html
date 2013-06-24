@@ -6,7 +6,7 @@
 <title>
   Class: GMail::TagList
   
-    &mdash; Documentation by YARD 0.8.3
+    &mdash; Documentation by YARD 0.8.5.2
   
 </title>
 
@@ -98,7 +98,7 @@
   
   
     <dt class="r1 last">Defined in:</dt>
-    <dd class="r1 last">lib/gmail/tags.rb</dd>
+    <dd class="r1 last">lib/gmail/taglist.rb</dd>
   
 </dl>
 <div class="clear"></div>
@@ -417,7 +417,7 @@
 19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/tags.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/taglist.rb', line 17</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='ivar'>@list</span> <span class='op'>=</span> <span class='const'>Hash</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lbrace'>{</span><span class='int'>0</span><span class='rbrace'>}</span>
@@ -465,7 +465,7 @@
 16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/tags.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/taglist.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_list'>list</span>
   <span class='ivar'>@list</span>
@@ -538,7 +538,7 @@
 50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/tags.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/taglist.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='op'>&lt;&lt;</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span> <span class='op'>==</span> <span class='const'>GMail</span><span class='op'>::</span><span class='const'>Tag</span>
@@ -564,7 +564,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <dl class="rdoc-list"><dt></dt>
+    <dl class="rdoc-list label-list"><dt>
 <dd></dd></dl>
 
 
@@ -622,7 +622,7 @@
 31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/tags.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/taglist.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='op'>[]</span><span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span><span class='rparen'>)</span>
   <span class='ivar'>@list</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span>
@@ -717,7 +717,7 @@
 39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/tags.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/taglist.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='op'>[]=</span><span class='lparen'>(</span><span class='id identifier rubyid_k'>k</span><span class='comma'>,</span> <span class='id identifier rubyid_v'>v</span><span class='rparen'>)</span>
   <span class='ivar'>@list</span><span class='lbracket'>[</span><span class='id identifier rubyid_k'>k</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_v'>v</span>
@@ -778,7 +778,7 @@
 56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/tags.rb', line 54</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/taglist.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add'>add</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='op'>&lt;&lt;</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span>
@@ -819,7 +819,7 @@
 24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/tags.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/taglist.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_each'>each</span>
   <span class='ivar'>@list</span><span class='period'>.</span><span class='id identifier rubyid_each_key'>each_key</span><span class='lbrace'>{</span><span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_e'>e</span><span class='rbrace'>}</span>
@@ -893,7 +893,7 @@
 62</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/tags.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/taglist.rb', line 60</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_elem'>elem</span><span class='rparen'>)</span>
   <span class='ivar'>@list</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_elem'>elem</span><span class='rparen'>)</span>
@@ -952,7 +952,7 @@
 74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/tags.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/taglist.rb', line 72</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_keys'>keys</span>
   <span class='ivar'>@list</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span>
@@ -1011,7 +1011,7 @@
 68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/gmail/tags.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'lib/gmail/taglist.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_length'>length</span>
   <span class='ivar'>@list</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span>
@@ -1026,9 +1026,9 @@
 </div>
 
     <div id="footer">
-  Generated on Thu Dec  6 18:30:44 2012 by
+  Generated on Thu Apr 11 23:34:48 2013 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.8.3 (ruby-1.9.3).
+  0.8.5.2 (ruby-2.0.0).
 </div>
 
   </body>

@@ -2,7 +2,7 @@
 #
 # @abstract Wrapper for the gmail-backup.sh shell script
 #
-# $Id: gmail-backup,v b6cb589b676a 2012/12/06 17:12:59 roberto $
+# $Id: gmail-backup,v b92f90236f1b 2013/05/24 16:06:11 roberto $
 
 require 'optparse'
 
@@ -10,7 +10,7 @@ require 'gmail/core'
 require 'gmail/version'
 require 'gmvault/config'
 
-OPTS = '-o --no-compression -t quick'
+OPTS = '-o --no-compression -t quick --emails-only'
 BASE = ENV['HOME'] + '/Downloads/gmvault-v1.7-beta/bin/'
 GMVAULT = ENV['HOME'] + '/Mail/gmvault-db'
 TSOCKS = 'sh'
