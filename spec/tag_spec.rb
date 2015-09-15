@@ -62,13 +62,13 @@ describe GMail::Tag do
 
   describe '#match' do
     it 'should not match the \'\' (null) tag' do
-      @tag1.match('').should be_false
-      @tag2.match('').should be_false
+      @tag1.match('').should be_falsey
+      @tag2.match('').should be_falsey
     end
 
     it 'should match the correct tag' do
-      @tag1.match('Perso/Foo').should be_false
-      @tag2.match('Perso/Foo').should_not be_false
+      @tag1.match('Perso/Foo').should be_falsey
+      @tag2.match('Perso/Foo').should_not be_falsey
     end
   end
 

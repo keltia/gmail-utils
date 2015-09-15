@@ -65,16 +65,16 @@ describe GMail::Index do
 
   describe '#present?' do
     it 'should return nothing with nil' do
-      @ind.present?(nil).should be_false
+      @ind.present?(nil).should be_falsey
     end
 
     it 'should return false if not present' do
-      @ind.present?('foo-bar-baz').should be_false
+      @ind.present?('foo-bar-baz').should be_falsey
     end
 
     it 'should return true if present' do
       @ind[@mail.gm_id] = true
-      @ind.present?(@mail.gm_id).should be_true
+      @ind.present?(@mail.gm_id).should be_truthy
     end
   end
 

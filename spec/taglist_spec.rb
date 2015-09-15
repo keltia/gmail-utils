@@ -47,7 +47,7 @@ describe GMail::TagList do
     it 'should add one element to the list' do
       @tl.add(@t1)
       @tl.keys.should eq(@tl1.keys)
-      @tl.include?(@t1).should be_true
+      @tl.include?(@t1).should be_truthy
     end
 
     it 'adding an already present Tag should increment the counter' do
@@ -61,13 +61,13 @@ describe GMail::TagList do
     it 'should add one element to the list' do
       @tl << @t1
       @tl.keys.should eq(@tl1.keys)
-      @tl.include?(@t1).should be_true
+      @tl.include?(@t1).should be_truthy
     end
   end
 
   describe 'include?' do
     it 'should return true for an element of the list' do
-      @tl.include?(@t1).should be_true
+      @tl.include?(@t1).should be_truthy
     end
   end
 
