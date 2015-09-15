@@ -164,7 +164,7 @@ Usage: #{MYNAME} [-h] -b DIR -t TAG DIR
     puts <<"EOTEXT"
 
 Total messages in #{tag}:
-  #{maildir.list(:cur).length} old, #{maildir.list(:new).length} new, #{added} added in #{t2 - t1} s, #{already} already there, #{skipped} skipped.
+  #{maildir.list(:cur).length} old, #{maildir.list(:new).length} new, #{added} added in #{"%.01f" % (t2 - t1)}s, #{already} already there, #{skipped} skipped.
 EOTEXT
   end
 
