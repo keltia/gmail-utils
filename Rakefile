@@ -12,8 +12,6 @@ desc 'Run basic specs'
 RSpec::Core::RakeTask.new(:test_specs) do |t|
   t.pattern = 'spec/**/*.rb'
   t.rspec_opts = '--format documentation'
-  t.rcov_opts =  %q[--exclude "spec"]
-  t.rcov = false
 end
 
 desc 'Report code statistics (KLOCs, etc) from the application'
