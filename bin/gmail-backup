@@ -11,7 +11,7 @@ require 'gmail/version'
 require 'gmvault/config'
 
 OPTS = '-o --no-compression -t quick --emails-only'
-BASE = ENV['HOME'] + '/Downloads/gmvault-v1.7-beta/bin/'
+BASE = ENV['HOME'] + '/Downloads/gmvault-v1.8.1-beta/bin/'
 GMVAULT = ENV['HOME'] + '/Mail/gmvault-db'
 TSOCKS = 'sh'
 
