@@ -2,11 +2,13 @@ language: ruby
 rvm:
   - "2.1.5"
   - "2.2.3"
-  - jruby-22mode # JRuby in 1.9 mode
+  - "rbx-2.5.8"
+  - jruby-19mode # JRuby in 1.9 mode
 sudo: false
 addons:
   apt:
     packages:
+    - libtokyocabinet
     - libtokyocabinet-dev
 # uncomment this line if your project needs to run something other than `rake`:
 script: rake test_specs
